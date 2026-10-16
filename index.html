@@ -77,11 +77,12 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 
 /* hero */
 .hero{position:relative; height:100svh; min-height:560px; background:var(--ink); color:var(--paper); overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end}
-.hero-media{position:absolute; inset:-4% 0 0 0; will-change:transform}
+.hero-media{position:absolute; inset:0; will-change:transform}
 .slide{position:absolute; inset:0; margin:0; opacity:0; transition:opacity 1.8s ease}
 .slide.on{opacity:1}
-.slide img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06) brightness(.5); transform:scale(1.12); transition:transform 9s cubic-bezier(.2,.6,.2,1)}
-.slide.on img{transform:scale(1.02)}
+.slide img,.slide video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06) brightness(.5); transform:scale(1.06); transition:transform 8s cubic-bezier(.2,.6,.2,1)}
+.slide video{transform:none; transition:none}
+.slide.on img{transform:scale(1)}
 .hero-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.1) 35%, rgba(10,10,10,.25) 60%, rgba(10,10,10,.85) 100%)}
 .hero-in{position:relative; z-index:2; width:100%; padding-bottom:clamp(36px, 6vh, 70px)}
 .wordmark{font-family:var(--serif); font-weight:400; font-size:clamp(120px, 27vw, 400px); line-height:.78; letter-spacing:.04em; margin-left:-.04em; animation:rise 1.4s cubic-bezier(.16,.8,.2,1) both}
@@ -103,15 +104,17 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 @keyframes cue{0%,100%{transform:scaleY(.4); transform-origin:top}50%{transform:scaleY(1); transform-origin:top}}
 
 /* stats */
-.stats{display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; margin-top:clamp(56px, 8vw, 96px)}
+.stats{display:grid; grid-template-columns:1.45fr repeat(4, 1fr); gap:28px; margin-top:clamp(56px, 8vw, 96px)}
+.stat:first-child .num{color:var(--ink)}
+.stat:first-child p{max-width:22ch}
 .stat{border-top:1px solid var(--line); padding-top:20px}
 .stat .num{font-family:var(--serif); font-size:clamp(52px, 6vw, 84px); line-height:1; font-variant-numeric:tabular-nums}
 .stat p{margin-top:12px; font-size:13.5px; line-height:1.55; color:var(--body); max-width:26ch}
 
 /* team */
 .people{display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; margin-top:clamp(40px, 6vw, 72px)}
-.person{min-width:0}
-.ph{position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--paper-2); max-width:100%}
+.person{min-width:0; display:flex; flex-direction:column}
+.ph{position:relative; aspect-ratio:1/1; width:100%; max-width:240px; overflow:hidden; background:var(--paper-2)}
 .ph img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .6s ease, transform 1.2s cubic-bezier(.2,.6,.2,1)}
 .ph .col{opacity:0}
 .person:hover .ph .col{opacity:1}
@@ -119,7 +122,7 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 .pname{margin-top:18px; font-family:var(--mono); font-weight:400; font-size:12px; letter-spacing:.14em; text-transform:uppercase}
 .prole{margin-top:6px; font-family:var(--serif); font-style:italic; font-size:16px; color:var(--mute)}
 .pbio{margin-top:12px; font-size:13.5px; line-height:1.65; color:var(--body)}
-.contacts{display:flex; gap:10px; margin-top:16px}
+.contacts{display:flex; gap:10px; margin-top:auto; padding-top:18px}
 .clink{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border:1px solid var(--line); color:var(--ink); transition:background .25s, color .25s, border-color .25s}
 .clink svg{width:17px; height:17px}
 a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)}
@@ -234,14 +237,19 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 .m-close{position:absolute; top:4px; right:0; width:44px; height:44px; font-size:30px; line-height:1; color:var(--body-d); border:1px solid #333; transition:color .2s, border-color .2s}
 .m-close:hover{color:var(--paper); border-color:var(--paper)}
 .m-stage{aspect-ratio:3/2; background:var(--ink-2); overflow:hidden; max-width:100%}
-.m-stage img{width:100%; height:100%; object-fit:cover; animation:fade .5s ease}
+.m-stage{position:relative}
+.m-stage img,.m-stage video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; animation:fade .5s ease; background:var(--ink)}
+.m-stage video{object-fit:contain}
 .m-ctrl{display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mute-d); font-variant-numeric:tabular-nums}
 .m-ctrl button{width:44px; height:36px; border:1px solid #333; font-size:16px; transition:border-color .2s}
 .m-ctrl button:hover{border-color:var(--paper)}
-.m-thumbs{display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:12px}
+.m-thumbs{display:grid; grid-template-columns:repeat(6, 1fr); gap:8px; margin-top:12px}
 .m-thumbs button{aspect-ratio:3/2; overflow:hidden; opacity:.4; transition:opacity .25s; outline-offset:1px}
 .m-thumbs button.on,.m-thumbs button:hover{opacity:1}
+.m-thumbs button{position:relative}
 .m-thumbs img{width:100%; height:100%; object-fit:cover; filter:grayscale(1)}
+.m-thumbs .play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center}
+.m-thumbs .play::before{content:""; width:0; height:0; border-left:12px solid var(--paper); border-top:7px solid transparent; border-bottom:7px solid transparent; margin-left:3px; filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
 .m-thumbs button.on img{filter:none}
 .m-info .eyebrow{margin-bottom:18px; color:var(--mute-d)}
 .m-info h3{font-family:var(--serif); font-weight:400; font-size:clamp(32px, 3.4vw, 48px); line-height:1.04; text-wrap:balance}
@@ -250,6 +258,20 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 .m-facts{display:grid; grid-template-columns:auto 1fr; gap:10px 22px; margin-top:26px; padding-top:18px; border-top:1px solid var(--line-d); font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase}
 .m-facts dt{color:var(--accent)}
 .m-logo{margin-top:28px; max-height:54px; max-width:200px; width:auto; opacity:.85}
+.enq{margin-top:30px; padding-top:22px; border-top:1px solid var(--line-d)}
+.enq-btn{display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; padding:16px 20px; background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; transition:background .25s}
+.enq-btn:hover{background:var(--accent)}
+.enq-btn[aria-expanded="true"]{display:none}
+.enq-form{display:grid; gap:12px}
+.enq-form label{display:grid; gap:6px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute-d)}
+.enq-form input{width:100%; min-width:0; padding:12px 14px; background:transparent; border:1px solid #3a3a3a; color:var(--paper); font:15px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0}
+.enq-form input:focus{outline:none; border-color:var(--accent)}
+.enq-send{margin-top:4px; padding:15px 20px; background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; transition:background .25s}
+.enq-send:hover{background:var(--accent)}
+.enq-send:disabled{opacity:.5; cursor:default}
+.enq-msg{font-size:13.5px; line-height:1.55; color:var(--body-d); min-height:1px}
+.enq-msg.ok{color:var(--accent)}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
 
 /* reveal */
 .js .reveal{opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.16,.8,.2,1), transform 1s cubic-bezier(.16,.8,.2,1)}
@@ -258,6 +280,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 @media (max-width:960px){
   .who-grid,.exp-grid,.net-grid,.pre-grid,.m-in{grid-template-columns:1fr}
   .stats,.people,.svcs{grid-template-columns:repeat(2, 1fr)}
+  .stat:first-child{grid-column:1 / -1}
   .logos{grid-template-columns:repeat(4, 1fr)}
   .pgrid{grid-template-columns:repeat(2, 1fr)}
   .pcard.wide{grid-column:span 2; aspect-ratio:16/9}
@@ -268,6 +291,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   .wrap,.top-in{padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
   .top-r{gap:14px}
   .stats,.svcs{grid-template-columns:1fr 1fr; gap:22px}
+  .ph{max-width:none}
   .people{grid-template-columns:1fr 1fr; gap:22px 14px}
   .pbio{font-size:12.5px}
   .pgrid{grid-template-columns:1fr}
@@ -277,7 +301,17 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   .plogo{height:76px; padding:12px}
   .caps{display:none}
   .hero-foot{justify-content:flex-end}
-  .m-thumbs{grid-template-columns:repeat(5, 1fr); gap:5px}
+  .m-thumbs{grid-template-columns:repeat(6, 1fr); gap:5px}
+  .m-in{padding-top:60px}
+}
+@media (max-height:540px) and (orientation:landscape){
+  .hero{min-height:0}
+  .wordmark{font-size:min(27vw, 40svh)}
+  .hero-sub{margin-top:10px; font-size:18px}
+  .hero-in{padding-bottom:18px}
+  .caps{display:none}
+  .hero-foot{justify-content:flex-end; padding-top:10px; padding-bottom:max(14px, env(safe-area-inset-bottom, 0px))}
+  .cue-line{height:22px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -304,7 +338,6 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <li><a href="#proyectos" data-nav="proyectos" data-i18n="nav_proyectos">Proyectos</a></li>
         <li><a href="#servicios" data-nav="servicios" data-i18n="nav_servicios">Qué hacemos</a></li>
         <li><a href="#red" data-nav="red" data-i18n="nav_red">La red</a></li>
-        <li><a href="#experiencia" data-nav="experiencia" data-i18n="nav_experiencia">Experiencia de marca</a></li>
         <li><a href="#presencia" data-nav="presencia" data-i18n="nav_presencia">Presencia</a></li>
         <li><a href="#contacto" data-nav="contacto" data-i18n="nav_contacto">Contacto</a></li>
         </ul>
@@ -317,14 +350,14 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 
 <section class="hero" id="inicio" aria-label="BDA International">
   <div class="hero-media">
-      <figure class="slide on" data-i="0"><img src="assets/hero/plaza.jpg" alt="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" fetchpriority="high"></figure>
-      <figure class="slide" data-i="1"><img src="assets/hero/alto-agrelo.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" loading="eager"></figure>
-      <figure class="slide" data-i="2"><img src="assets/hero/alvear-tower.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" loading="eager"></figure>
+      <figure class="slide on" data-i="0" data-dur="14000"><video src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="auto" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video></figure>
+      <figure class="slide" data-i="1" data-dur="7000"><img src="assets/hero/alto-agrelo.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" loading="eager" style="object-position:50% 58%"></figure>
+      <figure class="slide" data-i="2" data-dur="7000"><img src="assets/hero/alvear-tower.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" loading="eager" style="object-position:62% 45%"></figure>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-in wrap">
     <h1 class="wordmark">BDA<span class="sq" aria-hidden="true"></span></h1>
-    <p class="hero-sub">Branded sales. Sales experience.</p>
+    <p class="hero-sub">Branded Sales Experience.</p>
   </div>
   <div class="hero-foot wrap">
     <div class="caps">
@@ -344,6 +377,10 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
       <p class="lede reveal" data-i18n="who_p">BDA trabaja como asociado del developer: representa a su firma, integrado en su propio equipo comercial. Especializado exclusivamente en branded sales, con foco en el comprador UHNWI latinoamericano y norteamericano.</p>
     </div>
     <div class="stats">
+      <div class="stat reveal">
+        <div class="num"><span class="count" data-to="700" data-prefix="+" data-suffix="M">+700M</span></div>
+        <p data-i18n="st0">En ventas de real estate de lujo</p>
+      </div>
       <div class="stat reveal">
         <div class="num"><span class="count" data-to="30" data-prefix="" data-suffix="+">30+</span></div>
         <p data-i18n="st1">A&ntilde;os de trayectoria en real estate de lujo</p>
@@ -411,7 +448,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_alvear-tower">Puerto Madero, Buenos Aires</span>
           <span class="pname2">Alvear Tower</span>
-          <span class="pmore"><span data-i18n="more_0">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_0">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard  reveal" type="button" data-project="1">
@@ -419,7 +456,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_alvear-icon">Puerto Madero, Buenos Aires</span>
           <span class="pname2">Alvear Icon Hotel &amp; Residences</span>
-          <span class="pmore"><span data-i18n="more_1">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_1">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard  reveal" type="button" data-project="2">
@@ -427,7 +464,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_plaza">Retiro, Buenos Aires</span>
           <span class="pname2">Plaza Hotel &amp; Residences</span>
-          <span class="pmore"><span data-i18n="more_2">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_2">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard  reveal" type="button" data-project="3">
@@ -435,7 +472,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_alto-agrelo">Mendoza, Argentina</span>
           <span class="pname2">Reserva Alto Agrelo</span>
-          <span class="pmore"><span data-i18n="more_3">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_3">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard  reveal" type="button" data-project="4">
@@ -443,7 +480,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_sls-puerto-madero">Puerto Madero, Buenos Aires</span>
           <span class="pname2">SLS Puerto Madero</span>
-          <span class="pmore"><span data-i18n="more_4">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_4">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard  reveal" type="button" data-project="5">
@@ -451,7 +488,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_sls-madrid">Justicia, Madrid</span>
           <span class="pname2">SLS Madrid Infantas Residences</span>
-          <span class="pmore"><span data-i18n="more_5">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_5">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
       <button class="pcard wide reveal" type="button" data-project="6">
@@ -459,7 +496,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <span class="pmeta">
           <span class="ploc" data-i18n="loc_banyan-tree-madrid">Salamanca, Madrid</span>
           <span class="pname2">Banyan Tree Madrid Residences</span>
-          <span class="pmore"><span data-i18n="more_6">Ver proyecto</span> <span aria-hidden="true">+</span></span>
+          <span class="pmore"><span data-i18n="more_6">Ver proyecto &middot; Consultar</span> <span aria-hidden="true">+</span></span>
         </span>
       </button>
     </div>
@@ -547,42 +584,6 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   </div>
 </section>
 
-<section class="band dark" id="experiencia">
-  <div class="wrap">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="exp_l">Experiencia de marca</span></p>
-    <div class="exp-grid">
-      <div>
-        <h2 class="h-xl reveal" data-i18n="exp_h">Una experiencia de marca, dise&ntilde;ada para vender.</h2>
-        <p class="lede reveal" data-i18n="exp_p">La moda, la relojer&iacute;a, el deporte y la hospitality ya crecen a trav&eacute;s de colaboraciones. En real estate sigue en gran parte sin explorar: nosotros lo incorporamos, para que el comprador viva la marca antes de ver un plano.</p>
-      </div>
-      <figure class="quote reveal">
-        <blockquote data-i18n="q">&ldquo;Varias de nuestras maisons han elegido invertir en la F&oacute;rmula 1&hellip; para crear experiencias &uacute;nicas. Queremos seguir haciendo crecer esta dimensi&oacute;n experiencial.&rdquo;</blockquote>
-        <figcaption data-i18n="qc">Fr&eacute;d&eacute;ric Arnault, CEO, LVMH Watches &mdash; sobre la alianza con la F1</figcaption>
-      </figure>
-    </div>
-    <div class="xstats">
-      <div class="xstat reveal">
-        <p class="xcat" data-i18n="xc1">Premium</p>
-        <p class="xnum"><span class="count" data-to="33" data-prefix="+" data-suffix="%">+33%</span></p>
-        <p class="xtxt" data-i18n="xs1">Prima de precio media que paga el mercado por las branded residences en el mundo.</p>
-        <p class="xsrc">Savills 2025/26</p>
-      </div>
-      <div class="xstat reveal">
-        <p class="xcat" data-i18n="xc2">Alcance</p>
-        <p class="xnum"><span class="count" data-to="30" data-prefix="+" data-suffix="%">+30%</span></p>
-        <p class="xtxt" data-i18n="xs2">De visibilidad de marca gracias a una colaboraci&oacute;n: un p&uacute;blico nuevo, a trav&eacute;s de una marca en la que ya conf&iacute;a.</p>
-        <p class="xsrc">Marketing Science Institute</p>
-      </div>
-      <div class="xstat reveal">
-        <p class="xcat" data-i18n="xc3">Facilidad de compra</p>
-        <p class="xnum"><span class="count" data-to="68" data-prefix="" data-suffix="%">68%</span></p>
-        <p class="xtxt" data-i18n="xs3">De los consumidores puede decidir comprar tras una campa&ntilde;a co-branded, sin hablar con un vendedor.</p>
-        <p class="xsrc">Smashbrand / CreatorCommerce, 2026</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="band dark" id="presencia">
   <div class="wrap">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="pre_l">Presencia</span></p>
@@ -617,11 +618,11 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
     <div class="close-links">
       <a class="olink" href="https://www.instagram.com/bda.realty/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3Zm0 7.8a3.1 3.1 0 1 1 3.1-3.1 3.1 3.1 0 0 1-3.1 3.1Zm6-8a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1ZM21.1 8.2a5.4 5.4 0 0 0-1.5-3.8 5.4 5.4 0 0 0-3.8-1.5C14.3 2.8 9.7 2.8 8.2 2.9a5.4 5.4 0 0 0-3.8 1.5 5.4 5.4 0 0 0-1.5 3.8c-.1 1.5-.1 6.1 0 7.6a5.4 5.4 0 0 0 1.5 3.8 5.4 5.4 0 0 0 3.8 1.5c1.5.1 6.1.1 7.6 0a5.4 5.4 0 0 0 3.8-1.5 5.4 5.4 0 0 0 1.5-3.8c.1-1.5.1-6.1 0-7.6Zm-2 9.2a3.1 3.1 0 0 1-1.8 1.8c-1.2.5-4.1.4-5.3.4s-4.1.1-5.3-.4a3.1 3.1 0 0 1-1.8-1.8c-.5-1.2-.4-4.1-.4-5.4s-.1-4.1.4-5.3a3.1 3.1 0 0 1 1.8-1.8c1.2-.5 4.1-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.8 1.8c.5 1.2.4 4.1.4 5.3s.1 4.2-.4 5.4Z"/></svg><span>@bda.realty</span></a>
       <a class="olink" href="https://www.linkedin.com/company/bda-realty" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05a4.2 4.2 0 0 1 3.75-2c4 0 4.75 2.6 4.75 6v5.5h-4v-4.9c0-1.2 0-2.7-1.65-2.7s-1.9 1.3-1.9 2.6v5h-4v-11Z"/></svg><span>BDA</span></a>
-      <a class="olink" href="#equipo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg><span data-i18n="cwa">Escr&iacute;benos por WhatsApp</span></a>
+      <a class="olink" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg><span data-i18n="cwa">Escr&iacute;benos por WhatsApp</span></a>
     </div>
     <footer class="foot">
       <span class="foot-logo">BDA<span class="sq" aria-hidden="true"></span></span>
-      <span>Branded sales &middot; Sales experience</span>
+      <span>Branded Sales Experience</span>
       <span>&copy; 2026 BDA International</span>
     </footer>
   </div>
@@ -633,7 +634,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   <div class="m-in">
     <button class="m-close" type="button" id="m-close" aria-label="Close">&times;</button>
     <div class="m-gal">
-      <div class="m-stage"><img id="m-img" alt=""></div>
+      <div class="m-stage" id="m-stage"><img id="m-img" alt=""><video id="m-vid" controls playsinline preload="none" hidden></video></div>
       <div class="m-ctrl">
         <button type="button" id="m-prev" aria-label="Previous">&larr;</button>
         <span id="m-count">01 / 05</span>
@@ -652,12 +653,23 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
         <dt data-i18n="f_role">Rol de BDA</dt><dd>Master Broker</dd>
       </dl>
       <img class="m-logo" id="m-logo" alt="" hidden>
+      <div class="enq">
+        <button type="button" class="enq-btn" id="enq-btn" aria-expanded="false" aria-controls="enq-form"><span data-i18n="enq_btn">Consultar por este proyecto</span><span aria-hidden="true">&rarr;</span></button>
+        <form class="enq-form" id="enq-form" hidden novalidate>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label for="enq-name"><span data-i18n="enq_name">Nombre</span><input id="enq-name" name="name" type="text" autocomplete="name" required></label>
+          <label for="enq-phone"><span data-i18n="enq_phone">Tel&eacute;fono</span><input id="enq-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          <label for="enq-email"><span data-i18n="enq_email">Email</span><input id="enq-email" name="email" type="email" autocomplete="email" required></label>
+          <button type="submit" class="enq-send" id="enq-send" data-i18n="enq_send">Enviar consulta</button>
+          <p class="enq-msg" id="enq-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </div>
 </div>
 <script>
 (function(){
-  var T = {"es": {"hero_scroll": "Descubrir", "who_l": "Qui&eacute;nes somos", "who_h": "No somos una agencia tradicional. Especialistas en branded sales &mdash; creamos el canal propio del developer.", "who_p": "BDA trabaja como asociado del developer: representa a su firma, integrado en su propio equipo comercial. Especializado exclusivamente en branded sales, con foco en el comprador UHNWI latinoamericano y norteamericano.", "st1": "A&ntilde;os de trayectoria en real estate de lujo", "st2": "Desarrollos premium bajo nuestra direcci&oacute;n comercial", "st3": "Proyectos branded en nuestro portfolio", "st4": "Mercados: LatAm, Espa&ntilde;a y Miami", "role_ricardo": "Socio Fundador", "bio_ricardo": "M&aacute;s de 30 a&ntilde;os en estrategia residencial y comercial de lujo &mdash; lider&oacute; la Direcci&oacute;n Comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos premium.", "role_marcelo": "Socio Fundador", "bio_marcelo": "M&aacute;s de 30 a&ntilde;os en real estate y estructuraci&oacute;n de contratos &mdash; lider&oacute; los marcos de negociaci&oacute;n comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos internacionales.", "role_emiliano": "Socio Internacional", "bio_emiliano": "Trayectoria en estrategia comercial y anal&iacute;tica aplicada &mdash; ha liderado la venta de proyectos internacionales, con business plans, modelos de absorci&oacute;n y forecasting que convierten datos en decisiones.", "role_rafael": "Socio Internacional", "bio_rafael": "Especialista en branded residences, con formaci&oacute;n en hoteler&iacute;a, dise&ntilde;o y gastronom&iacute;a &mdash; ha liderado la venta de proyectos internacionales, dedicado a la sales experience y los customer journeys.", "team_l": "El equipo", "team_h": "D&eacute;cadas de experiencia complementaria &mdash; estrategia comercial, negociaci&oacute;n, an&aacute;lisis y hospitality.", "loc_alvear-tower": "Puerto Madero, Buenos Aires", "more_0": "Ver proyecto", "loc_alvear-icon": "Puerto Madero, Buenos Aires", "more_1": "Ver proyecto", "loc_plaza": "Retiro, Buenos Aires", "more_2": "Ver proyecto", "loc_alto-agrelo": "Mendoza, Argentina", "more_3": "Ver proyecto", "loc_sls-puerto-madero": "Puerto Madero, Buenos Aires", "more_4": "Ver proyecto", "loc_sls-madrid": "Justicia, Madrid", "more_5": "Ver proyecto", "loc_banyan-tree-madrid": "Salamanca, Madrid", "more_6": "Ver proyecto", "proj_l": "Trayectoria &middot; Proyectos", "proj_h": "Direcci&oacute;n Estrat&eacute;gica Comercial y Experiencia de Ventas", "partners_l": "Branded residences &middot; Partners", "others": "y otros", "marks": "Las marcas y logotipos pertenecen a sus respectivos propietarios.", "sv0t": "Branded sales", "sv0p": "Direcci&oacute;n comercial y representaci&oacute;n de branded residences, como asociado del developer &mdash; nunca como una agencia externa.", "sv1t": "Sales experience", "sv1p": "Cada punto de contacto dise&ntilde;ado como parte de la marca: el primer contacto, la presentaci&oacute;n, la visita, el cierre y lo que viene despu&eacute;s.", "sv2t": "Colaboraciones con marcas", "sv2p": "Activaciones con marcas partner de deporte, arte, dise&ntilde;o y lifestyle &mdash; microeventos que acercan al comprador indicado.", "sv3t": "Acceso a mercados", "sv3p": "LatAm, Espa&ntilde;a y Miami &mdash; donde los compradores UHNWI latinoamericanos y norteamericanos viven, invierten y se encuentran.", "svc_l": "Qu&eacute; hacemos", "svc_h": "Vendemos marcas, no metros cuadrados.", "svc_p": "Especialistas en branded sales: construimos y gestionamos el canal de ventas propio del developer, bajo su nombre, integrados en su equipo, desde la primera conversaci&oacute;n hasta la postventa.", "nl0": "TERRENOS Y ACTIVOS", "nl1": "INVERSORES", "nl2": "MARCAS", "nl3": "DESARROLLADORES", "nl4": "ESTRATEGIA COMERCIAL", "nt0": "Terrenos y activos", "np0": "B&uacute;squeda de terrenos y activos para grupos listos para desarrollar &mdash; y los partners adecuados para los propietarios que quieren activarlos.", "nt1": "Inversores", "np1": "Inversores y family offices conectados con proyectos y terrenos con potencial branded.", "nt2": "Marcas", "np2": "Marcas hoteleras y de lifestyle acercadas a desarrolladores y grupos &mdash; para alianzas, desarrollos y residencias.", "nt3": "Desarrolladores", "np3": "Desarrolladores conectados con el terreno, el capital y la marca adecuada para cada proyecto.", "nt4": "Estrategia comercial", "np4": "C&oacute;mo se vende un proyecto con una marca &mdash; posicionamiento, lanzamiento y sales experience.", "net_l": "La red", "net_h": "Una red, todas las partes de un proyecto branded.", "net_p": "M&aacute;s all&aacute; de la venta, BDA conecta las piezas que necesita un proyecto branded y presenta entre s&iacute; a cada parte de su red.", "exp_l": "Experiencia de marca", "exp_h": "Una experiencia de marca, dise&ntilde;ada para vender.", "exp_p": "La moda, la relojer&iacute;a, el deporte y la hospitality ya crecen a trav&eacute;s de colaboraciones. En real estate sigue en gran parte sin explorar: nosotros lo incorporamos, para que el comprador viva la marca antes de ver un plano.", "q": "&ldquo;Varias de nuestras maisons han elegido invertir en la F&oacute;rmula 1&hellip; para crear experiencias &uacute;nicas. Queremos seguir haciendo crecer esta dimensi&oacute;n experiencial.&rdquo;", "qc": "Fr&eacute;d&eacute;ric Arnault, CEO, LVMH Watches &mdash; sobre la alianza con la F1", "xc1": "Premium", "xs1": "Prima de precio media que paga el mercado por las branded residences en el mundo.", "xc2": "Alcance", "xs2": "De visibilidad de marca gracias a una colaboraci&oacute;n: un p&uacute;blico nuevo, a trav&eacute;s de una marca en la que ya conf&iacute;a.", "xc3": "Facilidad de compra", "xs3": "De los consumidores puede decidir comprar tras una campa&ntilde;a co-branded, sin hablar con un vendedor.", "pin_es": "ESPA&Ntilde;A", "pin_mia": "MIAMI", "pin_lat": "LATAM", "plt0": "LatAm", "plp0": "Tres d&eacute;cadas de relaciones entre Argentina, Punta del Este y la regi&oacute;n.", "plt1": "Espa&ntilde;a", "plp1": "El hogar europeo del patrimonio latinoamericano y norteamericano.", "plt2": "Miami", "plp2": "La puerta de entrada entre compradores norteamericanos y latinoamericanos.", "pre_l": "Presencia", "pre_h": "LatAm, Espa&ntilde;a y Miami.", "pre_p": "Una embajada comercial para la marca, donde est&aacute; el comprador: presentes donde nuestros compradores viven, invierten y pasan su tiempo, y conectados entre los tres.", "con_l": "Contacto", "cl1": "Una experiencia de marca,", "cl2": "dise&ntilde;ada para vender.", "cwa": "Escr&iacute;benos por WhatsApp", "nav_nosotros": "Quiénes somos", "nav_equipo": "Equipo", "nav_proyectos": "Proyectos", "nav_servicios": "Qué hacemos", "nav_red": "La red", "nav_experiencia": "Experiencia de marca", "nav_presencia": "Presencia", "nav_contacto": "Contacto", "menu": "Men&uacute;", "f_loc": "Ubicaci&oacute;n", "f_role": "Rol de BDA"}, "en": {"hero_scroll": "Discover", "who_l": "Who we are", "who_h": "Not a traditional agency. Specialized in branded sales &mdash; creating the developer's own channel.", "who_p": "BDA operates as an associate of the developer, representing their firm and integrated into their own commercial team. Specialized exclusively in branded sales, focused on the Latin American and North American UHNWI buyer.", "st1": "Years in luxury real estate", "st2": "Premium developments under our commercial direction", "st3": "Branded projects in our portfolio", "st4": "Markets: LatAm, Spain and Miami", "role_ricardo": "Founding Partner", "bio_ricardo": "30+ years in luxury residential and commercial strategy &mdash; led Commercial Direction for Alvear Tower, SLS Puerto Madero and 20+ premium developments.", "role_marcelo": "Founding Partner", "bio_marcelo": "30+ years in real estate and contract structuring &mdash; led commercial negotiation frameworks for Alvear Tower, SLS Puerto Madero and 20+ international developments.", "role_emiliano": "International Partner", "bio_emiliano": "Background in commercial strategy and applied analytics &mdash; has led the sale of international projects, with business plans, absorption models and forecasting that turn data into decisions.", "role_rafael": "International Partner", "bio_rafael": "Branded residences specialist, trained in hospitality, design and gastronomy &mdash; has led the sale of international projects, dedicated to sales experience and customer journeys.", "team_l": "The team", "team_h": "Decades of complementary experience &mdash; commercial strategy, negotiation, analysis and hospitality.", "loc_alvear-tower": "Puerto Madero, Buenos Aires", "more_0": "View project", "loc_alvear-icon": "Puerto Madero, Buenos Aires", "more_1": "View project", "loc_plaza": "Retiro, Buenos Aires", "more_2": "View project", "loc_alto-agrelo": "Mendoza, Argentina", "more_3": "View project", "loc_sls-puerto-madero": "Puerto Madero, Buenos Aires", "more_4": "View project", "loc_sls-madrid": "Justicia, Madrid", "more_5": "View project", "loc_banyan-tree-madrid": "Salamanca, Madrid", "more_6": "View project", "proj_l": "Track record &middot; Projects", "proj_h": "Strategic Commercial Direction and Sales Experience", "partners_l": "Branded residences &middot; Partners", "others": "&amp; others", "marks": "Marks and logos are trademarks of their respective owners.", "sv0t": "Branded sales", "sv0p": "Commercial direction and representation of branded residences, as an associate of the developer &mdash; never as an outside agency.", "sv1t": "Sales experience", "sv1p": "Every touchpoint designed as part of the brand: the first contact, the presentation, the visit, the close and what comes after.", "sv2t": "Brand collaborations", "sv2p": "Activations with partner brands in sport, art, design and lifestyle &mdash; micro-events that bring the right buyer closer.", "sv3t": "Market access", "sv3p": "LatAm, Spain and Miami &mdash; where Latin American and North American UHNWI buyers live, invest and meet.", "svc_l": "What we do", "svc_h": "We sell brands, not square metres.", "svc_p": "Specialists in branded sales: we build and run the developer's own sales channel, under its name and integrated into its team, from the first conversation to after-sales.", "nl0": "LAND &AMP; ASSETS", "nl1": "INVESTORS", "nl2": "BRANDS", "nl3": "DEVELOPERS", "nl4": "COMMERCIAL STRATEGY", "nt0": "Land &amp; assets", "np0": "Sourcing land and assets for groups ready to build &mdash; and the right partners for owners ready to activate them.", "nt1": "Investors", "np1": "Investors and family offices introduced to projects and land with branded potential.", "nt2": "Brands", "np2": "Hotel and lifestyle brands brought to developers and groups &mdash; for partnerships, developments and residences.", "nt3": "Developers", "np3": "Developers connected with land, capital and the brand that fits each project.", "nt4": "Commercial strategy", "np4": "How a project is sold with a brand &mdash; positioning, launch and the sales experience.", "net_l": "The network", "net_h": "One network, every side of a branded project.", "net_p": "Beyond the sale, BDA connects the pieces a branded project needs and introduces each side of its network to the others.", "exp_l": "Brand experience", "exp_h": "A brand experience, designed to sell.", "exp_p": "Fashion, watchmaking, sport and hospitality already grow through collaboration. In real estate it remains largely unexplored: we bring it in, so the buyer lives the brand before they ever see a floor plan.", "q": "&ldquo;Several of our maisons have chosen to invest in Formula 1&hellip; to create unique experiences. We want to further grow this experiential dimension.&rdquo;", "qc": "Fr&eacute;d&eacute;ric Arnault, CEO, LVMH Watches &mdash; on the F1 partnership", "xc1": "Premium", "xs1": "Average price premium the market pays for branded residences worldwide.", "xc2": "Reach", "xs2": "Brand visibility from a collaboration: a new audience, reached through a brand it already trusts.", "xc3": "Ease of purchase", "xs3": "Of consumers can decide to buy after a co-branded campaign, without speaking to a salesperson.", "pin_es": "SPAIN", "pin_mia": "MIAMI", "pin_lat": "LATAM", "plt0": "LatAm", "plp0": "Three decades of relationships across Argentina, Punta del Este and the region.", "plt1": "Spain", "plp1": "The European home of Latin American and North American wealth.", "plt2": "Miami", "plp2": "The gateway between North and Latin American buyers.", "pre_l": "Presence", "pre_h": "LatAm, Spain and Miami.", "pre_p": "A commercial embassy for the brand, where the buyer is: present where our buyers live, invest and spend their time, and connected across all three.", "con_l": "Contact", "cl1": "A brand experience,", "cl2": "designed to sell.", "cwa": "Message us on WhatsApp", "nav_nosotros": "Who we are", "nav_equipo": "Team", "nav_proyectos": "Projects", "nav_servicios": "What we do", "nav_red": "The network", "nav_experiencia": "Brand experience", "nav_presencia": "Presence", "nav_contacto": "Contact", "menu": "Menu", "f_loc": "Location", "f_role": "BDA role"}}, PJ = [{"key": "alvear-tower", "n": 4, "name": "Alvear Tower", "logo": "alvear-tower", "partner": "Grupo Alvear", "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "La torre residencial m&aacute;s alta de Argentina.", "en": "Argentina's tallest residential tower."}, "text": {"es": "Con 235 metros, la torre residencial m&aacute;s alta de Argentina, desarrollada por Grupo Alvear en el coraz&oacute;n de Puerto Madero &mdash; residencias con vistas panor&aacute;micas, spa, piscinas, wellness, roof club y business center.", "en": "At 235 metres, the tallest residential tower in Argentina, developed by Grupo Alvear at the heart of Puerto Madero &mdash; residences with panoramic views, spa, pools, wellness, a roof club and a business centre."}}, {"key": "alvear-icon", "n": 4, "name": "Alvear Icon Hotel &amp; Residences", "logo": null, "partner": "Grupo Alvear", "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "Residencias privadas sobre un hotel cinco estrellas.", "en": "Private residences above a five-star hotel."}, "text": {"es": "Un hito de usos mixtos que combina residencias privadas con un hotel Alvear cinco estrellas &mdash; vistas panor&aacute;micas al R&iacute;o de la Plata, con servicios de hotel, spa y gastronom&iacute;a.", "en": "A mixed-use landmark combining private residences with a five-star Alvear hotel &mdash; panoramic views over the R&iacute;o de la Plata, with hotel services, spa and gastronomy."}}, {"key": "plaza", "n": 5, "name": "Plaza Hotel &amp; Residences", "logo": null, "partner": "Grupo Alvear", "loc": {"es": "Retiro, Buenos Aires", "en": "Retiro, Buenos Aires"}, "tag": {"es": "Un &iacute;cono que renace como branded hospitality.", "en": "An icon, reborn as branded hospitality."}, "text": {"es": "La reconversi&oacute;n del hist&oacute;rico Plaza Hotel de Buenos Aires: 55 residencias privadas y un hotel de 180 habitaciones, con servicios de hotel, gastronom&iacute;a de autor, salones hist&oacute;ricos y un rooftop frente a la Plaza San Mart&iacute;n.", "en": "The conversion of the historic Plaza Hotel Buenos Aires: 55 private residences and a 180-room hotel, with hotel services, signature gastronomy, historic salons and a rooftop facing Plaza San Mart&iacute;n."}}, {"key": "alto-agrelo", "n": 4, "name": "Reserva Alto Agrelo", "logo": "casa-duhau", "partner": "Casa Duhau &middot; Grupo Alvear", "loc": {"es": "Mendoza, Argentina", "en": "Mendoza, Argentina"}, "tag": {"es": "Un masterplan residencial entre vi&ntilde;edos.", "en": "A residential masterplan among the vineyards."}, "text": {"es": "116 lotes exclusivos rodeados de vi&ntilde;edos y la cordillera de los Andes, con bodega, club ecuestre y el futuro hotel de lujo Casa Duhau, operado por Hyatt.", "en": "116 exclusive lots surrounded by vineyards and the Andes, with a winery, an equestrian club and the future Casa Duhau luxury hotel, operated by Hyatt."}}, {"key": "sls-puerto-madero", "n": 5, "name": "SLS Puerto Madero", "logo": "sls-pm", "partner": "SLS", "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "El estilo de vida SLS, en Buenos Aires.", "en": "The SLS lifestyle, brought to Buenos Aires."}, "text": {"es": "Residencias de lujo inspiradas en SLS Miami &mdash; arquitectura de BMA, interiores de Piero Lissoni y paisajismo de Enzo Enea, con terrazas, concierge y amenities de primer nivel.", "en": "Luxury residences inspired by SLS Miami &mdash; architecture by BMA, interiors by Piero Lissoni and landscape by Enzo Enea, with terraces, concierge and first-class amenities."}}, {"key": "sls-madrid", "n": 5, "name": "SLS Madrid Infantas Residences", "logo": "sls-madrid", "partner": "SLS", "loc": {"es": "Justicia, Madrid", "en": "Justicia, Madrid"}, "tag": {"es": "Las primeras branded residences de SLS en Europa.", "en": "SLS's first branded residences in Europe."}, "text": {"es": "Un edificio hist&oacute;rico restaurado en el barrio de Justicia, donde el dise&ntilde;o contempor&aacute;neo, la energ&iacute;a cosmopolita y los servicios de hotel redefinen la vida de lujo.", "en": "A restored historic building in the Justicia district, where contemporary design, cosmopolitan energy and hospitality services redefine luxury living."}}, {"key": "banyan-tree-madrid", "n": 5, "name": "Banyan Tree Madrid Residences", "logo": "banyan", "partner": "Banyan Tree", "loc": {"es": "Salamanca, Madrid", "en": "Salamanca, Madrid"}, "tag": {"es": "Las primeras residencias urbanas de Banyan Tree en Europa.", "en": "Banyan Tree's first urban residences in Europe."}, "text": {"es": "Un edificio hist&oacute;rico cuidadosamente restaurado en el barrio de Salamanca, que une el legado arquitect&oacute;nico de Madrid con una experiencia residencial centrada en el bienestar.", "en": "A carefully restored historic building in the Salamanca district, combining Madrid's architectural legacy with a residential experience built around wellbeing."}}];
+  var T = {"es": {"hero_scroll": "Descubrir", "who_l": "Qui&eacute;nes somos", "who_h": "No somos una agencia tradicional. Especialistas en branded sales &mdash; creamos el canal propio del developer.", "who_p": "BDA trabaja como asociado del developer: representa a su firma, integrado en su propio equipo comercial. Especializado exclusivamente en branded sales, con foco en el comprador UHNWI latinoamericano y norteamericano.", "st0": "En ventas de real estate de lujo", "st1": "A&ntilde;os de trayectoria en real estate de lujo", "st2": "Desarrollos premium bajo nuestra direcci&oacute;n comercial", "st3": "Proyectos branded en nuestro portfolio", "st4": "Mercados: LatAm, Espa&ntilde;a y Miami", "role_ricardo": "Socio Fundador", "bio_ricardo": "M&aacute;s de 30 a&ntilde;os en estrategia residencial y comercial de lujo &mdash; lider&oacute; la Direcci&oacute;n Comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos premium.", "role_marcelo": "Socio Fundador", "bio_marcelo": "M&aacute;s de 30 a&ntilde;os en real estate y estructuraci&oacute;n de contratos &mdash; lider&oacute; los marcos de negociaci&oacute;n comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos internacionales.", "role_emiliano": "Socio Internacional", "bio_emiliano": "Trayectoria en estrategia comercial y anal&iacute;tica aplicada &mdash; ha liderado la venta de proyectos internacionales, con business plans, modelos de absorci&oacute;n y forecasting que convierten datos en decisiones.", "role_rafael": "Socio Internacional", "bio_rafael": "Especialista en branded residences, con formaci&oacute;n en hoteler&iacute;a, dise&ntilde;o y gastronom&iacute;a &mdash; ha liderado la venta de proyectos internacionales, dedicado a la sales experience y los customer journeys.", "team_l": "El equipo", "team_h": "D&eacute;cadas de experiencia complementaria &mdash; estrategia comercial, negociaci&oacute;n, an&aacute;lisis y hospitality.", "loc_alvear-tower": "Puerto Madero, Buenos Aires", "more_0": "Ver proyecto &middot; Consultar", "loc_alvear-icon": "Puerto Madero, Buenos Aires", "more_1": "Ver proyecto &middot; Consultar", "loc_plaza": "Retiro, Buenos Aires", "more_2": "Ver proyecto &middot; Consultar", "loc_alto-agrelo": "Mendoza, Argentina", "more_3": "Ver proyecto &middot; Consultar", "loc_sls-puerto-madero": "Puerto Madero, Buenos Aires", "more_4": "Ver proyecto &middot; Consultar", "loc_sls-madrid": "Justicia, Madrid", "more_5": "Ver proyecto &middot; Consultar", "loc_banyan-tree-madrid": "Salamanca, Madrid", "more_6": "Ver proyecto &middot; Consultar", "proj_l": "Trayectoria &middot; Proyectos", "proj_h": "Direcci&oacute;n Estrat&eacute;gica Comercial y Experiencia de Ventas", "partners_l": "Branded residences &middot; Partners", "others": "y otros", "marks": "Las marcas y logotipos pertenecen a sus respectivos propietarios.", "sv0t": "Branded sales", "sv0p": "Direcci&oacute;n comercial y representaci&oacute;n de branded residences, como asociado del developer &mdash; nunca como una agencia externa.", "sv1t": "Sales experience", "sv1p": "Cada punto de contacto dise&ntilde;ado como parte de la marca: el primer contacto, la presentaci&oacute;n, la visita, el cierre y lo que viene despu&eacute;s.", "sv2t": "Colaboraciones con marcas", "sv2p": "Activaciones con marcas partner de deporte, arte, dise&ntilde;o y lifestyle &mdash; microeventos que acercan al comprador indicado.", "sv3t": "Acceso a mercados", "sv3p": "LatAm, Espa&ntilde;a y Miami &mdash; donde los compradores UHNWI latinoamericanos y norteamericanos viven, invierten y se encuentran.", "svc_l": "Qu&eacute; hacemos", "svc_h": "Vendemos marcas, no metros cuadrados.", "svc_p": "Especialistas en branded sales: construimos y gestionamos el canal de ventas propio del developer, bajo su nombre, integrados en su equipo, desde la primera conversaci&oacute;n hasta la postventa.", "nl0": "TERRENOS Y ACTIVOS", "nl1": "INVERSORES", "nl2": "MARCAS", "nl3": "DESARROLLADORES", "nl4": "ESTRATEGIA COMERCIAL", "nt0": "Terrenos y activos", "np0": "B&uacute;squeda de terrenos y activos para grupos listos para desarrollar &mdash; y los partners adecuados para los propietarios que quieren activarlos.", "nt1": "Inversores", "np1": "Inversores y family offices conectados con proyectos y terrenos con potencial branded.", "nt2": "Marcas", "np2": "Marcas hoteleras y de lifestyle acercadas a desarrolladores y grupos &mdash; para alianzas, desarrollos y residencias.", "nt3": "Desarrolladores", "np3": "Desarrolladores conectados con el terreno, el capital y la marca adecuada para cada proyecto.", "nt4": "Estrategia comercial", "np4": "C&oacute;mo se vende un proyecto con una marca &mdash; posicionamiento, lanzamiento y sales experience.", "net_l": "La red", "net_h": "Una red, todas las partes de un proyecto branded.", "net_p": "M&aacute;s all&aacute; de la venta, BDA conecta las piezas que necesita un proyecto branded y presenta entre s&iacute; a cada parte de su red.", "exp_l": "Experiencia de marca", "exp_h": "Una experiencia de marca, dise&ntilde;ada para vender.", "exp_p": "La moda, la relojer&iacute;a, el deporte y la hospitality ya crecen a trav&eacute;s de colaboraciones. En real estate sigue en gran parte sin explorar: nosotros lo incorporamos, para que el comprador viva la marca antes de ver un plano.", "q": "&ldquo;Varias de nuestras maisons han elegido invertir en la F&oacute;rmula 1&hellip; para crear experiencias &uacute;nicas. Queremos seguir haciendo crecer esta dimensi&oacute;n experiencial.&rdquo;", "qc": "Fr&eacute;d&eacute;ric Arnault, CEO, LVMH Watches &mdash; sobre la alianza con la F1", "xc1": "Premium", "xs1": "Prima de precio media que paga el mercado por las branded residences en el mundo.", "xc2": "Alcance", "xs2": "De visibilidad de marca gracias a una colaboraci&oacute;n: un p&uacute;blico nuevo, a trav&eacute;s de una marca en la que ya conf&iacute;a.", "xc3": "Facilidad de compra", "xs3": "De los consumidores puede decidir comprar tras una campa&ntilde;a co-branded, sin hablar con un vendedor.", "pin_es": "ESPA&Ntilde;A", "pin_mia": "MIAMI", "pin_lat": "LATAM", "plt0": "LatAm", "plp0": "Tres d&eacute;cadas de relaciones entre Argentina, Punta del Este y la regi&oacute;n.", "plt1": "Espa&ntilde;a", "plp1": "El hogar europeo del patrimonio latinoamericano y norteamericano.", "plt2": "Miami", "plp2": "La puerta de entrada entre compradores norteamericanos y latinoamericanos.", "pre_l": "Presencia", "pre_h": "LatAm, Espa&ntilde;a y Miami.", "pre_p": "Una embajada comercial para la marca, donde est&aacute; el comprador: presentes donde nuestros compradores viven, invierten y pasan su tiempo, y conectados entre los tres.", "con_l": "Contacto", "cl1": "Una experiencia de marca,", "cl2": "dise&ntilde;ada para vender.", "cwa": "Escr&iacute;benos por WhatsApp", "nav_nosotros": "Quiénes somos", "nav_equipo": "Equipo", "nav_proyectos": "Proyectos", "nav_servicios": "Qué hacemos", "nav_red": "La red", "nav_presencia": "Presencia", "nav_contacto": "Contacto", "menu": "Men&uacute;", "f_loc": "Ubicaci&oacute;n", "f_role": "Rol de BDA", "enq_btn": "Consultar por este proyecto", "enq_name": "Nombre", "enq_phone": "Tel&eacute;fono", "enq_email": "Email", "enq_send": "Enviar consulta", "enq_ok": "Gracias. Hemos recibido tu consulta y te contactaremos pronto.", "enq_err": "No se pudo enviar. Escr&iacute;benos a info@bda-realty.com", "enq_req": "Completa nombre, tel&eacute;fono y un email v&aacute;lido.", "enq_wait": "Enviando&hellip;"}, "en": {"hero_scroll": "Discover", "who_l": "Who we are", "who_h": "Not a traditional agency. Specialized in branded sales &mdash; creating the developer's own channel.", "who_p": "BDA operates as an associate of the developer, representing their firm and integrated into their own commercial team. Specialized exclusively in branded sales, focused on the Latin American and North American UHNWI buyer.", "st0": "In luxury real estate sales", "st1": "Years in luxury real estate", "st2": "Premium developments under our commercial direction", "st3": "Branded projects in our portfolio", "st4": "Markets: LatAm, Spain and Miami", "role_ricardo": "Founding Partner", "bio_ricardo": "30+ years in luxury residential and commercial strategy &mdash; led Commercial Direction for Alvear Tower, SLS Puerto Madero and 20+ premium developments.", "role_marcelo": "Founding Partner", "bio_marcelo": "30+ years in real estate and contract structuring &mdash; led commercial negotiation frameworks for Alvear Tower, SLS Puerto Madero and 20+ international developments.", "role_emiliano": "International Partner", "bio_emiliano": "Background in commercial strategy and applied analytics &mdash; has led the sale of international projects, with business plans, absorption models and forecasting that turn data into decisions.", "role_rafael": "International Partner", "bio_rafael": "Branded residences specialist, trained in hospitality, design and gastronomy &mdash; has led the sale of international projects, dedicated to sales experience and customer journeys.", "team_l": "The team", "team_h": "Decades of complementary experience &mdash; commercial strategy, negotiation, analysis and hospitality.", "loc_alvear-tower": "Puerto Madero, Buenos Aires", "more_0": "View project &middot; Enquire", "loc_alvear-icon": "Puerto Madero, Buenos Aires", "more_1": "View project &middot; Enquire", "loc_plaza": "Retiro, Buenos Aires", "more_2": "View project &middot; Enquire", "loc_alto-agrelo": "Mendoza, Argentina", "more_3": "View project &middot; Enquire", "loc_sls-puerto-madero": "Puerto Madero, Buenos Aires", "more_4": "View project &middot; Enquire", "loc_sls-madrid": "Justicia, Madrid", "more_5": "View project &middot; Enquire", "loc_banyan-tree-madrid": "Salamanca, Madrid", "more_6": "View project &middot; Enquire", "proj_l": "Track record &middot; Projects", "proj_h": "Strategic Commercial Direction and Sales Experience", "partners_l": "Branded residences &middot; Partners", "others": "&amp; others", "marks": "Marks and logos are trademarks of their respective owners.", "sv0t": "Branded sales", "sv0p": "Commercial direction and representation of branded residences, as an associate of the developer &mdash; never as an outside agency.", "sv1t": "Sales experience", "sv1p": "Every touchpoint designed as part of the brand: the first contact, the presentation, the visit, the close and what comes after.", "sv2t": "Brand collaborations", "sv2p": "Activations with partner brands in sport, art, design and lifestyle &mdash; micro-events that bring the right buyer closer.", "sv3t": "Market access", "sv3p": "LatAm, Spain and Miami &mdash; where Latin American and North American UHNWI buyers live, invest and meet.", "svc_l": "What we do", "svc_h": "We sell brands, not square metres.", "svc_p": "Specialists in branded sales: we build and run the developer's own sales channel, under its name and integrated into its team, from the first conversation to after-sales.", "nl0": "LAND &AMP; ASSETS", "nl1": "INVESTORS", "nl2": "BRANDS", "nl3": "DEVELOPERS", "nl4": "COMMERCIAL STRATEGY", "nt0": "Land &amp; assets", "np0": "Sourcing land and assets for groups ready to build &mdash; and the right partners for owners ready to activate them.", "nt1": "Investors", "np1": "Investors and family offices introduced to projects and land with branded potential.", "nt2": "Brands", "np2": "Hotel and lifestyle brands brought to developers and groups &mdash; for partnerships, developments and residences.", "nt3": "Developers", "np3": "Developers connected with land, capital and the brand that fits each project.", "nt4": "Commercial strategy", "np4": "How a project is sold with a brand &mdash; positioning, launch and the sales experience.", "net_l": "The network", "net_h": "One network, every side of a branded project.", "net_p": "Beyond the sale, BDA connects the pieces a branded project needs and introduces each side of its network to the others.", "exp_l": "Brand experience", "exp_h": "A brand experience, designed to sell.", "exp_p": "Fashion, watchmaking, sport and hospitality already grow through collaboration. In real estate it remains largely unexplored: we bring it in, so the buyer lives the brand before they ever see a floor plan.", "q": "&ldquo;Several of our maisons have chosen to invest in Formula 1&hellip; to create unique experiences. We want to further grow this experiential dimension.&rdquo;", "qc": "Fr&eacute;d&eacute;ric Arnault, CEO, LVMH Watches &mdash; on the F1 partnership", "xc1": "Premium", "xs1": "Average price premium the market pays for branded residences worldwide.", "xc2": "Reach", "xs2": "Brand visibility from a collaboration: a new audience, reached through a brand it already trusts.", "xc3": "Ease of purchase", "xs3": "Of consumers can decide to buy after a co-branded campaign, without speaking to a salesperson.", "pin_es": "SPAIN", "pin_mia": "MIAMI", "pin_lat": "LATAM", "plt0": "LatAm", "plp0": "Three decades of relationships across Argentina, Punta del Este and the region.", "plt1": "Spain", "plp1": "The European home of Latin American and North American wealth.", "plt2": "Miami", "plp2": "The gateway between North and Latin American buyers.", "pre_l": "Presence", "pre_h": "LatAm, Spain and Miami.", "pre_p": "A commercial embassy for the brand, where the buyer is: present where our buyers live, invest and spend their time, and connected across all three.", "con_l": "Contact", "cl1": "A brand experience,", "cl2": "designed to sell.", "cwa": "Message us on WhatsApp", "nav_nosotros": "Who we are", "nav_equipo": "Team", "nav_proyectos": "Projects", "nav_servicios": "What we do", "nav_red": "The network", "nav_presencia": "Presence", "nav_contacto": "Contact", "menu": "Menu", "f_loc": "Location", "f_role": "BDA role", "enq_btn": "Enquire about this project", "enq_name": "Name", "enq_phone": "Phone", "enq_email": "Email", "enq_send": "Send enquiry", "enq_ok": "Thank you. We have received your enquiry and will be in touch shortly.", "enq_err": "It could not be sent. Please write to info@bda-realty.com", "enq_req": "Please fill in name, phone and a valid email.", "enq_wait": "Sending&hellip;"}}, PJ = [{"key": "alvear-tower", "n": 4, "name": "Alvear Tower", "logo": "alvear-tower", "partner": "Grupo Alvear", "video": null, "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "La torre residencial m&aacute;s alta de Argentina.", "en": "Argentina's tallest residential tower."}, "text": {"es": "Con 235 metros, la torre residencial m&aacute;s alta de Argentina, desarrollada por Grupo Alvear en el coraz&oacute;n de Puerto Madero &mdash; residencias con vistas panor&aacute;micas, spa, piscinas, wellness, roof club y business center.", "en": "At 235 metres, the tallest residential tower in Argentina, developed by Grupo Alvear at the heart of Puerto Madero &mdash; residences with panoramic views, spa, pools, wellness, a roof club and a business centre."}}, {"key": "alvear-icon", "n": 4, "name": "Alvear Icon Hotel &amp; Residences", "logo": null, "partner": "Grupo Alvear", "video": null, "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "Residencias privadas sobre un hotel cinco estrellas.", "en": "Private residences above a five-star hotel."}, "text": {"es": "Un hito de usos mixtos que combina residencias privadas con un hotel Alvear cinco estrellas &mdash; vistas panor&aacute;micas al R&iacute;o de la Plata, con servicios de hotel, spa y gastronom&iacute;a.", "en": "A mixed-use landmark combining private residences with a five-star Alvear hotel &mdash; panoramic views over the R&iacute;o de la Plata, with hotel services, spa and gastronomy."}}, {"key": "plaza", "n": 5, "name": "Plaza Hotel &amp; Residences", "logo": null, "partner": "Grupo Alvear", "video": "assets/video/plaza.mp4", "loc": {"es": "Retiro, Buenos Aires", "en": "Retiro, Buenos Aires"}, "tag": {"es": "Un &iacute;cono que renace como branded hospitality.", "en": "An icon, reborn as branded hospitality."}, "text": {"es": "La reconversi&oacute;n del hist&oacute;rico Plaza Hotel de Buenos Aires: 55 residencias privadas y un hotel de 180 habitaciones, con servicios de hotel, gastronom&iacute;a de autor, salones hist&oacute;ricos y un rooftop frente a la Plaza San Mart&iacute;n.", "en": "The conversion of the historic Plaza Hotel Buenos Aires: 55 private residences and a 180-room hotel, with hotel services, signature gastronomy, historic salons and a rooftop facing Plaza San Mart&iacute;n."}}, {"key": "alto-agrelo", "n": 4, "name": "Reserva Alto Agrelo", "logo": "casa-duhau", "partner": "Casa Duhau &middot; Grupo Alvear", "video": null, "loc": {"es": "Mendoza, Argentina", "en": "Mendoza, Argentina"}, "tag": {"es": "Un masterplan residencial entre vi&ntilde;edos.", "en": "A residential masterplan among the vineyards."}, "text": {"es": "116 lotes exclusivos rodeados de vi&ntilde;edos y la cordillera de los Andes, con bodega, club ecuestre y el futuro hotel de lujo Casa Duhau, operado por Hyatt.", "en": "116 exclusive lots surrounded by vineyards and the Andes, with a winery, an equestrian club and the future Casa Duhau luxury hotel, operated by Hyatt."}}, {"key": "sls-puerto-madero", "n": 5, "name": "SLS Puerto Madero", "logo": "sls-pm", "partner": "SLS", "video": null, "loc": {"es": "Puerto Madero, Buenos Aires", "en": "Puerto Madero, Buenos Aires"}, "tag": {"es": "El estilo de vida SLS, en Buenos Aires.", "en": "The SLS lifestyle, brought to Buenos Aires."}, "text": {"es": "Residencias de lujo inspiradas en SLS Miami &mdash; arquitectura de BMA, interiores de Piero Lissoni y paisajismo de Enzo Enea, con terrazas, concierge y amenities de primer nivel.", "en": "Luxury residences inspired by SLS Miami &mdash; architecture by BMA, interiors by Piero Lissoni and landscape by Enzo Enea, with terraces, concierge and first-class amenities."}}, {"key": "sls-madrid", "n": 5, "name": "SLS Madrid Infantas Residences", "logo": "sls-madrid", "partner": "SLS", "video": null, "loc": {"es": "Justicia, Madrid", "en": "Justicia, Madrid"}, "tag": {"es": "Las primeras branded residences de SLS en Europa.", "en": "SLS's first branded residences in Europe."}, "text": {"es": "Un edificio hist&oacute;rico restaurado en el barrio de Justicia, donde el dise&ntilde;o contempor&aacute;neo, la energ&iacute;a cosmopolita y los servicios de hotel redefinen la vida de lujo.", "en": "A restored historic building in the Justicia district, where contemporary design, cosmopolitan energy and hospitality services redefine luxury living."}}, {"key": "banyan-tree-madrid", "n": 5, "name": "Banyan Tree Madrid Residences", "logo": "banyan", "partner": "Banyan Tree", "video": null, "loc": {"es": "Salamanca, Madrid", "en": "Salamanca, Madrid"}, "tag": {"es": "Las primeras residencias urbanas de Banyan Tree en Europa.", "en": "Banyan Tree's first urban residences in Europe."}, "text": {"es": "Un edificio hist&oacute;rico cuidadosamente restaurado en el barrio de Salamanca, que une el legado arquitect&oacute;nico de Madrid con una experiencia residencial centrada en el bienestar.", "en": "A carefully restored historic building in the Salamanca district, combining Madrid's architectural legacy with a residential experience built around wellbeing."}}];
   var doc = document.documentElement; doc.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lang = 'es';
@@ -686,17 +698,22 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 
   /* hero carousel */
   var slides = [].slice.call(document.querySelectorAll('.slide')), caps = [].slice.call(document.querySelectorAll('.cap-item'));
-  var cur = 0, timer = null, DUR = 6500;
+  var cur = 0, timer = null;
+  function dur(i){ return +slides[i].getAttribute('data-dur') || 7000; }
+  function slideVid(i){ return slides[i].querySelector('video'); }
+  function playV(i){ var v = slideVid(i); if(!v || reduce) return; try{ v.currentTime = 0; }catch(e){} var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
   function go(i){
     slides[cur].classList.remove('on'); caps[cur].classList.remove('on');
+    var old = slideVid(cur); if(old) old.pause();
     cur = (i + slides.length) % slides.length;
-    slides[cur].classList.add('on');
+    slides[cur].classList.add('on'); playV(cur);
     var c = caps[cur]; c.classList.remove('on'); void c.offsetWidth; c.classList.add('on');
-    clearTimeout(timer); timer = setTimeout(function(){ go(cur + 1); }, DUR);
+    clearTimeout(timer); if(!reduce) timer = setTimeout(function(){ go(cur + 1); }, dur(cur));
   }
-  caps.forEach(function(c){ c.style.setProperty('--dur', DUR + 'ms'); c.addEventListener('click', function(){ go(+c.getAttribute('data-go')); }); });
-  if(!reduce) timer = setTimeout(function(){ go(1); }, DUR);
-  document.addEventListener('visibilitychange', function(){ if(document.hidden) clearTimeout(timer); else if(!reduce) go(cur); });
+  caps.forEach(function(c, i){ c.style.setProperty('--dur', dur(i) + 'ms'); c.addEventListener('click', function(){ go(+c.getAttribute('data-go')); }); });
+  playV(0);
+  if(!reduce) timer = setTimeout(function(){ go(1); }, dur(0));
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearTimeout(timer); var v = slideVid(cur); if(v) v.pause(); } else if(!reduce) go(cur); });
 
   /* reveal */
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
@@ -750,7 +767,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   }
 
   /* active section + header + parallax */
-  var secs = ["nosotros", "equipo", "proyectos", "servicios", "red", "experiencia", "presencia", "contacto"].map(function(id){ return document.getElementById(id); });
+  var secs = ["nosotros", "equipo", "proyectos", "servicios", "red", "presencia", "contacto"].map(function(id){ return document.getElementById(id); });
   var ticking = false;
   function onScroll(){
     ticking = false;
@@ -769,12 +786,21 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   var modal = document.getElementById('modal'), mi = 0, pj = null, lastFocus = null;
   var $ = function(id){ return document.getElementById(id); };
   function pad(n){ return (n < 10 ? '0' : '') + n; }
+  var items = [];
   function src(p, i){ return 'assets/projects/' + p.key + '-' + (i + 1) + '.jpg'; }
   function show(i){
-    mi = (i + pj.n) % pj.n;
-    var img = $('m-img'); img.src = src(pj, mi); img.alt = pj.name.replace(/&amp;/g, '&');
-    img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
-    $('m-count').textContent = pad(mi + 1) + ' / ' + pad(pj.n);
+    mi = (i + items.length) % items.length;
+    var it = items[mi], img = $('m-img'), vid = $('m-vid');
+    if(it.video){
+      img.hidden = true; vid.hidden = false;
+      if(vid.getAttribute('src') !== it.video){ vid.src = it.video; vid.poster = it.poster; }
+      vid.muted = false; var pr = vid.play(); if(pr && pr.catch) pr.catch(function(){ vid.muted = true; vid.play().catch(function(){}); });
+    } else {
+      vid.pause(); vid.hidden = true; img.hidden = false;
+      img.src = it.img; img.alt = pj.name.replace(/&amp;/g, '&');
+      img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+    }
+    $('m-count').textContent = pad(mi + 1) + ' / ' + pad(items.length);
     [].forEach.call($('m-thumbs').children, function(b, k){ b.classList.toggle('on', k === mi); });
   }
   function fillModal(){
@@ -783,12 +809,36 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
     var lg = $('m-logo'); if(pj.logo){ lg.src = 'assets/logos/' + pj.logo + '.png'; lg.alt = pj.partner; lg.hidden = false; } else lg.hidden = true;
   }
   function openP(i){
-    pj = PJ[i]; lastFocus = document.activeElement; fillModal();
+    pj = PJ[i]; lastFocus = document.activeElement; fillModal(); resetEnq();
+    items = [];
+    if(pj.video) items.push({video: pj.video, poster: 'assets/video/plaza-poster.jpg'});
+    for(var k = 0; k < pj.n; k++) items.push({img: src(pj, k)});
     var th = $('m-thumbs'); th.innerHTML = '';
-    for(var k = 0; k < pj.n; k++){ (function(k){ var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', (k + 1) + ''); b.innerHTML = '<img src="' + src(pj, k) + '" alt="">'; b.addEventListener('click', function(){ show(k); }); th.appendChild(b); })(k); }
-    show(0); modal.hidden = false; document.body.style.overflow = 'hidden'; $('m-close').focus();
+    items.forEach(function(it, k){ var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', (k + 1) + ''); b.innerHTML = '<img src="' + (it.video ? it.poster : it.img) + '" alt="">' + (it.video ? '<span class="play" aria-hidden="true"></span>' : ''); b.addEventListener('click', function(){ show(k); }); th.appendChild(b); });
+    modal.hidden = false; document.body.style.overflow = 'hidden'; show(0);
+    var hv = slideVid(cur); if(hv) hv.pause();
+    $('m-close').focus();
   }
-  function closeP(){ modal.hidden = true; document.body.style.overflow = ''; if(lastFocus) lastFocus.focus(); }
+  function closeP(){ $('m-vid').pause(); modal.hidden = true; document.body.style.overflow = ''; var hv = slideVid(cur); if(hv && !reduce){ var pr = hv.play(); if(pr && pr.catch) pr.catch(function(){}); } if(lastFocus) lastFocus.focus(); }
+
+  /* enquiry form: posts to info@bda-realty.com through FormSubmit */
+  var ENQ_TO = 'info@bda-realty.com', ebtn = $('enq-btn'), eform = $('enq-form'), emsg = $('enq-msg'), esend = $('enq-send');
+  function resetEnq(){ eform.hidden = true; ebtn.setAttribute('aria-expanded', 'false'); eform.reset(); emsg.textContent = ''; emsg.className = 'enq-msg'; esend.disabled = false; }
+  ebtn.addEventListener('click', function(){ eform.hidden = false; ebtn.setAttribute('aria-expanded', 'true'); $('enq-name').focus(); });
+  eform.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('enq-name').value.trim(), phone = $('enq-phone').value.trim(), email = $('enq-email').value.trim();
+    if(!name || !phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ emsg.className = 'enq-msg'; emsg.innerHTML = T[lang].enq_req; return; }
+    if(eform._honey.value) return;
+    var pname = pj.name.replace(/&amp;/g, '&');
+    esend.disabled = true; emsg.className = 'enq-msg'; emsg.innerHTML = T[lang].enq_wait;
+    fetch('https://formsubmit.co/ajax/' + ENQ_TO, {
+      method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({ Proyecto: pname, Nombre: name, Telefono: phone, Email: email, Idioma: lang.toUpperCase(), _subject: 'Consulta web — ' + pname, _replyto: email, _template: 'table', _captcha: 'false' })
+    }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('send'); }); })
+      .then(function(){ emsg.className = 'enq-msg ok'; emsg.innerHTML = T[lang].enq_ok; eform.querySelectorAll('input').forEach(function(x){ x.value = ''; }); })
+      .catch(function(){ esend.disabled = false; emsg.className = 'enq-msg'; emsg.innerHTML = T[lang].enq_err; });
+  });
   document.querySelectorAll('.pcard').forEach(function(c){ c.addEventListener('click', function(){ openP(+c.getAttribute('data-project')); }); });
   $('m-close').addEventListener('click', closeP);
   $('m-prev').addEventListener('click', function(){ show(mi - 1); });
