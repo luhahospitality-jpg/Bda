@@ -80,10 +80,13 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 .hero-media{position:absolute; inset:0; will-change:transform}
 .slide{position:absolute; inset:0; margin:0; opacity:0; transition:opacity 1.8s ease}
 .slide.on{opacity:1}
-.slide img,.slide video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06) brightness(.5); transform:scale(1.06); transition:transform 8s cubic-bezier(.2,.6,.2,1)}
+.slide picture{position:absolute; inset:0}
+.slide img,.slide video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.08) brightness(.58); transform:scale(1.04); transition:transform 8s cubic-bezier(.2,.6,.2,1)}
+.slide .port{display:none}
+@media (orientation:portrait){ .slide .land{display:none} .slide .port{display:block} }
 .slide video{transform:none; transition:none}
 .slide.on img{transform:scale(1)}
-.hero-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.1) 35%, rgba(10,10,10,.25) 60%, rgba(10,10,10,.85) 100%)}
+.hero-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,.12) 58%, rgba(10,10,10,.78) 100%)}
 .hero-in{position:relative; z-index:2; width:100%; padding-bottom:clamp(36px, 6vh, 70px)}
 .wordmark{font-family:var(--serif); font-weight:400; font-size:clamp(120px, 27vw, 400px); line-height:.78; letter-spacing:.04em; margin-left:-.04em; animation:rise 1.4s cubic-bezier(.16,.8,.2,1) both}
 .hero-sub{margin-top:clamp(18px, 3vh, 30px); font-family:var(--serif); font-style:italic; font-size:clamp(20px, 2.4vw, 32px); color:var(--body-d); animation:rise 1.4s .2s cubic-bezier(.16,.8,.2,1) both}
@@ -350,9 +353,9 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 
 <section class="hero" id="inicio" aria-label="BDA International">
   <div class="hero-media">
-      <figure class="slide on" data-i="0" data-dur="14000"><video src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="auto" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video></figure>
-      <figure class="slide" data-i="1" data-dur="7000"><img src="assets/hero/alto-agrelo.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" loading="eager" style="object-position:50% 58%"></figure>
-      <figure class="slide" data-i="2" data-dur="7000"><img src="assets/hero/alvear-tower.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" loading="eager" style="object-position:62% 45%"></figure>
+      <figure class="slide on" data-i="0" data-dur="14000"><video class="land" src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video><img class="port" src="assets/hero/plaza-port.jpg" alt="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" fetchpriority="high"></figure>
+      <figure class="slide" data-i="1" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/agrelo-port.jpg"><img src="assets/hero/agrelo-land.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" style="object-position:50% 50%"></picture></figure>
+      <figure class="slide" data-i="2" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/alvear-port.jpg"><img src="assets/hero/alvear-land.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" style="object-position:62% 45%"></picture></figure>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-in wrap">
@@ -701,7 +704,8 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   var cur = 0, timer = null;
   function dur(i){ return +slides[i].getAttribute('data-dur') || 7000; }
   function slideVid(i){ return slides[i].querySelector('video'); }
-  function playV(i){ var v = slideVid(i); if(!v || reduce) return; try{ v.currentTime = 0; }catch(e){} var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+  var landMQ = window.matchMedia('(orientation: landscape)');
+  function playV(i){ var v = slideVid(i); if(!v || reduce || !landMQ.matches) return; try{ v.currentTime = 0; }catch(e){} var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
   function go(i){
     slides[cur].classList.remove('on'); caps[cur].classList.remove('on');
     var old = slideVid(cur); if(old) old.pause();
@@ -712,6 +716,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   }
   caps.forEach(function(c, i){ c.style.setProperty('--dur', dur(i) + 'ms'); c.addEventListener('click', function(){ go(+c.getAttribute('data-go')); }); });
   playV(0);
+  if(landMQ.addEventListener) landMQ.addEventListener('change', function(){ var v = slideVid(cur); if(!v) return; if(landMQ.matches) playV(cur); else v.pause(); });
   if(!reduce) timer = setTimeout(function(){ go(1); }, dur(0));
   document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearTimeout(timer); var v = slideVid(cur); if(v) v.pause(); } else if(!reduce) go(cur); });
 
