@@ -353,7 +353,7 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 
 <section class="hero" id="inicio" aria-label="BDA International">
   <div class="hero-media">
-      <figure class="slide on" data-i="0" data-dur="14000"><video class="land" src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video><img class="port" src="assets/hero/plaza-port.jpg" alt="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" fetchpriority="high"></figure>
+      <figure class="slide on" data-i="0" data-dur="14000"><video class="land" src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video><video class="port" src="assets/video/plaza-port.mp4" poster="assets/video/plaza-port-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires"></video></figure>
       <figure class="slide" data-i="1" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/agrelo-port.jpg"><img src="assets/hero/agrelo-land.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" style="object-position:55% 45%"></picture></figure>
       <figure class="slide" data-i="2" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/alvear-port.jpg"><img src="assets/hero/alvear-land.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" style="object-position:62% 45%"></picture></figure>
   </div>
@@ -701,11 +701,10 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
 
   /* hero carousel */
   var slides = [].slice.call(document.querySelectorAll('.slide')), caps = [].slice.call(document.querySelectorAll('.cap-item'));
-  var cur = 0, timer = null;
+  var cur = 0, timer = null, landMQ = window.matchMedia('(orientation: landscape)');
   function dur(i){ return +slides[i].getAttribute('data-dur') || 7000; }
-  function slideVid(i){ return slides[i].querySelector('video'); }
-  var landMQ = window.matchMedia('(orientation: landscape)');
-  function playV(i){ var v = slideVid(i); if(!v || reduce || !landMQ.matches) return; try{ v.currentTime = 0; }catch(e){} var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+  function slideVid(i){ return slides[i].querySelector(landMQ.matches ? 'video.land' : 'video.port') || slides[i].querySelector('video'); }
+  function playV(i){ var v = slideVid(i); if(!v || reduce) return; try{ v.currentTime = 0; }catch(e){} var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
   function go(i){
     slides[cur].classList.remove('on'); caps[cur].classList.remove('on');
     var old = slideVid(cur); if(old) old.pause();
@@ -716,9 +715,9 @@ a.clink:hover{background:var(--ink); color:var(--paper); border-color:var(--ink)
   }
   caps.forEach(function(c, i){ c.style.setProperty('--dur', dur(i) + 'ms'); c.addEventListener('click', function(){ go(+c.getAttribute('data-go')); }); });
   playV(0);
-  if(landMQ.addEventListener) landMQ.addEventListener('change', function(){ var v = slideVid(cur); if(!v) return; if(landMQ.matches) playV(cur); else v.pause(); });
+  if(landMQ.addEventListener) landMQ.addEventListener('change', function(){ slides[cur].querySelectorAll('video').forEach(function(v){ v.pause(); }); playV(cur); });
   if(!reduce) timer = setTimeout(function(){ go(1); }, dur(0));
-  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearTimeout(timer); var v = slideVid(cur); if(v) v.pause(); } else if(!reduce) go(cur); });
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearTimeout(timer); slides[cur].querySelectorAll('video').forEach(function(v){ v.pause(); }); } else if(!reduce) go(cur); });
 
   /* reveal */
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
