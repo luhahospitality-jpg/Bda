@@ -1,0 +1,46 @@
+/* BDA shared motion layer: smooth scroll, cursor, page transitions, line reveals */
+
+/* Lenis */
+html.lenis, html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-smooth iframe{pointer-events:none}
+
+/* page transition curtain */
+.pt{position:fixed; inset:0; z-index:350; display:flex; align-items:center; justify-content:center; background:#0A0A0A; color:#fff; transform:translate3d(0,100%,0); pointer-events:none; visibility:hidden}
+.pt-word{display:flex; align-items:baseline; font-family:"Newsreader", Georgia, serif; font-size:clamp(46px, 7vw, 92px); letter-spacing:.06em; line-height:1; opacity:0; transform:translateY(18px)}
+.pt-sq{width:.11em; height:.11em; margin-left:.12em; background:#93D6ED}
+.pt.cover{visibility:visible; transform:none; transition:transform .75s cubic-bezier(.76,0,.24,1)}
+.pt.cover .pt-word{opacity:1; transform:none; transition:opacity .45s ease .35s, transform .7s cubic-bezier(.16,.8,.2,1) .3s}
+.pt-in .pt{visibility:visible; transform:none}
+.pt-in .pt .pt-word{opacity:1; transform:none}
+.pt.leave{visibility:visible; transform:translate3d(0,-100%,0); transition:transform .9s cubic-bezier(.76,0,.24,1) .15s, visibility 0s 1.1s}
+.pt.leave .pt-word{opacity:0; transform:translateY(-18px); transition:opacity .35s ease, transform .5s ease}
+
+/* custom cursor (mouse only) */
+.has-cur, .has-cur *{cursor:none !important}
+.has-cur input, .has-cur textarea, .has-cur select{cursor:text !important}
+.cur-dot, .cur-lbl{position:fixed; left:0; top:0; z-index:400; pointer-events:none; opacity:0; will-change:transform}
+.cur-dot{width:10px; height:10px; margin:-5px 0 0 -5px; mix-blend-mode:difference}
+.cur-dot i{display:block; width:100%; height:100%; border-radius:50%; background:#fff; transition:transform .45s cubic-bezier(.2,.7,.2,1), opacity .3s}
+.cur-lbl{width:92px; height:92px; margin:-46px 0 0 -46px}
+.cur-lbl i{display:flex; align-items:center; justify-content:center; width:100%; height:100%; border-radius:50%; background:#93D6ED; color:#0A0A0A; font:500 10.5px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing:.16em; text-transform:uppercase; font-style:normal; transform:scale(0); transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.cur-on .cur-dot, .cur-on .cur-lbl{opacity:1}
+.cur-link .cur-dot i{transform:scale(3.4)}
+.cur-label .cur-dot i{transform:scale(0)}
+.cur-label .cur-lbl i{transform:scale(1)}
+.cur-text .cur-dot i{opacity:0}
+.cur-down .cur-dot i{transform:scale(.6)}
+.cur-down.cur-link .cur-dot i{transform:scale(2.6)}
+.cur-down .cur-lbl i{transform:scale(.88)}
+
+/* headings that rise line by line */
+[data-split] .w{display:inline-block; overflow:hidden; vertical-align:top; padding:0 .09em .14em; margin:0 -.09em -.14em}
+[data-split] .wi{display:inline-block; transform:translate3d(0,112%,0); transition:transform 1.2s cubic-bezier(.16,.8,.2,1)}
+[data-split].in .wi{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .pt, .cur-dot, .cur-lbl{display:none !important}
+  [data-split] .wi{transform:none}
+}
