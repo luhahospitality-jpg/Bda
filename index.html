@@ -935,6 +935,15 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
   var doc = document.documentElement; doc.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lang = 'es';
+
+  /* every fresh load or refresh starts from the top, with the intro; links back from other pages keep their place */
+  var navType = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0] || {}).type;
+  var internalNav = navType !== 'reload' && !!document.referrer && document.referrer.indexOf(location.origin + '/') === 0;
+  if(!internalNav){
+    if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if(navType === 'reload' && location.hash) history.replaceState(null, '', location.pathname + location.search);
+    if(navType === 'reload' || !location.hash) window.scrollTo(0, 0);
+  }
   function store(k, v){ try{ if(v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){ return null; } }
 
   /* language */
@@ -1131,7 +1140,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
   });
 
   (function(){
-    var seen = null; try{ seen = sessionStorage.getItem('bda-intro'); sessionStorage.setItem('bda-intro', '1'); }catch(e){}
+    var seen = internalNav;
     if(seen || reduce) doc.classList.add('no-intro');
     var it = document.getElementById('intro');
     setTimeout(function(){ if(it && it.parentNode) it.parentNode.removeChild(it); }, seen || reduce ? 0 : 2700);
