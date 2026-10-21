@@ -943,12 +943,11 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
     document.querySelectorAll('[data-i18n]').forEach(function(el){ var v = T[l][el.getAttribute('data-i18n')]; if(v != null) el.innerHTML = v; });
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
     document.title = l === 'es' ? 'BDA International — Branded sales' : 'BDA International — Branded sales';
-    store('bda-lang', l);
     var waHref = 'https://wa.me/' + (l === 'es' ? '5491144401551' : '34613303967') + '?text=' + encodeURIComponent(l === 'es' ? 'Hola, me gustaría conocer más sobre BDA.' : 'Hello, I would like to know more about BDA.');
     ['wa-float', 'wa-contact'].forEach(function(id){ var wa = document.getElementById(id); if(wa) wa.href = waHref; });
     if(!modal.hidden) fillModal();
   }
-  document.querySelectorAll('[data-lang]').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
+  document.querySelectorAll('[data-lang]').forEach(function(b){ b.addEventListener('click', function(){ var l = b.getAttribute('data-lang'); setLang(l); store('bda-lang', l); }); });
 
   /* header + menu */
   var top = document.getElementById('top'), hero = document.getElementById('inicio');

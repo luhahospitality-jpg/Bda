@@ -560,9 +560,8 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
   function setLang(l){
     doc.lang = l;
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
-    try{ localStorage.setItem('bda-lang', l); }catch(e){}
   }
-  document.querySelectorAll('[data-lang]').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
+  document.querySelectorAll('[data-lang]').forEach(function(b){ b.addEventListener('click', function(){ var l = b.getAttribute('data-lang'); setLang(l); try{ localStorage.setItem('bda-lang', l); }catch(e){} }); });
   var s = null; try{ s = localStorage.getItem('bda-lang'); }catch(e){}
   setLang(s === 'es' || s === 'en' ? s : ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
 
