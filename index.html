@@ -185,6 +185,10 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 .menu-list a::before{content:""; width:6px; height:6px; background:transparent; transition:background .2s}
 .menu-list a:hover,.menu-list a.cur{color:var(--paper); background:rgba(255,255,255,.04)}
 .menu-list a.cur::before{background:var(--accent)}
+.menu-sep{margin-top:6px; padding-top:6px; border-top:1px solid var(--line-d)}
+.menu-list a.menu-news{color:var(--paper)}
+.menu-list a.menu-news::before{background:var(--accent)}
+.nl-arr{margin-left:auto; color:var(--accent)}
 
 /* hero */
 .hero{position:relative; height:100svh; min-height:560px; background:var(--ink); color:var(--paper); overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end}
@@ -569,6 +573,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
         <li><a href="#red" data-nav="red" data-i18n="nav_red">La red</a></li>
         <li><a href="#presencia" data-nav="presencia" data-i18n="nav_presencia">Presencia</a></li>
         <li><a href="#contacto" data-nav="contacto" data-i18n="nav_contacto">Contacto</a></li>
+        <li class="menu-sep"><a href="newsletter.html" class="menu-news">Newsletter<span class="nl-arr" aria-hidden="true">&#8599;</span></a></li>
         </ul>
       </div>
     </div>
