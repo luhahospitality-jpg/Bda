@@ -571,28 +571,26 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
     var track = car.querySelector('.track'), bar = car.querySelector('.car-bar i');
     var originals = [].slice.call(track.children);
     originals.forEach(function(c){ var k = c.cloneNode(true); k.setAttribute('aria-hidden', 'true'); k.querySelectorAll('a').forEach(function(a){ a.tabIndex = -1; }); track.appendChild(k); });
-    var paused = false, visible = true, resumeT = null, pos = 0, SPEED = 0.45;
+    var paused = false, visible = true, resumeT = null, pos = 0, last = 0, SPEED = 34; /* px per second, always moving */
     function half(){ return track.scrollWidth / 2; }
     function paint(){ var h = half(); var p = h ? (track.scrollLeft % h) / h : 0; bar.style.left = (p * 80) + '%'; }
     function hold(ms){ paused = true; clearTimeout(resumeT); resumeT = setTimeout(function(){ paused = false; pos = track.scrollLeft; }, ms || 2600); }
-    function loop(){
-      if(!reduce && !paused && visible && !document.hidden){
-        pos += SPEED; if(pos >= half()) pos -= half();
+    function loop(ts){
+      var dt = last ? Math.min(0.1, (ts - last) / 1000) : 0; last = ts;
+      if(!paused && visible && !document.hidden){
+        pos += SPEED * dt; if(pos >= half()) pos -= half();
         track.scrollLeft = pos;
       }
       paint(); requestAnimationFrame(loop);
     }
     track.addEventListener('scroll', function(){ var h = half(); if(paused && track.scrollLeft >= h) track.scrollLeft -= h; paint(); }, {passive:true});
-    car.addEventListener('mouseenter', function(){ paused = true; clearTimeout(resumeT); });
-    car.addEventListener('mouseleave', function(){ hold(600); });
-    track.addEventListener('focusin', function(){ paused = true; clearTimeout(resumeT); });
-    track.addEventListener('focusout', function(){ hold(1500); });
     track.addEventListener('touchstart', function(){ paused = true; clearTimeout(resumeT); }, {passive:true});
-    track.addEventListener('touchend', function(){ hold(3000); }, {passive:true});
+    track.addEventListener('touchend', function(){ hold(1800); }, {passive:true});
+    track.addEventListener('wheel', function(e){ if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(1800); }, {passive:true});
     function step(dir){
       var c = track.querySelector('.card'); var w = c ? c.getBoundingClientRect().width + 18 : 300;
       if(dir < 0 && track.scrollLeft < w) track.scrollLeft += half();
-      hold(3200); track.scrollBy({left: dir * w, behavior: reduce ? 'auto' : 'smooth'});
+      hold(1800); track.scrollBy({left: dir * w, behavior: 'smooth'});
     }
     car.querySelector('.car-prev').addEventListener('click', function(){ step(-1); });
     car.querySelector('.car-next').addEventListener('click', function(){ step(1); });
@@ -601,9 +599,9 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
     var down = false, sx = 0, sl = 0, moved = false;
     track.addEventListener('mousedown', function(e){ down = true; moved = false; sx = e.clientX; sl = track.scrollLeft; track.classList.add('drag'); paused = true; clearTimeout(resumeT); });
     window.addEventListener('mousemove', function(e){ if(!down) return; var dx = e.clientX - sx; if(Math.abs(dx) > 4) moved = true; track.scrollLeft = sl - dx; });
-    window.addEventListener('mouseup', function(){ if(!down) return; down = false; track.classList.remove('drag'); pos = track.scrollLeft; });
+    window.addEventListener('mouseup', function(){ if(!down) return; down = false; track.classList.remove('drag'); hold(1200); });
     track.addEventListener('click', function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
-    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }).observe(car); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, {rootMargin:'200px'}).observe(car); }
     requestAnimationFrame(loop);
   });
 })();
