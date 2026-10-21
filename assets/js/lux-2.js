@@ -73,18 +73,24 @@
   document.querySelectorAll('[data-split]').forEach(function(el){ if(sio) sio.observe(el); else el.classList.add('in'); });
   var rz = null; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(function(){ document.querySelectorAll('[data-split]').forEach(stagger); }, 200); });
 
-  /* custom cursor: a small inverted dot that grows over links and becomes a label over images */
-  if(fine && !reduce){
+  /* custom cursor: a small inverted dot that grows over links and becomes a label over images.
+     Starts right away with a mouse, or on the first trackpad/mouse movement on touch screens (tablets, touch laptops). */
+  var curReady = false;
+  function initCursor(e0){
+    if(curReady || reduce) return; curReady = true;
     var dot = document.createElement('div'), lbl = document.createElement('div');
     dot.className = 'cur-dot'; dot.innerHTML = '<i></i>'; lbl.className = 'cur-lbl'; lbl.innerHTML = '<i></i>';
     document.body.appendChild(dot); document.body.appendChild(lbl);
     doc.classList.add('has-cur');
     var tx = -100, ty = -100, x = -100, y = -100, lx = -100, ly = -100, seen = false;
-    window.addEventListener('mousemove', function(e){
+    function track(e){
+      if(e.pointerType === 'touch') return; /* finger taps also fire mouse-like events: follow only a real mouse or trackpad */
       tx = e.clientX; ty = e.clientY;
       if(!seen){ seen = true; x = lx = tx; y = ly = ty; }
       doc.classList.add('cur-on');
-    }, {passive: true});
+    }
+    window.addEventListener(window.PointerEvent ? 'pointermove' : 'mousemove', track, {passive: true});
+    if(e0) track(e0);
     document.addEventListener('mouseleave', function(){ doc.classList.remove('cur-on'); });
     window.addEventListener('mousedown', function(){ doc.classList.add('cur-down'); });
     window.addEventListener('mouseup', function(){ doc.classList.remove('cur-down'); });
@@ -106,5 +112,14 @@
       lbl.style.transform = 'translate3d(' + lx.toFixed(1) + 'px,' + ly.toFixed(1) + 'px,0)';
       requestAnimationFrame(loop);
     })();
+    window.addEventListener('pointerdown', function(e){ if(e.pointerType === 'touch') doc.classList.remove('cur-on'); }, {passive: true});
+  }
+  if(fine) initCursor();
+  else if(!reduce && window.PointerEvent){
+    window.addEventListener('pointermove', function first(e){
+      if(e.pointerType !== 'mouse') return;
+      window.removeEventListener('pointermove', first);
+      initCursor(e);
+    }, {passive: true});
   }
 })();
