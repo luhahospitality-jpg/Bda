@@ -186,6 +186,7 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 /* figures */
 .figs{background:var(--ink); color:var(--paper); border-top:1px solid var(--line-d)}
 .figs-in{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; padding-block:clamp(44px, 6vw, 72px)}
+.figs-in.n4{grid-template-columns:repeat(4, 1fr)}
 .fig{position:relative; border-top:1px solid var(--line-d); padding-top:20px}
 .fig::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
 .fig b{display:block; font-family:var(--serif); font-weight:400; font-size:clamp(48px, 5.4vw, 80px); line-height:1}
@@ -223,7 +224,9 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 form{display:grid; gap:16px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
 form label{display:grid; gap:7px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
 form input[type=text],form input[type=tel],form input[type=email]{width:100%; min-width:0; padding:14px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:16px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0; -webkit-appearance:none; appearance:none}
-form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var(--accent-soft)}
+form select{width:100%; min-width:0; padding:13px 12px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:15px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+form input:focus,form select:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var(--accent-soft)}
 .chk{display:flex; align-items:flex-start; gap:10px; font-family:var(--sans); font-size:12.5px; letter-spacing:0; text-transform:none; line-height:1.5; color:var(--body); cursor:pointer}
 .chk input{width:16px; height:16px; margin:2px 0 0; flex-shrink:0; accent-color:var(--ink)}
 .chk a,.info a{color:var(--ink)}
@@ -269,6 +272,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
 @media (max-width:900px){
   .story,.enq-grid{grid-template-columns:1fr}
   .figs-in{grid-template-columns:1fr; gap:20px}
+  .figs-in.n4{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .wrap,.top-in{padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
@@ -277,6 +281,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   .shot,.shot:nth-child(5n+4),.shot:nth-child(5n+5){grid-column:span 1; aspect-ratio:1}
   .shot:nth-child(5n+1){grid-column:span 2; grid-row:auto; aspect-ratio:4/3}
   .facts div{grid-template-columns:1fr; gap:4px}
+  .two{grid-template-columns:1fr}
   .btn{padding:15px 18px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -315,7 +320,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
 </section>
 
 <section class="figs">
-  <div class="wrap figs-in">
+  <div class="wrap figs-in n3">
       <div class="fig reveal"><b>116</b><span><span data-l="es">Lotes exclusivos</span><span data-l="en">Exclusive lots</span></span></div>
       <div class="fig reveal"><b>Andes</b><span><span data-l="es">Vistas a la cordillera</span><span data-l="en">Views of the cordillera</span></span></div>
       <div class="fig reveal"><b>Hyatt</b><span><span data-l="es">Opera el futuro hotel Casa Duhau</span><span data-l="en">Operates the future Casa Duhau hotel</span></span></div>
@@ -359,6 +364,10 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
         <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
         <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <div class="two">
+          <label><span data-l="es">Pa&iacute;s de residencia</span><span data-l="en">Country of residence</span><select name="country"><option value="">&mdash;</option><option value="Argentina" data-es="Argentina" data-en="Argentina">Argentina</option><option value="Uruguay" data-es="Uruguay" data-en="Uruguay">Uruguay</option><option value="Brasil" data-es="Brasil" data-en="Brazil">Brasil</option><option value="Chile" data-es="Chile" data-en="Chile">Chile</option><option value="M&eacute;xico" data-es="M&eacute;xico" data-en="Mexico">M&eacute;xico</option><option value="Estados Unidos" data-es="Estados Unidos" data-en="United States">Estados Unidos</option><option value="Espa&ntilde;a" data-es="Espa&ntilde;a" data-en="Spain">Espa&ntilde;a</option><option value="Otro país" data-es="Otro pa&iacute;s" data-en="Other country">Otro pa&iacute;s</option></select></label>
+          <label><span data-l="es">Me interesa</span><span data-l="en">I am interested in</span><select name="interest"><option value="">&mdash;</option><option value="Lotes" data-es="Lotes" data-en="Lots">Lotes</option><option value="Inversi&oacute;n" data-es="Inversi&oacute;n" data-en="Investment">Inversi&oacute;n</option><option value="Visitar el proyecto" data-es="Visitar el proyecto" data-en="Visit the project">Visitar el proyecto</option></select></label>
+        </div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
         <button class="send" type="submit" id="send"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
@@ -405,6 +414,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
     var wa = 'https://wa.me/' + (l === 'es' ? '5491144401551' : '34613303967') + '?text=' + encodeURIComponent(l === 'es' ? 'Hola, me interesa ' + CFG.name + '.' : 'Hello, I am interested in ' + CFG.name + '.');
     document.querySelectorAll('.wa').forEach(function(a){ a.href = wa; });
+    document.querySelectorAll('option[data-es]').forEach(function(o){ var t = document.createElement('textarea'); t.innerHTML = o.getAttribute('data-' + l); o.textContent = t.value; });
     document.querySelectorAll('[data-ph-es]').forEach(function(i){ i.placeholder = i.getAttribute('data-ph-' + l) || ''; });
     if(window.BDA) BDA.split();
   }
@@ -447,6 +457,8 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   var sx = null; lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
   lb.addEventListener('touchend', function(e){ if(sx === null) return; var dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 40) lbShow(li + (dx < 0 ? 1 : -1)); sx = null; });
 
+  document.querySelectorAll('[data-interest="tour"]').forEach(function(a){ a.addEventListener('click', function(){ var sel = document.querySelector('select[name=interest]'); if(sel) sel.selectedIndex = sel.options.length - 1; }); });
+
   /* campaign origin: read from this page's own URL (nothing is stored in the browser) */
   var TAGS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
   function origin(){ var o = {}; TAGS.forEach(function(k){ var v = qp.get(k); if(v) o[k] = v.slice(0, 200); }); return o; }
@@ -461,7 +473,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
     var o = d.origin, src = Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' &middot; ') : 'Directo / sin campaña';
     return fetch('https://formsubmit.co/ajax/info@bda-realty.com', {
       method:'POST', headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Idioma: lang.toUpperCase(), Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
+      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
     }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('mail'); }); });
   }
   function toHubSpot(d){
@@ -471,6 +483,8 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
       {name:'phone', value: d.phone}, {name:'email', value: d.email},
       {name:'proyecto_de_interes', value: CFG.plain}, {name:'idioma_web', value: lang.toUpperCase()}
     ];
+    if(d.country) fields.push({name:'country', value: d.country});
+    if(d.interest) fields.push({name:'interes_principal', value: d.interest});
     Object.keys(d.origin).forEach(function(k){ fields.push({name: k, value: d.origin[k]}); });
     return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + CFG.hs.portalId + '/' + CFG.hs.formId, {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -480,7 +494,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   }
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), origin: origin() };
+    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), country: form.country.value, interest: form.interest.value, origin: origin() };
     if(!d.name || !d.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){ msg.innerHTML = T[lang].req; return; }
     if(!form.ok.checked){ msg.innerHTML = T[lang].chk; return; }
     if(form._honey.value) return;

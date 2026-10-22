@@ -186,6 +186,7 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 /* figures */
 .figs{background:var(--ink); color:var(--paper); border-top:1px solid var(--line-d)}
 .figs-in{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; padding-block:clamp(44px, 6vw, 72px)}
+.figs-in.n4{grid-template-columns:repeat(4, 1fr)}
 .fig{position:relative; border-top:1px solid var(--line-d); padding-top:20px}
 .fig::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
 .fig b{display:block; font-family:var(--serif); font-weight:400; font-size:clamp(48px, 5.4vw, 80px); line-height:1}
@@ -223,7 +224,9 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 form{display:grid; gap:16px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
 form label{display:grid; gap:7px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
 form input[type=text],form input[type=tel],form input[type=email]{width:100%; min-width:0; padding:14px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:16px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0; -webkit-appearance:none; appearance:none}
-form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var(--accent-soft)}
+form select{width:100%; min-width:0; padding:13px 12px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:15px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+form input:focus,form select:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var(--accent-soft)}
 .chk{display:flex; align-items:flex-start; gap:10px; font-family:var(--sans); font-size:12.5px; letter-spacing:0; text-transform:none; line-height:1.5; color:var(--body); cursor:pointer}
 .chk input{width:16px; height:16px; margin:2px 0 0; flex-shrink:0; accent-color:var(--ink)}
 .chk a,.info a{color:var(--ink)}
@@ -269,6 +272,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
 @media (max-width:900px){
   .story,.enq-grid{grid-template-columns:1fr}
   .figs-in{grid-template-columns:1fr; gap:20px}
+  .figs-in.n4{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .wrap,.top-in{padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
@@ -277,12 +281,105 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   .shot,.shot:nth-child(5n+4),.shot:nth-child(5n+5){grid-column:span 1; aspect-ratio:1}
   .shot:nth-child(5n+1){grid-column:span 2; grid-row:auto; aspect-ratio:4/3}
   .facts div{grid-template-columns:1fr; gap:4px}
+  .two{grid-template-columns:1fr}
   .btn{padding:15px 18px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important; transition:none !important}
   .js .reveal{opacity:1; transform:none}
   .js .shot::after{display:none}
+}
+
+/* Plaza extras: history, neighbourhood, residences, hotel & dining, Grupo Alvear, private tour */
+.soft{background:var(--paper-2)}
+.dark{background:var(--ink); color:var(--paper)}
+.dark .card-p{color:var(--body-d)}
+.dark .story h2,.dark .txt{color:inherit} .dark .txt{color:var(--body-d)}
+.tls{display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; margin-top:clamp(48px, 7vw, 84px)}
+.tl{position:relative; border-top:1px solid var(--line-d); padding-top:20px}
+.tl::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
+.tl b{display:block; font-family:var(--serif); font-weight:400; font-size:clamp(40px, 4.4vw, 62px); line-height:1}
+.tl p{margin-top:14px; font-size:13.5px; line-height:1.65; color:var(--body-d)}
+.arc{margin-top:clamp(48px, 7vw, 84px); overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+.arc::-webkit-scrollbar{display:none}
+.arc-track{display:flex; gap:14px; width:max-content; padding:0 max(24px, calc((100vw - 1240px) / 2 + 24px))}
+.arc-item{margin:0; flex:0 0 auto; width:clamp(240px, 26vw, 360px); scroll-snap-align:start}
+.arc-item img{width:100%; height:clamp(300px, 32vw, 440px); object-fit:cover; filter:grayscale(1) contrast(1.05); transition:filter .8s}
+.arc-item:hover img{filter:grayscale(.2)}
+.arc-item figcaption{margin-top:12px; font-size:12.5px; line-height:1.55; color:var(--body-d)}
+.arc-item figcaption b{display:block; margin-bottom:4px; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+.arc-hint{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute-d)}
+.quote{margin:clamp(56px, 8vw, 96px) 0 0; padding-left:26px; border-left:2px solid var(--accent); max-width:30ch; font-family:var(--serif); font-style:italic; font-size:clamp(26px, 3vw, 40px); line-height:1.25}
+.zone{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(28px, 5vw, 72px); align-items:start; margin-top:clamp(40px, 6vw, 70px)}
+.zone > *{min-width:0}
+.map img{width:100%; height:auto; border:1px solid var(--line); filter:grayscale(1)}
+.lm{margin-top:0}
+.lm div{grid-template-columns:1fr}
+.lm dt{font-family:var(--serif); font-size:20px; letter-spacing:0; text-transform:none; color:var(--ink)}
+.lm dt i{font-style:normal; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; color:var(--mute)}
+.lm dd{color:var(--body)}
+.cards{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:clamp(48px, 7vw, 80px)}
+.card{position:relative; border-top:1px solid var(--line); padding-top:20px}
+.dark .card{border-top-color:var(--line-d)}
+.card::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
+.card-t{font-family:var(--serif); font-size:24px; line-height:1.15}
+.card-p{margin-top:12px; font-size:14px; line-height:1.65; color:var(--body)}
+.res-hero{position:relative; margin-top:clamp(40px, 6vw, 70px); overflow:hidden}
+.res-hero img{width:100%; height:clamp(260px, 42vw, 560px); object-fit:cover; filter:grayscale(1); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.res-hero:hover img{filter:none; transform:scale(1.02)}
+.res-hero .res-cap{position:absolute; margin:0; left:18px; bottom:16px; padding:8px 12px; background:rgba(10,10,10,.72); color:var(--paper); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase}
+.types{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:14px}
+.type{background:var(--paper); padding:0 0 22px}
+.type-img{overflow:hidden; aspect-ratio:16/10}
+.type-img img{width:100%; height:100%; object-fit:cover; filter:grayscale(1); transition:filter .8s, transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.type:hover .type-img img{filter:none; transform:scale(1.04)}
+.type-k{margin:18px 22px 0; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+.type-m{margin:8px 22px 0; font-family:var(--serif); font-size:clamp(28px, 2.6vw, 36px); line-height:1}
+.type-p{margin:10px 22px 0; font-size:13px; color:var(--body)}
+.credit{margin-top:22px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
+.trio{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:12px; margin-top:clamp(40px, 6vw, 70px)}
+.trio div{overflow:hidden; aspect-ratio:4/3}
+.trio img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(.9); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.trio div:hover img{filter:none; transform:scale(1.04)}
+.sub{margin-top:clamp(72px, 10vw, 120px); max-width:640px}
+.sub .eyebrow{margin-bottom:18px}
+.sub-h{font-family:var(--serif); font-weight:400; font-style:italic; font-size:clamp(30px, 3.4vw, 46px); line-height:1.08}
+.sub .txt{margin-top:16px}
+.dining{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; margin-top:clamp(36px, 5vw, 56px)}
+.dish-img{overflow:hidden; aspect-ratio:4/5}
+.dish-img img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(.85); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.dish:hover .dish-img img{filter:none; transform:scale(1.04)}
+.dish-k{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+.dish h3{margin-top:6px; font-family:var(--serif); font-weight:400; font-size:24px}
+.dish-p{margin-top:8px; font-size:13.5px; line-height:1.6; color:var(--body-d)}
+.dish-y{margin-top:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute-d)}
+.avs{margin-top:clamp(40px, 6vw, 70px); border-top:1px solid var(--line)}
+.av{position:relative; display:grid; grid-template-columns:160px 1fr; gap:28px; padding:24px 0; border-bottom:1px solid var(--line)}
+.av b{font-family:var(--serif); font-weight:400; font-size:clamp(34px, 3.6vw, 48px); line-height:1}
+.av-n{font-family:var(--serif); font-size:clamp(22px, 2.2vw, 28px); line-height:1.15}
+.av-n .pl{font-style:normal; margin-left:12px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+.av-p{margin-top:8px; font-size:14px; line-height:1.65; color:var(--body); max-width:70ch}
+.av:last-child b{color:var(--accent)}
+.tour{background:var(--ink); color:var(--paper); border-top:1px solid var(--line-d)}
+.tour-in{display:flex; align-items:center; justify-content:space-between; gap:32px; padding-block:clamp(56px, 8vw, 96px)}
+.tour-h{margin-top:18px; font-family:var(--serif); font-size:clamp(32px, 4vw, 54px); line-height:1.05}
+.tour-p{margin-top:14px; font-size:15px; line-height:1.7; color:var(--body-d); max-width:56ch}
+.disc{margin-top:8px; font-size:10px; letter-spacing:.08em; color:#5c5c5c; text-transform:none}
+@media (max-width:900px){
+  .tls{grid-template-columns:1fr 1fr}
+  .zone{grid-template-columns:1fr}
+  .cards,.types{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr 1fr} .trio div:first-child{grid-column:1 / -1}
+  .dining{grid-template-columns:1fr 1fr}
+  .tour-in{flex-direction:column; align-items:flex-start}
+  .av{grid-template-columns:90px 1fr; gap:18px}
+}
+@media (max-width:640px){
+  .tls{grid-template-columns:1fr}
+  .dining{grid-template-columns:1fr 1fr; gap:14px}
+  .dish h3{font-size:20px}
+  .av{grid-template-columns:1fr; gap:8px}
+  .av-n .pl{display:block; margin:6px 0 0}
 }
 </style>
 <link rel="stylesheet" href="assets/css/lux-3.css">
@@ -315,10 +412,11 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
 </section>
 
 <section class="figs">
-  <div class="wrap figs-in">
-      <div class="fig reveal"><b>1909</b><span><span data-l="es">Inauguraci&oacute;n del Plaza Hotel original</span><span data-l="en">The original Plaza Hotel opens</span></span></div>
+  <div class="wrap figs-in n4">
+      <div class="fig reveal"><b>1909</b><span><span data-l="es">A&ntilde;o de fundaci&oacute;n del Plaza Hotel</span><span data-l="en">Year the Plaza Hotel was founded</span></span></div>
       <div class="fig reveal"><b>55</b><span><span data-l="es">Residencias privadas</span><span data-l="en">Private residences</span></span></div>
       <div class="fig reveal"><b>180</b><span><span data-l="es">Habitaciones de hotel</span><span data-l="en">Hotel rooms</span></span></div>
+      <div class="fig reveal"><b>2028</b><span><span data-l="es">Reapertura prevista</span><span data-l="en">Planned reopening</span></span></div>
   </div>
 </section>
 
@@ -347,6 +445,143 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   </div>
 </section>
 
+<section class="band dark hist" id="historia">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Historia</span><span data-l="en">History</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Testigo de la Argentina.</span><span data-l="en">Witness to Argentina.</span></h2>
+      <div class="reveal">
+        <p class="txt"><span data-l="es">M&aacute;s de un siglo de historia argentina late entre sus paredes de m&aacute;rmol de Carrara y roble boliviano.</span><span data-l="en">Over a century of Argentine history lives within its walls of Carrara marble and Bolivian oak.</span></p>
+        <p class="txt" style="margin-top:16px"><span data-l="es">Luciano Pavarotti, Jorge Luis Borges, Nat King Cole, Louis Armstrong y los reyes Juan Carlos y Sof&iacute;a pasaron por sus salones. El Plaza es mucho m&aacute;s que un hotel: es parte del alma de Buenos Aires.</span><span data-l="en">Luciano Pavarotti, Jorge Luis Borges, Nat King Cole, Louis Armstrong and King Juan Carlos and Queen Sof&iacute;a passed through its salons. The Plaza is much more than a hotel: it is part of the soul of Buenos Aires.</span></p>
+      </div>
+    </div>
+    <div class="tls">
+      <div class="tl reveal"><b>1909</b><p><span data-l="es">Primer hotel de lujo de Buenos Aires. Un emprendimiento de Ernesto Tornquist, con proyecto del arquitecto alem&aacute;n Alfred Zucker en estilo academicista franc&eacute;s: estructura met&aacute;lica, m&aacute;rmol de Carrara y muros de hasta 120 cm de espesor.</span><span data-l="en">Buenos Aires' first luxury hotel. Commissioned by Ernesto Tornquist and designed by German architect Alfred Zucker in a French academicist style: metal structure, Carrara marble and walls up to 120 cm thick.</span></p></div>
+      <div class="tl reveal"><b>1934</b><p><span data-l="es">Remodelaci&oacute;n racionalista y Art D&eacute;co. Nace el Plaza Bar, y Jorge y Mercedes Soto Acebal pintan los murales que hoy se restauran con fidelidad.</span><span data-l="en">A rationalist and Art D&eacute;co renovation. The Plaza Bar is born, and Jorge and Mercedes Soto Acebal paint the murals now being faithfully restored.</span></p></div>
+      <div class="tl reveal"><b>2013</b><p><span data-l="es">Grupo Alvear adquiere el hotel tras negociar con los 65 accionistas, descendientes de Tornquist. Comienza la restauraci&oacute;n m&aacute;s ambiciosa de la Argentina.</span><span data-l="en">Grupo Alvear acquires the hotel after negotiating with its 65 shareholders, Tornquist's descendants. Argentina's most ambitious restoration begins.</span></p></div>
+      <div class="tl reveal"><b>2028</b><p><span data-l="es">Reapertura: hotel cinco estrellas y 55 residencias privadas. Vuelven el Plaza Grill y el Plaza Bar, restaurados, junto a un nuevo restaurante, un bar y una cafeter&iacute;a.</span><span data-l="en">Reopening: a five-star hotel and 55 private residences. The Plaza Grill and Plaza Bar return, restored, alongside a new restaurant, bar and caf&eacute;.</span></p></div>
+    </div>
+  </div>
+  <div class="arc" data-lenis-prevent-horizontal>
+    <div class="arc-track">
+        <figure class="arc-item"><img src="assets/plaza/hist-construccion.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">1909</span><span data-l="en">1909</span></b><span data-l="es">En obra: la estructura de acero del Plaza Hotel, durante su construcci&oacute;n.</span><span data-l="en">Under construction: the Plaza Hotel's steel structure.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-fachada.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">1909</span><span data-l="en">1909</span></b><span data-l="es">La fachada original sobre Plaza San Mart&iacute;n, reci&eacute;n inaugurado.</span><span data-l="en">The original fa&ccedil;ade on San Mart&iacute;n Square, newly opened.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-plaza.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">c. 1910</span><span data-l="en">c. 1910</span></b><span data-l="es">La esquina de Plaza San Mart&iacute;n, con el Plaza Hotel como protagonista.</span><span data-l="en">The San Mart&iacute;n Square corner, with the Plaza Hotel at its centre.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-bar.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">1934</span><span data-l="en">1934</span></b><span data-l="es">El Plaza Bar reci&eacute;n inaugurado, con su barra y taburetes originales.</span><span data-l="en">The newly opened Plaza Bar, with its original bar and stools.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-salon.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">1934</span><span data-l="en">1934</span></b><span data-l="es">Uno de los salones, con su cielorraso oval y ventanales en arco.</span><span data-l="en">One of the salons, with its oval ceiling and arched windows.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-banquete.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">Archivo</span><span data-l="en">Archive</span></b><span data-l="es">Un sal&oacute;n vestido para un gran banquete, con el mural al fondo.</span><span data-l="en">A salon dressed for a grand banquet, with the mural behind.</span></figcaption></figure>
+        <figure class="arc-item"><img src="assets/plaza/hist-mural.jpg" alt="" loading="lazy" decoding="async"><figcaption><b><span data-l="es">Archivo</span><span data-l="en">Archive</span></b><span data-l="es">Otro sal&oacute;n, vestido de flores para un evento, con el mural sobre las paredes.</span><span data-l="en">Another salon, dressed in flowers for an event, with the mural on its walls.</span></figcaption></figure>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="arc-hint"><span data-l="es">Archivo hist&oacute;rico &middot; desliza</span><span data-l="en">Historic archive &middot; swipe</span> <span aria-hidden="true">&rarr;</span></p>
+    <blockquote class="quote reveal"><span data-l="es">M&aacute;s que reemplazar el pasado: demostrar que existe una estructura capaz de cuidarlo, interpretarlo y proyectarlo.</span><span data-l="en">Rather than replacing the past: proving there is a structure able to care for it, interpret it and project it forward.</span></blockquote>
+  </div>
+</section>
+
+<section class="band" id="zona">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">La zona</span><span data-l="en">The neighbourhood</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">El coraz&oacute;n hist&oacute;rico de Buenos Aires.</span><span data-l="en">The historic heart of Buenos Aires.</span></h2>
+      <p class="txt reveal"><span data-l="es">Frente a la Plaza San Mart&iacute;n, junto al Kavanagh, el Palacio San Mart&iacute;n y el Palacio Paz, en la esquina de Marcelo T. de Alvear y Florida: la esquina m&aacute;s elegante del centro porte&ntilde;o. Una ubicaci&oacute;n irrepetible.</span><span data-l="en">Facing San Mart&iacute;n Square, alongside the Kavanagh, the San Mart&iacute;n Palace and the Paz Palace, on the corner of Marcelo T. de Alvear and Florida: the most elegant corner of downtown Buenos Aires. An unrepeatable location.</span></p>
+    </div>
+    <div class="zone">
+      <div class="map reveal"><img src="assets/plaza/mapa-real.jpg" alt="Plaza San Mart&iacute;n, Retiro" loading="lazy" decoding="async"></div>
+      <dl class="facts lm reveal">
+          <div><dt>Plaza San Mart&iacute;n</dt><dd><span data-l="es">El paisaje inmediato y parte inseparable de su identidad urbana.</span><span data-l="en">The immediate landscape and an inseparable part of its urban identity.</span></dd></div>
+          <div><dt>Palacio San Mart&iacute;n <i>&middot; 1909</i></dt><dd><span data-l="es">Naci&oacute; el mismo a&ntilde;o que el Plaza.</span><span data-l="en">Built the same year as the Plaza.</span></dd></div>
+          <div><dt>Palacio Paz <i>&middot; 1902&ndash;1914</i></dt><dd><span data-l="es">Una de las piezas monumentales del entorno.</span><span data-l="en">One of the monumental pieces of the surroundings.</span></dd></div>
+          <div><dt>Torre de los Ingleses <i>&middot; 1916</i></dt><dd><span data-l="es">Un hito visual reconocible de la ciudad.</span><span data-l="en">A recognisable landmark of the city.</span></dd></div>
+          <div><dt>Edificio Kavanagh <i>&middot; 1936</i></dt><dd><span data-l="es">Al lado del Plaza: se reconoce al fondo en las im&aacute;genes del entorno.</span><span data-l="en">Next to the Plaza: recognisable in the background of the square's views.</span></dd></div>
+      </dl>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><p class="card-t"><span data-l="es">Una esquina irrepetible</span><span data-l="en">An unrepeatable corner</span></p><p class="card-p"><span data-l="es">El Kavanagh al lado, la Torre de los Ingleses enfrente y el Regimiento de Granaderos a metros: el Plaza est&aacute; rodeado de los hitos m&aacute;s emblem&aacute;ticos de Buenos Aires.</span><span data-l="en">The Kavanagh next door, the English Tower across the street and the Grenadiers Regiment steps away: the Plaza is surrounded by Buenos Aires' most iconic landmarks.</span></p></div>
+      <div class="card reveal"><p class="card-t"><span data-l="es">Reconversi&oacute;n del microcentro</span><span data-l="en">Downtown revival</span></p><p class="card-p"><span data-l="es">El Plaza es el proyecto ancla de la transformaci&oacute;n del microcentro porte&ntilde;o en un distrito residencial y cultural de primer nivel.</span><span data-l="en">The Plaza anchors the transformation of downtown Buenos Aires into a first-class residential and cultural district.</span></p></div>
+      <div class="card reveal"><p class="card-t"><span data-l="es">Patrimonio protegido</span><span data-l="en">Protected heritage</span></p><p class="card-p"><span data-l="es">El edificio cuenta con protecci&oacute;n patrimonial de la Ciudad de Buenos Aires: su fachada, sus salones y sus detalles originales se preservan.</span><span data-l="en">The building is heritage-protected by the City of Buenos Aires: its fa&ccedil;ade, salons and original details are preserved.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band soft" id="residencias">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Residencias</span><span data-l="en">Residences</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Vivir dentro de la historia.</span><span data-l="en">Living inside history.</span></h2>
+      <p class="txt reveal"><span data-l="es">55 residencias a partir del tercer piso. La magia de un edificio centenario, con los servicios de un hotel cinco estrellas a un paso de tu puerta.</span><span data-l="en">55 residences from the third floor up. The magic of a century-old building, with five-star hotel services a step from your door.</span></p>
+    </div>
+    <div class="res-hero reveal"><img src="assets/plaza/residencias-hero.jpg" alt="" loading="lazy" decoding="async"><p class="res-cap"><span data-l="es">Residencia Patio Franc&eacute;s &middot; vista a Plaza San Mart&iacute;n</span><span data-l="en">French Courtyard Residence &middot; San Mart&iacute;n Square views</span></p></div>
+    <div class="types">
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-02.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 02</span><span data-l="en">Type 02</span></p><p class="type-m">60 &ndash; 80 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-04.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 04</span><span data-l="en">Type 04</span></p><p class="type-m">100 &ndash; 140 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-patio-frances.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 06 &middot; Patio Franc&eacute;s</span><span data-l="en">Type 06 &middot; French Courtyard</span></p><p class="type-m">160 &ndash; 200 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><p class="card-t">Room service</p><p class="card-p"><span data-l="es">Los cuatro restaurantes del hotel, disponibles a domicilio.</span><span data-l="en">All four hotel restaurants, delivered to your door.</span></p></div>
+      <div class="card reveal"><p class="card-t">Concierge 24h</p><p class="card-p"><span data-l="es">Conserjer&iacute;a de nivel hotelero, las 24 horas.</span><span data-l="en">Hotel-standard concierge, 24 hours a day.</span></p></div>
+      <div class="card reveal"><p class="card-t">Spa &amp; Fitness</p><p class="card-p"><span data-l="es">Gimnasio y spa de nivel internacional, con acceso directo.</span><span data-l="en">World-class gym and spa, with direct access.</span></p></div>
+    </div>
+    <p class="credit"><span data-l="es">Renders: estudio Mart&iacute;n Zanotti Arquitecto. Im&aacute;genes ilustrativas.</span><span data-l="en">Renders: Mart&iacute;n Zanotti Architect. Illustrative images.</span></p>
+  </div>
+</section>
+
+<section class="band dark" id="hotel">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Hotel</p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Un hotel cinco estrellas.<br>Un est&aacute;ndar &uacute;nico.</span><span data-l="en">A five-star hotel.<br>A singular standard.</span></h2>
+      <div class="reveal">
+        <p class="txt"><span data-l="es">El nuevo edificio anexo integra tecnolog&iacute;a de punta y conserva intacta la identidad del Plaza.</span><span data-l="en">The new annex building brings cutting-edge technology while keeping the Plaza&rsquo;s identity intact.</span></p>
+        <p class="txt" style="margin-top:16px"><span data-l="es">Los salones restaurados vuelven a ser escenario de los grandes eventos de Buenos Aires: el Gran Sal&oacute;n, el Sal&oacute;n Borges y el Patio Franc&eacute;s, con pisos de roble boliviano de los a&ntilde;os 30, ara&ntilde;as originales de 1909 y murales recuperados bajo capas de pintura.</span><span data-l="en">The restored salons once again host Buenos Aires&rsquo; great events: the Grand Ballroom, the Borges Room and the French Courtyard, with 1930s Bolivian oak floors, original 1909 chandeliers and murals recovered from beneath layers of paint.</span></p>
+      </div>
+    </div>
+    <div class="trio">
+      <div class="reveal"><img src="assets/plaza/hotel-04.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="reveal"><img src="assets/plaza/hotel-06.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="reveal"><img src="assets/plaza/exterior-sunset.jpg" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="sub">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Gastronom&iacute;a</span><span data-l="en">Dining</span></p>
+      <h3 class="sub-h"><span data-l="es">Historia restaurada. Nuevas direcciones.</span><span data-l="en">Restored history. New addresses.</span></h3>
+      <p class="txt"><span data-l="es">El Plaza Grill y el Plaza Bar vuelven restaurados, y se suman un restaurante, un bar y una cafeter&iacute;a de primer nivel, abiertos a la ciudad.</span><span data-l="en">The Plaza Grill and Plaza Bar return restored, joined by a first-class restaurant, bar and caf&eacute;, open to the city.</span></p>
+    </div>
+    <div class="dining">
+      <article class="dish reveal"><div class="dish-img"><img src="assets/plaza/grill.jpg" alt="" loading="lazy" decoding="async"></div><p class="dish-k"><span data-l="es">Restaurante principal</span><span data-l="en">Main restaurant</span></p><h3>Plaza Grill</h3><p class="dish-p"><span data-l="es">El cl&aacute;sico porte&ntilde;o, restaurado respetando su materialidad y car&aacute;cter original.</span><span data-l="en">The Buenos Aires classic, restored with its original materials and character.</span></p><p class="dish-y"><span data-l="es">Desde 1909</span><span data-l="en">Since 1909</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/plaza/bar-cocktail.jpg" alt="" loading="lazy" decoding="async"></div><p class="dish-k"><span data-l="es">Bar</span><span data-l="en">Bar</span></p><h3>Plaza Bar</h3><p class="dish-p"><span data-l="es">Donde se escribi&oacute; parte de la historia argentina. Su fisonom&iacute;a, pr&aacute;cticamente intacta.</span><span data-l="en">Where part of Argentine history was written. Its interior, almost intact.</span></p><p class="dish-y"><span data-l="es">Desde 1934</span><span data-l="en">Since 1934</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/plaza/terraza-noche.jpg" alt="" loading="lazy" decoding="async"></div><p class="dish-k"><span data-l="es">Terraza</span><span data-l="en">Terrace</span></p><h3>Terraza</h3><p class="dish-p"><span data-l="es">Vistas sobre Plaza San Mart&iacute;n desde la esquina de Alvear y Florida.</span><span data-l="en">Views over San Mart&iacute;n Square from the corner of Alvear and Florida.</span></p><p class="dish-y"><span data-l="es">Nuevo &middot; 2028</span><span data-l="en">New &middot; 2028</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/plaza/cafeteria-barista.jpg" alt="" loading="lazy" decoding="async"></div><p class="dish-k"><span data-l="es">Cafeter&iacute;a</span><span data-l="en">Caf&eacute;</span></p><h3>Cafeter&iacute;a San Mart&iacute;n</h3><p class="dish-p"><span data-l="es">Caf&eacute; de paso sobre Plaza San Mart&iacute;n, la nueva esquina cotidiana del microcentro.</span><span data-l="en">A daily caf&eacute; on San Mart&iacute;n Square, downtown's new everyday corner.</span></p><p class="dish-y"><span data-l="es">Nuevo &middot; 2028</span><span data-l="en">New &middot; 2028</span></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="alvear">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Grupo Alvear</p>
+    <div class="story">
+      <h2 data-split><span data-l="es">El sello Alvear.</span><span data-l="en">The Alvear seal.</span></h2>
+      <p class="txt reveal"><span data-l="es">M&aacute;s de 90 a&ntilde;os en hoteler&iacute;a de lujo en Buenos Aires. Una reputaci&oacute;n que respalda cada promesa del Plaza.</span><span data-l="en">Over 90 years of luxury hospitality in Buenos Aires. A reputation behind every promise of the Plaza.</span></p>
+    </div>
+    <div class="avs">
+        <div class="av reveal"><b>1932</b><div><p class="av-n">Alvear Palace Hotel<em class="pl"><span data-l="es">Recoleta</span><span data-l="en">Recoleta</span></em></p><p class="av-p"><span data-l="es">El gran hotel porte&ntilde;o de estilo franc&eacute;s, referencia de la hoteler&iacute;a de lujo en Sudam&eacute;rica. Miembro de The Leading Hotels of the World.</span><span data-l="en">The great French-style Buenos Aires hotel, the benchmark of luxury hospitality in South America. Member of The Leading Hotels of the World.</span></p></div></div>
+        <div class="av reveal"><b>2015</b><div><p class="av-n">Alvear Art Hotel<em class="pl"><span data-l="es">Recoleta</span><span data-l="en">Recoleta</span></em></p><p class="av-p"><span data-l="es">Hotel boutique de lujo a metros del Alvear Palace: dise&ntilde;o contempor&aacute;neo con el est&aacute;ndar de servicio del grupo.</span><span data-l="en">A luxury boutique hotel steps from the Alvear Palace: contemporary design with the group's service standard.</span></p></div></div>
+        <div class="av reveal"><b>2019</b><div><p class="av-n">Alvear Icon Hotel &amp; Residences<em class="pl"><span data-l="es">Puerto Madero</span><span data-l="en">Puerto Madero</span></em></p><p class="av-p"><span data-l="es">El primer hotel-residencia del grupo: demostr&oacute; en Buenos Aires el &eacute;xito de integrar hoteler&iacute;a de lujo y vivienda privada.</span><span data-l="en">The group's first hotel-residence: it proved in Buenos Aires the success of combining luxury hospitality with private homes.</span></p></div></div>
+        <div class="av reveal"><b>2028</b><div><p class="av-n">Plaza Hotel Buenos Aires<em class="pl"><span data-l="es">Retiro</span><span data-l="en">Retiro</span></em></p><p class="av-p"><span data-l="es">La restauraci&oacute;n m&aacute;s ambiciosa del grupo: el edificio m&aacute;s hist&oacute;rico de Buenos Aires, de nuevo hotel cinco estrellas, con 55 residencias privadas.</span><span data-l="en">The group's most ambitious restoration: Buenos Aires' most historic building, a five-star hotel again, with 55 private residences.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tour">
+  <div class="wrap tour-in reveal">
+    <div>
+      <p class="eyebrow" style="color:var(--mute-d)"><span class="dot" aria-hidden="true"></span><span data-l="es">Recorrido privado</span><span data-l="en">Private tour</span> &middot; Apple Vision Pro</p>
+      <p class="tour-h"><span data-l="es">Conoce el Plaza antes que nadie.</span><span data-l="en">Discover the Plaza before anyone else.</span></p>
+      <p class="tour-p"><span data-l="es">Un recorrido inmersivo por residencias, salones y espacios emblem&aacute;ticos, en una experiencia privada junto a nuestro equipo.</span><span data-l="en">An immersive tour of residences, salons and iconic spaces, in a private experience with our team.</span></p>
+    </div>
+    <a class="btn btn-p" href="#consulta" data-interest="tour"><span data-l="es">Quiero mi recorrido privado</span><span data-l="en">I want my private tour</span> <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
 <section class="band enq" id="consulta">
   <div class="wrap enq-grid">
     <div>
@@ -360,6 +595,10 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
         <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
         <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <div class="two">
+          <label><span data-l="es">Pa&iacute;s de residencia</span><span data-l="en">Country of residence</span><select name="country"><option value="">&mdash;</option><option value="Argentina" data-es="Argentina" data-en="Argentina">Argentina</option><option value="Uruguay" data-es="Uruguay" data-en="Uruguay">Uruguay</option><option value="Brasil" data-es="Brasil" data-en="Brazil">Brasil</option><option value="Chile" data-es="Chile" data-en="Chile">Chile</option><option value="M&eacute;xico" data-es="M&eacute;xico" data-en="Mexico">M&eacute;xico</option><option value="Estados Unidos" data-es="Estados Unidos" data-en="United States">Estados Unidos</option><option value="Espa&ntilde;a" data-es="Espa&ntilde;a" data-en="Spain">Espa&ntilde;a</option><option value="Otro país" data-es="Otro pa&iacute;s" data-en="Other country">Otro pa&iacute;s</option></select></label>
+          <label><span data-l="es">Me interesa</span><span data-l="en">I am interested in</span><select name="interest"><option value="">&mdash;</option><option value="Residencias privadas" data-es="Residencias privadas" data-en="Private residences">Residencias privadas</option><option value="Inversi&oacute;n" data-es="Inversi&oacute;n" data-en="Investment">Inversi&oacute;n</option><option value="Eventos y salones" data-es="Eventos y salones" data-en="Events &amp; ballrooms">Eventos y salones</option><option value="Recorrido privado (Apple Vision Pro)" data-es="Recorrido privado (Apple Vision Pro)" data-en="Private tour (Apple Vision Pro)">Recorrido privado (Apple Vision Pro)</option></select></label>
+        </div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
         <button class="send" type="submit" id="send"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
@@ -381,7 +620,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
 <footer class="foot"><div class="wrap">
   <a class="logo" href="index.html">BDA<span class="sq" aria-hidden="true"></span></a>
   <nav><a href="legal.html#aviso"><span data-l="es">Aviso legal</span><span data-l="en">Legal notice</span></a><a href="legal.html#privacidad"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a><a href="legal.html#cookies">Cookies</a></nav>
-  <span>&copy; 2026 BDA International</span>
+  <span>&copy; 2026 BDA International<p class="disc"><span data-l="es">Apertura estimada 2028. Precios y caracter&iacute;sticas sujetos a modificaci&oacute;n. Im&aacute;genes ilustrativas y de archivo hist&oacute;rico.</span><span data-l="en">Estimated opening 2028. Prices and features subject to change. Illustrative and historic archive images.</span></p></span>
 </div></footer>
 
 <a class="wa-float wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg></a>
@@ -406,6 +645,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
     document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
     var wa = 'https://wa.me/' + (l === 'es' ? '5491144401551' : '34613303967') + '?text=' + encodeURIComponent(l === 'es' ? 'Hola, me interesa ' + CFG.name + '.' : 'Hello, I am interested in ' + CFG.name + '.');
     document.querySelectorAll('.wa').forEach(function(a){ a.href = wa; });
+    document.querySelectorAll('option[data-es]').forEach(function(o){ var t = document.createElement('textarea'); t.innerHTML = o.getAttribute('data-' + l); o.textContent = t.value; });
     document.querySelectorAll('[data-ph-es]').forEach(function(i){ i.placeholder = i.getAttribute('data-ph-' + l) || ''; });
     if(window.BDA) BDA.split();
   }
@@ -448,6 +688,8 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   var sx = null; lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
   lb.addEventListener('touchend', function(e){ if(sx === null) return; var dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 40) lbShow(li + (dx < 0 ? 1 : -1)); sx = null; });
 
+  document.querySelectorAll('[data-interest="tour"]').forEach(function(a){ a.addEventListener('click', function(){ var sel = document.querySelector('select[name=interest]'); if(sel) sel.selectedIndex = sel.options.length - 1; }); });
+
   /* campaign origin: read from this page's own URL (nothing is stored in the browser) */
   var TAGS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
   function origin(){ var o = {}; TAGS.forEach(function(k){ var v = qp.get(k); if(v) o[k] = v.slice(0, 200); }); return o; }
@@ -462,7 +704,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
     var o = d.origin, src = Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' &middot; ') : 'Directo / sin campaña';
     return fetch('https://formsubmit.co/ajax/info@bda-realty.com', {
       method:'POST', headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Idioma: lang.toUpperCase(), Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
+      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
     }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('mail'); }); });
   }
   function toHubSpot(d){
@@ -472,6 +714,8 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
       {name:'phone', value: d.phone}, {name:'email', value: d.email},
       {name:'proyecto_de_interes', value: CFG.plain}, {name:'idioma_web', value: lang.toUpperCase()}
     ];
+    if(d.country) fields.push({name:'country', value: d.country});
+    if(d.interest) fields.push({name:'interes_principal', value: d.interest});
     Object.keys(d.origin).forEach(function(k){ fields.push({name: k, value: d.origin[k]}); });
     return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + CFG.hs.portalId + '/' + CFG.hs.formId, {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -481,7 +725,7 @@ form input:focus{outline:none; border-color:var(--ink); box-shadow:0 0 0 3px var
   }
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), origin: origin() };
+    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), country: form.country.value, interest: form.interest.value, origin: origin() };
     if(!d.name || !d.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){ msg.innerHTML = T[lang].req; return; }
     if(!form.ok.checked){ msg.innerHTML = T[lang].chk; return; }
     if(form._honey.value) return;
