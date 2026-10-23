@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reserva Alto Agrelo &mdash; BDA International</title>
-<meta name="description" content="Reserva Alto Agrelo, Mendoza: 116 lotes exclusivos entre vi&ntilde;edos y la cordillera de los Andes, con bodega, club ecuestre y el futuro hotel Casa Duhau, operado por Hyatt.">
+<meta name="description" content="Reserva Alto Agrelo, Luj&aacute;n de Cuyo, Mendoza: 116 chacras premium en 88 hect&aacute;reas, con Casa Duhau &ndash; The Unbound Collection by Hyatt, Bodega Agrelia y el haras Casa David.">
 <meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BDA International">
 <meta property="og:title" content="Reserva Alto Agrelo &mdash; BDA International">
-<meta property="og:description" content="Reserva Alto Agrelo, Mendoza: 116 lotes exclusivos entre vi&ntilde;edos y la cordillera de los Andes, con bodega, club ecuestre y el futuro hotel Casa Duhau, operado por Hyatt.">
+<meta property="og:description" content="Reserva Alto Agrelo, Luj&aacute;n de Cuyo, Mendoza: 116 chacras premium en 88 hect&aacute;reas, con Casa Duhau &ndash; The Unbound Collection by Hyatt, Bodega Agrelia y el haras Casa David.">
 <meta property="og:url" content="https://bda-dusky.vercel.app/agrelo">
 <meta property="og:image" content="https://bda-dusky.vercel.app/assets/og/agrelo-1.jpg">
 <meta property="og:image:width" content="1200">
@@ -304,6 +304,119 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   .js .reveal{opacity:1; transform:none}
   .js .shot::after{display:none}
 }
+
+/* Plaza extras: history, neighbourhood, residences, hotel & dining, Grupo Alvear, private tour */
+.soft{background:var(--paper-2)}
+.dark{background:var(--ink); color:var(--paper)}
+.dark .card-p{color:var(--body-d)}
+.dark .story h2,.dark .txt{color:inherit} .dark .txt{color:var(--body-d)}
+.tls{display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; margin-top:clamp(48px, 7vw, 84px)}
+.tl{position:relative; border-top:1px solid var(--line-d); padding-top:20px}
+.tl::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
+.tl b{display:block; font-family:var(--serif); font-weight:400; font-size:clamp(40px, 4.4vw, 62px); line-height:1}
+.tl p{margin-top:14px; font-size:13.5px; line-height:1.65; color:var(--body-d)}
+.arc{margin-top:clamp(48px, 7vw, 84px); overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+.arc::-webkit-scrollbar{display:none}
+.arc-track{display:flex; gap:14px; width:max-content; padding:0 max(24px, calc((100vw - 1240px) / 2 + 24px))}
+.arc-item{margin:0; flex:0 0 auto; width:clamp(240px, 26vw, 360px); scroll-snap-align:start}
+.arc-item img{width:100%; height:clamp(300px, 32vw, 440px); object-fit:cover; transition:filter .8s}
+
+.arc-item figcaption{margin-top:12px; font-size:12.5px; line-height:1.55; color:var(--body-d)}
+.arc-item figcaption b{display:block; margin-bottom:4px; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+.arc-hint{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute-d)}
+.quote{margin:clamp(56px, 8vw, 96px) 0 0; padding-left:26px; border-left:2px solid var(--accent); max-width:30ch; font-family:var(--serif); font-style:italic; font-size:clamp(26px, 3vw, 40px); line-height:1.25}
+.zone{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(28px, 5vw, 72px); align-items:start; margin-top:clamp(40px, 6vw, 70px)}
+.zone > *{min-width:0}
+.map img{width:100%; height:auto; border:1px solid var(--line);}
+.lm{margin-top:0}
+.lm div{grid-template-columns:1fr}
+.lm dt{font-family:var(--serif); font-size:20px; letter-spacing:0; text-transform:none; color:var(--ink)}
+.lm dt i{font-style:normal; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; color:var(--mute)}
+.lm dd{color:var(--body)}
+.cards{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:clamp(48px, 7vw, 80px)}
+.card{position:relative; border-top:1px solid var(--line); padding-top:20px}
+.dark .card{border-top-color:var(--line-d)}
+.card::before{content:""; position:absolute; top:-1px; left:0; width:44px; height:3px; background:var(--accent)}
+.card-t{font-family:var(--serif); font-size:24px; line-height:1.15}
+.card-p{margin-top:12px; font-size:14px; line-height:1.65; color:var(--body)}
+.res-hero{position:relative; margin-top:clamp(40px, 6vw, 70px); overflow:hidden}
+.res-hero img{width:100%; height:clamp(260px, 42vw, 560px); object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.res-hero:hover img{filter:none; transform:scale(1.02)}
+.res-hero .res-cap{position:absolute; margin:0; left:18px; bottom:16px; padding:8px 12px; background:rgba(10,10,10,.72); color:var(--paper); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase}
+.types{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:14px}
+.type{background:var(--paper); padding:0 0 22px}
+.type-img{overflow:hidden; aspect-ratio:16/10}
+.type-img img{width:100%; height:100%; object-fit:cover; transition:filter .8s, transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.type:hover .type-img img{filter:none; transform:scale(1.04)}
+.type-k{margin:18px 22px 0; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+.type-m{margin:8px 22px 0; font-family:var(--serif); font-size:clamp(28px, 2.6vw, 36px); line-height:1}
+.type-p{margin:10px 22px 0; font-size:13px; color:var(--body)}
+.type-p span[data-l]{font-weight:500}
+.credit{margin-top:22px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
+.trio{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:12px; margin-top:clamp(40px, 6vw, 70px)}
+.trio div{overflow:hidden; aspect-ratio:4/3}
+.trio img{width:100%; height:100%; object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.trio div:hover img{filter:none; transform:scale(1.04)}
+.sub{margin-top:clamp(72px, 10vw, 120px); max-width:640px}
+.sub .eyebrow{margin-bottom:18px}
+.sub-h{font-family:var(--serif); font-weight:400; font-style:italic; font-size:clamp(30px, 3.4vw, 46px); line-height:1.08}
+.sub .txt{margin-top:16px}
+.dining{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; margin-top:clamp(36px, 5vw, 56px)}
+.dish-img{overflow:hidden; aspect-ratio:4/5}
+.dish-img img{width:100%; height:100%; object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.dish:hover .dish-img img{filter:none; transform:scale(1.04)}
+.dish-k{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+.dish h3{margin-top:6px; font-family:var(--serif); font-weight:400; font-size:24px}
+.dish-p{margin-top:8px; font-size:13.5px; line-height:1.6; color:var(--body-d)}
+.dish-y{margin-top:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute-d)}
+.avs{margin-top:clamp(40px, 6vw, 70px); border-top:1px solid var(--line)}
+.av{position:relative; display:grid; grid-template-columns:160px 1fr; gap:28px; padding:24px 0; border-bottom:1px solid var(--line)}
+.av b{font-family:var(--serif); font-weight:400; font-size:clamp(34px, 3.6vw, 48px); line-height:1}
+.av-n{font-family:var(--serif); font-size:clamp(22px, 2.2vw, 28px); line-height:1.15}
+.av-n .pl{font-style:normal; margin-left:12px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+.av-p{margin-top:8px; font-size:14px; line-height:1.65; color:var(--body); max-width:70ch}
+.av:last-child b{color:var(--accent)}
+.tour{background:var(--ink); color:var(--paper); border-top:1px solid var(--line-d)}
+.tour-in{display:flex; align-items:center; justify-content:space-between; gap:32px; padding-block:clamp(56px, 8vw, 96px)}
+.tour-h{margin-top:18px; font-family:var(--serif); font-size:clamp(32px, 4vw, 54px); line-height:1.05}
+.tour-p{margin-top:14px; font-size:15px; line-height:1.7; color:var(--body-d); max-width:56ch}
+.disc{margin-top:8px; font-size:10px; letter-spacing:.08em; color:#5c5c5c; text-transform:none}
+@media (max-width:900px){
+  .tls{grid-template-columns:1fr 1fr}
+  .zone{grid-template-columns:1fr}
+  .cards,.types{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr 1fr} .trio div:first-child{grid-column:1 / -1}
+  .dining{grid-template-columns:1fr 1fr}
+  .tour-in{flex-direction:column; align-items:flex-start}
+  .av{grid-template-columns:90px 1fr; gap:18px}
+}
+@media (max-width:640px){
+  .tls{grid-template-columns:1fr}
+  .dining{grid-template-columns:1fr 1fr; gap:14px}
+  .dish h3{font-size:20px}
+  .av{grid-template-columns:1fr; gap:8px}
+  .av-n .pl{display:block; margin:6px 0 0}
+}
+
+/* Agrelo extras */
+.mp{margin-top:14px; background:var(--paper); padding:22px}
+.mp-head{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px}
+.mp-t{font-family:var(--serif); font-size:24px}
+.mp-tabs{display:flex; flex-wrap:wrap; gap:8px}
+.mp-tab{padding:9px 13px; border:1px solid var(--line); font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--body); transition:background .25s, color .25s, border-color .25s}
+.mp-tab:hover{border-color:var(--ink)}
+.mp-tab.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.mp-img img{width:100%; height:auto; transition:opacity .2s}
+.mp-own{margin-top:clamp(48px, 7vw, 80px); font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute)}
+.feat2{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px, 3vw, 40px); margin-top:30px}
+.f2-img{overflow:hidden; aspect-ratio:1000/820}
+.f2-img img{width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.feat2 article:hover .f2-img img{transform:scale(1.03)}
+.feat2 .dish-k{margin-top:18px; color:var(--mute)}
+.feat2 h3{margin-top:6px; font-family:var(--serif); font-weight:400; font-size:clamp(28px, 2.8vw, 38px)}
+.f2-p{margin-top:10px; font-size:15px; line-height:1.7; color:var(--body); max-width:52ch}
+@media (max-width:900px){ .feat2{grid-template-columns:1fr} }
+@media (max-width:640px){ .mp{padding:14px} .mp-tab{padding:8px 10px; font-size:9.5px} }
 </style>
 <link rel="stylesheet" href="assets/css/lux-3.css">
 <script>(function(){try{var n=(performance.getEntriesByType('navigation')[0]||{}).type,r=document.referrer;if(n==='navigate'&&r&&r.indexOf(location.origin+'/')===0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pt-in')}catch(e){}})();</script>
@@ -327,11 +440,11 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
     <div>
       <p class="eyebrow rise" style="color:#D6D6D6"><span class="dot" aria-hidden="true"></span><span data-l="es">Agrelo &middot; Luj&aacute;n de Cuyo &middot; Mendoza</span><span data-l="en">Agrelo &middot; Luj&aacute;n de Cuyo &middot; Mendoza</span></p>
       <h1 data-split>Reserva Alto Agrelo</h1>
-      <p class="tag rise d1"><span data-l="es">Vivir entre vi&ntilde;edos,<br>frente a la cordillera.</span><span data-l="en">Live among the vineyards,<br>facing the Andes.</span></p>
-      <ul class="points rise d1"><li><span data-l="es">116 lotes exclusivos entre vi&ntilde;edos</span><span data-l="en">116 exclusive lots among the vineyards</span></li><li><span data-l="es">Bodega y club ecuestre propios</span><span data-l="en">Its own winery and equestrian club</span></li><li><span data-l="es">Futuro hotel Casa Duhau, operado por Hyatt</span><span data-l="en">The future Casa Duhau hotel, operated by Hyatt</span></li></ul>
-      <p class="chip rise d2"><span data-l="es">Lotes disponibles &middot; consulta precios</span><span data-l="en">Lots available &middot; ask for prices</span></p>
+      <p class="tag rise d1"><span data-l="es">Exclusividad<br>en un para&iacute;so natural.</span><span data-l="en">Exclusivity<br>in a natural paradise.</span></p>
+      <ul class="points rise d1"><li><span data-l="es">116 chacras de 5.000 a 10.000 m&sup2; en 88 hect&aacute;reas</span><span data-l="en">116 country lots of 5,000 to 10,000 sqm on 88 hectares</span></li><li><span data-l="es">Casa Duhau, The Unbound Collection by Hyatt: 40 villas de lujo</span><span data-l="en">Casa Duhau, The Unbound Collection by Hyatt: 40 luxury villas</span></li><li><span data-l="es">Bodega Agrelia, de Michel Rolland y Marcelo Pelleriti</span><span data-l="en">Bodega Agrelia, by Michel Rolland and Marcelo Pelleriti</span></li></ul>
+      <p class="chip rise d2"><span data-l="es">Chacras disponibles &middot; consulta disponibilidad</span><span data-l="en">Lots available &middot; ask for availability</span></p>
       <div class="ctas rise d2">
-        <a class="btn btn-p" href="#proyecto"><span data-l="es">Conocer el proyecto</span><span data-l="en">Discover the project</span> <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-p" href="#lotes"><span data-l="es">Conocer las chacras</span><span data-l="en">Discover the lots</span> <span aria-hidden="true">&rarr;</span></a>
         <a class="btn btn-o wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
       </div>
     </div>
@@ -354,11 +467,45 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 </section>
 
 <section class="figs">
-  <div class="wrap figs-in n3">
-      <div class="fig reveal"><b>116</b><span><span data-l="es">Lotes exclusivos</span><span data-l="en">Exclusive lots</span></span></div>
-      <div class="fig reveal"><b>Andes</b><span><span data-l="es">Vistas a la cordillera</span><span data-l="en">Views of the cordillera</span></span></div>
-      <div class="fig reveal"><b>Hyatt</b><span><span data-l="es">Opera el futuro hotel Casa Duhau</span><span data-l="en">Operates the future Casa Duhau hotel</span></span></div>
+  <div class="wrap figs-in n4">
+      <div class="fig reveal"><b>116</b><span><span data-l="es">Chacras premium</span><span data-l="en">Premium country lots</span></span></div>
+      <div class="fig reveal"><b>88</b><span><span data-l="es">Hect&aacute;reas de predio</span><span data-l="en">Hectare estate</span></span></div>
+      <div class="fig reveal"><b>40</b><span><span data-l="es">Villas de lujo en Casa Duhau</span><span data-l="en">Luxury villas at Casa Duhau</span></span></div>
+      <div class="fig reveal"><b>35 km</b><span><span data-l="es">De la ciudad de Mendoza</span><span data-l="en">From the city of Mendoza</span></span></div>
   </div>
+</section>
+
+<section class="band soft" id="lotes">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Lotes residenciales</span><span data-l="en">Residential lots</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Solo 116 chacras de alta gama.</span><span data-l="en">Only 116 high-end country lots.</span></h2>
+      <p class="txt reveal"><span data-l="es">Un exclusivo desarrollo de chacras premium en un predio de 88 hect&aacute;reas, con lotes de entre 5.000 y 10.000 m&sup2; y vistas al Cord&oacute;n del Plata y al volc&aacute;n Tupungato.</span><span data-l="en">An exclusive development of premium country lots on an 88-hectare estate, with plots of 5,000 to 10,000 sqm and views of the Cord&oacute;n del Plata and the Tupungato volcano.</span></p>
+    </div>
+    <div class="res-hero reveal"><img src="assets/agrelo/lotes-aereo.jpg" alt="" loading="lazy" decoding="async"><p class="res-cap"><span data-l="es">Chacras premium &middot; 5.000 a 10.000 m&sup2;</span><span data-l="en">Premium lots &middot; 5,000 to 10,000 sqm</span></p></div>
+    <div class="mp reveal">
+      <div class="mp-head"><p class="mp-t">Masterplan</p><div class="mp-tabs" role="group" aria-label="Masterplan"><button type="button" class="mp-tab on" data-src="assets/agrelo/mp-general.jpg" aria-pressed="true"><span data-l="es">Vista general</span><span data-l="en">Overview</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-lotes.jpg" aria-pressed="false"><span data-l="es">Lotes residenciales</span><span data-l="en">Residential lots</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-duhau.jpg" aria-pressed="false"><span data-l="es">Casa Duhau</span><span data-l="en">Casa Duhau</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-bodega.jpg" aria-pressed="false"><span data-l="es">Bodega Agrelia</span><span data-l="en">Bodega Agrelia</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-david.jpg" aria-pressed="false"><span data-l="es">Casa David</span><span data-l="en">Casa David</span></button></div></div>
+      <div class="mp-img"><img src="assets/agrelo/mp-general.jpg" alt="Masterplan Reserva Alto Agrelo" loading="lazy" decoding="async"></div>
+    </div>
+    <p class="mp-own"><span data-l="es">Ser propietario incluye</span><span data-l="en">Ownership includes</span></p>
+    <div class="cards" style="margin-top:22px">
+      <div class="card reveal"><p class="card-t"><span data-l="es">Membres&iacute;a Casa Duhau</span><span data-l="en">Casa Duhau membership</span></p><p class="card-p"><span data-l="es">Los propietarios acceden a una membres&iacute;a exclusiva para disfrutar las experiencias y servicios del hotel.</span><span data-l="en">Owners enjoy an exclusive membership to the hotel's experiences and services.</span></p></div>
+      <div class="card reveal"><p class="card-t"><span data-l="es">Club del vino Agrelia</span><span data-l="en">Agrelia wine club</span></p><p class="card-p"><span data-l="es">Un lote anual de 72 botellas con etiqueta personalizada, de parcelas seleccionadas por los winemakers.</span><span data-l="en">A yearly allocation of 72 bottles with a personalised label, from plots selected by the winemakers.</span></p></div>
+      <div class="card reveal"><p class="card-t"><span data-l="es">Casa David</span><span data-l="en">Casa David</span></p><p class="card-p"><span data-l="es">Acceso preferencial al haras de 50 hect&aacute;reas, con instalaciones de primer nivel para la guarda de caballos.</span><span data-l="en">Preferential access to the 50-hectare stud farm, with first-class stabling facilities.</span></p></div>
+    </div>
+    <p class="credit"><span data-l="es">Im&aacute;genes ilustrativas. Fuente: Reserva Alto Agrelo.</span><span data-l="en">Illustrative images. Source: Reserva Alto Agrelo.</span></p>
+  </div>
+  <script>
+  (function(){
+    var box = document.querySelector('.mp-img img');
+    document.querySelectorAll('.mp-tab').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.mp-tab').forEach(function(x){ x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        box.style.opacity = 0; setTimeout(function(){ box.src = b.getAttribute('data-src'); box.style.opacity = 1; }, 200);
+      });
+    });
+  })();
+  </script>
 </section>
 
 
@@ -366,23 +513,110 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   <div class="wrap">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">El proyecto</span><span data-l="en">The project</span></p>
     <div class="story">
-      <h2 data-split><span data-l="es">Vi&ntilde;edos, cordillera y una marca de hospitality.</span><span data-l="en">Vineyards, the Andes and a hospitality brand.</span></h2>
+      <h2 data-split><span data-l="es">Un nuevo paradigma en estilo de vida e inversi&oacute;n.</span><span data-l="en">A new paradigm in lifestyle and investment.</span></h2>
       <div class="reveal">
-        <p class="txt"><span data-l="es">116 lotes exclusivos rodeados de vi&ntilde;edos y la cordillera de los Andes, con bodega, club ecuestre y el futuro hotel de lujo Casa Duhau, operado por Hyatt.</span><span data-l="en">116 exclusive lots surrounded by vineyards and the Andes, with a winery, an equestrian club and the future Casa Duhau luxury hotel, operated by Hyatt.</span></p>
+        <p class="txt"><span data-l="es">Reserva Alto Agrelo une un hotel cinco estrellas con el sello Duhau, una bodega de vinos de alta gama y un desarrollo de chacras residenciales premium en Luj&aacute;n de Cuyo. Es el proyecto de la familia Scalesciani, propietaria del Palacio Duhau &ndash; Park Hyatt Buenos Aires, y la familia David, empresarios mendocinos de reconocida trayectoria.</span><span data-l="en">Reserva Alto Agrelo brings together a five-star hotel with the Duhau seal, a high-end winery and a development of premium residential country lots in Luj&aacute;n de Cuyo. It is the project of the Scalesciani family, owners of Palacio Duhau &ndash; Park Hyatt Buenos Aires, and the David family, long-established Mendoza entrepreneurs.</span></p>
         <dl class="facts">
         <div><dt><span data-l="es">Ubicaci&oacute;n</span><span data-l="en">Location</span></dt><dd><span data-l="es">Agrelo, Luj&aacute;n de Cuyo, Mendoza</span><span data-l="en">Agrelo, Luj&aacute;n de Cuyo, Mendoza</span></dd></div>
-        <div><dt><span data-l="es">Partner</span><span data-l="en">Partner</span></dt><dd><span data-l="es">Casa Duhau &middot; Grupo Alvear</span><span data-l="en">Casa Duhau &middot; Grupo Alvear</span></dd></div>
-        <div><dt><span data-l="es">Amenities</span><span data-l="en">Amenities</span></dt><dd><span data-l="es">Bodega, club ecuestre y hotel Casa Duhau, operado por Hyatt</span><span data-l="en">Winery, equestrian club and the Casa Duhau hotel, operated by Hyatt</span></dd></div>
+        <div><dt><span data-l="es">Desarrolla</span><span data-l="en">Developer</span></dt><dd><span data-l="es">Familias Scalesciani y David</span><span data-l="en">The Scalesciani and David families</span></dd></div>
+        <div><dt><span data-l="es">Superficie</span><span data-l="en">Size</span></dt><dd><span data-l="es">88 hect&aacute;reas &middot; 116 chacras de 5.000 a 10.000 m&sup2;</span><span data-l="en">88 hectares &middot; 116 lots of 5,000 to 10,000 sqm</span></dd></div>
+        <div><dt><span data-l="es">Hotel</span><span data-l="en">Hotel</span></dt><dd><span data-l="es">Casa Duhau &middot; The Unbound Collection by Hyatt</span><span data-l="en">Casa Duhau &middot; The Unbound Collection by Hyatt</span></dd></div>
         <div><dt><span data-l="es">Rol de BDA</span><span data-l="en">BDA role</span></dt><dd><span data-l="es">Master Broker</span><span data-l="en">Master Broker</span></dd></div>
         </dl>
       </div>
     </div>
     <div class="gal">
       <button class="shot" type="button" data-full="assets/projects/agrelo-1.jpg" aria-label="Reserva Alto Agrelo &mdash; 1"><img src="assets/projects/agrelo-1.jpg" alt="" loading="lazy" decoding="async"></button>
-      <button class="shot" type="button" data-full="assets/projects/agrelo-2.jpg" aria-label="Reserva Alto Agrelo &mdash; 2"><img src="assets/projects/agrelo-2.jpg" alt="" loading="lazy" decoding="async"></button>
-      <button class="shot" type="button" data-full="assets/projects/agrelo-3.jpg" aria-label="Reserva Alto Agrelo &mdash; 3"><img src="assets/projects/agrelo-3.jpg" alt="" loading="lazy" decoding="async"></button>
-      <button class="shot" type="button" data-full="assets/projects/agrelo-4.jpg" aria-label="Reserva Alto Agrelo &mdash; 4"><img src="assets/projects/agrelo-4.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="shot" type="button" data-full="assets/agrelo/acceso.jpg" aria-label="Reserva Alto Agrelo &mdash; 2"><img src="assets/agrelo/acceso.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="shot" type="button" data-full="assets/agrelo/hotel-aereo.jpg" aria-label="Reserva Alto Agrelo &mdash; 3"><img src="assets/agrelo/hotel-aereo.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="shot" type="button" data-full="assets/projects/agrelo-2.jpg" aria-label="Reserva Alto Agrelo &mdash; 4"><img src="assets/projects/agrelo-2.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="shot" type="button" data-full="assets/projects/agrelo-4.jpg" aria-label="Reserva Alto Agrelo &mdash; 5"><img src="assets/projects/agrelo-4.jpg" alt="" loading="lazy" decoding="async"></button>
     </div>
+  </div>
+</section>
+
+<section class="band dark" id="casa-duhau">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Casa Duhau &middot; The Unbound Collection by Hyatt</p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Un destino en s&iacute; mismo.</span><span data-l="en">A destination in itself.</span></h2>
+      <div class="reveal">
+        <p class="txt"><span data-l="es">Un hotel de 40 villas de lujo con vistas al Cord&oacute;n del Plata y al volc&aacute;n Tupungato: los m&aacute;s elevados est&aacute;ndares de la hoteler&iacute;a internacional, servicios ultra personalizados y experiencias aut&eacute;nticas.</span><span data-l="en">A hotel of 40 luxury villas overlooking the Cord&oacute;n del Plata and the Tupungato volcano: the highest standards of international hospitality, ultra-personalised service and authentic experiences.</span></p>
+        <p class="txt" style="margin-top:16px"><span data-l="es">Incluye 12 suites ejecutivas en el edificio principal, dos restaurantes de est&aacute;ndar internacional (uno de fine dining) y cava, circuito de wellness, meeting room, miradores panor&aacute;micos y laguna.</span><span data-l="en">It includes 12 executive suites in the main building, two international-standard restaurants (one of them fine dining) and a wine cellar, a wellness circuit, a meeting room, panoramic viewpoints and a lagoon.</span></p>
+      </div>
+    </div>
+    <div class="trio">
+      <div class="reveal"><img src="assets/agrelo/casa-duhau.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="reveal"><img src="assets/agrelo/lounge.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div class="reveal"><img src="assets/agrelo/living.jpg" alt="" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="bodega">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Vino y caballos</span><span data-l="en">Wine and horses</span></p>
+    <div class="feat2">
+      <article class="reveal">
+        <div class="f2-img"><img src="assets/agrelo/bodega-agrelia.jpg" alt="" loading="lazy" decoding="async"></div>
+        <p class="dish-k">Michel Rolland &amp; Marcelo Pelleriti</p>
+        <h3>Bodega Agrelia</h3>
+        <p class="f2-p"><span data-l="es">Orientada a la elaboraci&oacute;n de vinos de terru&ntilde;o y de autor, de alta gama y edici&oacute;n limitada. Los propietarios pueden integrarse a su club del vino.</span><span data-l="en">Devoted to terroir and signature wines, high-end and in limited editions. Owners can join its wine club.</span></p>
+      </article>
+      <article class="reveal">
+        <div class="f2-img"><img src="assets/agrelo/casa-david.jpg" alt="" loading="lazy" decoding="async"></div>
+        <p class="dish-k">Wine &amp; horses</p>
+        <h3>Casa David</h3>
+        <p class="f2-p"><span data-l="es">Un haras de 50 hect&aacute;reas con las instalaciones m&aacute;s avanzadas para la guarda de caballos, con acceso preferencial para los propietarios de Alto Agrelo.</span><span data-l="en">A 50-hectare stud farm with state-of-the-art stabling, with preferential access for Alto Agrelo owners.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="vivir">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Un lugar para vivir</span><span data-l="en">A place to live</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Momentos inolvidables.</span><span data-l="en">Unforgettable moments.</span></h2>
+      <p class="txt reveal"><span data-l="es">Un ecosistema hotelero y residencial que responde a los m&aacute;s exigentes est&aacute;ndares internacionales, en una de las regiones vitivin&iacute;colas m&aacute;s reconocidas del mundo.</span><span data-l="en">A hotel and residential ecosystem that meets the most demanding international standards, in one of the world&rsquo;s most renowned wine regions.</span></p>
+    </div>
+    <div class="dining">
+      <article class="dish reveal"><div class="dish-img"><img src="assets/agrelo/trekking.jpg" alt="" loading="lazy" decoding="async"></div><h3><span data-l="es">Experiencias aut&eacute;nticas</span><span data-l="en">Authentic experiences</span></h3><p class="dish-p"><span data-l="es">Monta&ntilde;a, naturaleza y vi&ntilde;edos como escenario de cada d&iacute;a.</span><span data-l="en">Mountains, nature and vineyards as the setting of every day.</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/agrelo/yoga.jpg" alt="" loading="lazy" decoding="async"></div><h3><span data-l="es">Bienestar singular</span><span data-l="en">Singular wellbeing</span></h3><p class="dish-p"><span data-l="es">Circuito de wellness y espacios para reconectar frente a los Andes.</span><span data-l="en">A wellness circuit and spaces to reconnect facing the Andes.</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/agrelo/brindis.jpg" alt="" loading="lazy" decoding="async"></div><h3><span data-l="es">Gastronom&iacute;a excepcional</span><span data-l="en">Exceptional dining</span></h3><p class="dish-p"><span data-l="es">Dos restaurantes de est&aacute;ndar internacional, uno de fine dining, y cava.</span><span data-l="en">Two international-standard restaurants, one of them fine dining, and a wine cellar.</span></p></article>
+      <article class="dish reveal"><div class="dish-img"><img src="assets/agrelo/cabalgata.jpg" alt="" loading="lazy" decoding="async"></div><h3><span data-l="es">Wine &amp; horses</span><span data-l="en">Wine &amp; horses</span></h3><p class="dish-p"><span data-l="es">Cabalgatas entre vi&ntilde;edos, con el haras Casa David a un paso.</span><span data-l="en">Rides among the vineyards, with the Casa David stud farm close by.</span></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ubicacion">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Ubicaci&oacute;n privilegiada</span><span data-l="en">A privileged location</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">A 35 km de Mendoza, frente a la cordillera.</span><span data-l="en">35 km from Mendoza, facing the Andes.</span></h2>
+      <p class="txt reveal"><span data-l="es">A tan solo 35 kil&oacute;metros de la ciudad de Mendoza y a 45 minutos del Aeropuerto Internacional El Plumerillo, con vistas panor&aacute;micas al Cord&oacute;n del Plata y a la cumbre del volc&aacute;n Tupungato.</span><span data-l="en">Just 35 kilometres from the city of Mendoza and 45 minutes from El Plumerillo International Airport, with panoramic views of the Cord&oacute;n del Plata and the summit of the Tupungato volcano.</span></p>
+    </div>
+    <div class="zone">
+      <div class="map reveal"><img src="assets/agrelo/mapa.jpg" alt="Agrelo, Luj&aacute;n de Cuyo, Mendoza" loading="lazy" decoding="async"></div>
+      <dl class="facts lm reveal">
+          <div><dt>Ciudad de Mendoza</dt><dd><span data-l="es">A 35 kil&oacute;metros.</span><span data-l="en">35 kilometres away.</span></dd></div>
+          <div><dt>Aeropuerto Internacional El Plumerillo</dt><dd><span data-l="es">A 45 minutos.</span><span data-l="en">45 minutes away.</span></dd></div>
+          <div><dt>Cord&oacute;n del Plata</dt><dd><span data-l="es">Vistas panor&aacute;micas desde cada chacra.</span><span data-l="en">Panoramic views from every lot.</span></dd></div>
+          <div><dt>Volc&aacute;n Tupungato</dt><dd><span data-l="es">Su cumbre, en el horizonte.</span><span data-l="en">Its summit, on the horizon.</span></dd></div>
+          <div><dt>Luj&aacute;n de Cuyo</dt><dd><span data-l="es">Una de las regiones vitivin&iacute;colas m&aacute;s reconocidas del mundo.</span><span data-l="en">One of the world's most renowned wine regions.</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="tour">
+  <div class="wrap tour-in reveal">
+    <div>
+      <p class="eyebrow" style="color:var(--mute-d)"><span class="dot" aria-hidden="true"></span><span data-l="es">Visita privada</span><span data-l="en">Private visit</span></p>
+      <p class="tour-h"><span data-l="es">Es tiempo de vivir con el sello Duhau.</span><span data-l="en">It is time to live with the Duhau seal.</span></p>
+      <p class="tour-p"><span data-l="es">Recorre las chacras, la bodega y el futuro hotel junto a un socio de BDA, en Mendoza.</span><span data-l="en">Walk the lots, the winery and the future hotel with a BDA partner, in Mendoza.</span></p>
+    </div>
+    <a class="btn btn-p" href="#consulta" data-interest="tour"><span data-l="es">Quiero visitar el proyecto</span><span data-l="en">I want to visit the project</span> <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -401,7 +635,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
         <div class="two">
           <label><span data-l="es">Pa&iacute;s de residencia</span><span data-l="en">Country of residence</span><select name="country"><option value="">&mdash;</option><option value="Argentina" data-es="Argentina" data-en="Argentina">Argentina</option><option value="Uruguay" data-es="Uruguay" data-en="Uruguay">Uruguay</option><option value="Brasil" data-es="Brasil" data-en="Brazil">Brasil</option><option value="Chile" data-es="Chile" data-en="Chile">Chile</option><option value="M&eacute;xico" data-es="M&eacute;xico" data-en="Mexico">M&eacute;xico</option><option value="Estados Unidos" data-es="Estados Unidos" data-en="United States">Estados Unidos</option><option value="Espa&ntilde;a" data-es="Espa&ntilde;a" data-en="Spain">Espa&ntilde;a</option><option value="Otro país" data-es="Otro pa&iacute;s" data-en="Other country">Otro pa&iacute;s</option></select></label>
-          <label><span data-l="es">Me interesa</span><span data-l="en">I am interested in</span><select name="interest"><option value="">&mdash;</option><option value="Lotes" data-es="Lotes" data-en="Lots">Lotes</option><option value="Inversi&oacute;n" data-es="Inversi&oacute;n" data-en="Investment">Inversi&oacute;n</option><option value="Visitar el proyecto" data-es="Visitar el proyecto" data-en="Visit the project">Visitar el proyecto</option></select></label>
+          <label><span data-l="es">Me interesa</span><span data-l="en">I am interested in</span><select name="interest"><option value="">&mdash;</option><option value="Chacras residenciales" data-es="Chacras residenciales" data-en="Residential lots">Chacras residenciales</option><option value="Inversi&oacute;n" data-es="Inversi&oacute;n" data-en="Investment">Inversi&oacute;n</option><option value="Membresía Casa Duhau" data-es="Membres&iacute;a Casa Duhau" data-en="Casa Duhau membership">Membres&iacute;a Casa Duhau</option><option value="Visitar el proyecto" data-es="Visitar el proyecto" data-en="Visit the project">Visitar el proyecto</option></select></label>
         </div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
@@ -424,7 +658,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 <footer class="foot"><div class="wrap">
   <a class="logo" href="index.html">BDA<span class="sq" aria-hidden="true"></span></a>
   <nav><a href="legal.html#aviso"><span data-l="es">Aviso legal</span><span data-l="en">Legal notice</span></a><a href="legal.html#privacidad"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a><a href="legal.html#cookies">Cookies</a></nav>
-  <span>&copy; 2026 BDA International</span>
+  <span>&copy; 2026 BDA International<p class="disc"><span data-l="es">Im&aacute;genes ilustrativas. Informaci&oacute;n y caracter&iacute;sticas sujetas a modificaci&oacute;n.</span><span data-l="en">Illustrative images. Information and features subject to change.</span></p></span>
 </div></footer>
 
 <a class="wa-float wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg></a>
