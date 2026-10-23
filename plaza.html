@@ -168,13 +168,25 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 /* hero */
 .hero{position:relative; height:100svh; min-height:560px; background:var(--ink); color:var(--paper); overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end}
 .hero-media{position:absolute; inset:0}
-.hero-media img,.hero-media video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06) brightness(.55)}
+.hero-media img,.hero-media video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
 .hero-media .port{display:none}
 @media (orientation:portrait){ .hero-media .land{display:none} .hero-media .port{display:block} }
-.hero-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.5) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,.15) 55%, rgba(10,10,10,.85) 100%)}
-.hero-in{position:relative; z-index:2; width:100%; padding-bottom:clamp(40px, 8vh, 90px)}
-.hero h1{margin-top:22px; font-family:var(--serif); font-weight:400; font-size:clamp(52px, 9vw, 132px); line-height:.95; letter-spacing:-.005em; text-wrap:balance; max-width:14ch}
-.hero .tag{margin-top:22px; font-family:var(--serif); font-style:italic; font-size:clamp(20px, 2.3vw, 30px); color:var(--body-d)}
+.hero-scrim{position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,10,10,.78) 0%, rgba(10,10,10,.35) 55%, rgba(10,10,10,.15) 100%), linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,0) 25%, rgba(10,10,10,0) 60%, rgba(10,10,10,.8) 100%)}
+.hero-in{position:relative; z-index:2; width:100%; display:grid; grid-template-columns:1fr 380px; gap:clamp(32px, 5vw, 80px); align-items:end; padding-top:110px; padding-bottom:clamp(40px, 7vh, 80px)}
+.hero-in > *{min-width:0}
+.hero h1{margin-top:20px; font-family:var(--serif); font-weight:400; font-size:clamp(48px, 7.4vw, 112px); line-height:.95; letter-spacing:-.005em; text-wrap:balance; max-width:13ch}
+.hero .tag{margin-top:20px; font-family:var(--serif); font-style:italic; font-size:clamp(22px, 2.4vw, 32px); line-height:1.2; color:#E6E6E6}
+.points{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:10px}
+.points li{display:flex; align-items:flex-start; gap:12px; font-size:15.5px; line-height:1.45; color:#E6E6E6}
+.points li::before{content:""; flex-shrink:0; width:8px; height:8px; margin-top:7px; background:var(--accent)}
+.chip{display:inline-flex; margin-top:24px; padding:9px 14px; border:1px solid var(--accent); color:var(--accent); font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase}
+.quick{display:grid; gap:12px; padding:26px; background:rgba(255,255,255,.97); color:var(--ink); border-top:3px solid var(--accent); box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.quick .qt{font-family:var(--serif); font-size:26px; line-height:1.1}
+.quick .qs{font-size:13px; line-height:1.5; color:var(--body); margin-top:-4px}
+.quick label{gap:5px}
+.quick input[type=text],.quick input[type=tel],.quick input[type=email]{padding:12px}
+.quick .send{padding:15px 18px}
+.quick .ok-in{font-family:var(--serif); font-style:italic; font-size:20px; line-height:1.4}
 .ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:34px}
 .btn{display:inline-flex; align-items:center; gap:12px; padding:16px 22px; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transition:background .25s, color .25s, border-color .25s}
 .btn svg{width:17px; height:17px}
@@ -208,8 +220,8 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 .shot{position:relative; overflow:hidden; background:var(--paper-2); aspect-ratio:4/3; grid-column:span 2}
 .shot:nth-child(5n+1){grid-column:span 4; aspect-ratio:auto; grid-row:span 2}
 .shot:nth-child(5n+4),.shot:nth-child(5n+5){grid-column:span 3; aspect-ratio:16/9}
-.shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(.92); transform:scale(1.04); transition:filter .9s ease, transform 1.4s cubic-bezier(.2,.6,.2,1)}
-.shot:hover img{filter:none; transform:scale(1.08)}
+.shot img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.04); transition:transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.shot:hover img{transform:scale(1.08)}
 .js .shot::after{content:""; position:absolute; inset:0; background:var(--paper); transform-origin:top; transition:transform 1.4s cubic-bezier(.77,0,.18,1); transition-delay:inherit; pointer-events:none}
 .js .shot.in::after{transform:scaleY(0)}
 
@@ -221,7 +233,7 @@ button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor
 .enq h2 em{color:var(--body-d)}
 .enq .lede{margin-top:22px; font-size:15.5px; line-height:1.75; color:var(--body-d); max-width:44ch}
 .enq .alt{display:inline-flex; margin-top:28px}
-form{display:grid; gap:16px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
+form.enq-form{display:grid; gap:16px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
 form label{display:grid; gap:7px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
 form input[type=text],form input[type=tel],form input[type=email]{width:100%; min-width:0; padding:14px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:16px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0; -webkit-appearance:none; appearance:none}
 form select{width:100%; min-width:0; padding:13px 12px; border:1px solid #CFCFCF; background:var(--paper); color:var(--ink); font:15px/1.3 var(--sans); letter-spacing:0; text-transform:none; border-radius:0}
@@ -236,6 +248,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .msg{font-size:13px; line-height:1.55; color:var(--body); min-height:1px}
 .info{font-size:11px; line-height:1.55; color:var(--mute)}
 .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+.quick.enq-form{gap:12px; padding:26px}
 .ok{display:grid; gap:18px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
 .ok p{font-family:var(--serif); font-style:italic; font-size:24px; line-height:1.4}
 
@@ -270,6 +283,8 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .js .reveal.in{opacity:1; transform:none}
 
 @media (max-width:900px){
+  .hero{height:auto; min-height:100svh}
+  .hero-in{grid-template-columns:1fr; align-items:start; padding-top:96px}
   .story,.enq-grid{grid-template-columns:1fr}
   .figs-in{grid-template-columns:1fr; gap:20px}
   .figs-in.n4{grid-template-columns:1fr 1fr}
@@ -304,15 +319,15 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .arc::-webkit-scrollbar{display:none}
 .arc-track{display:flex; gap:14px; width:max-content; padding:0 max(24px, calc((100vw - 1240px) / 2 + 24px))}
 .arc-item{margin:0; flex:0 0 auto; width:clamp(240px, 26vw, 360px); scroll-snap-align:start}
-.arc-item img{width:100%; height:clamp(300px, 32vw, 440px); object-fit:cover; filter:grayscale(1) contrast(1.05); transition:filter .8s}
-.arc-item:hover img{filter:grayscale(.2)}
+.arc-item img{width:100%; height:clamp(300px, 32vw, 440px); object-fit:cover; transition:filter .8s}
+
 .arc-item figcaption{margin-top:12px; font-size:12.5px; line-height:1.55; color:var(--body-d)}
 .arc-item figcaption b{display:block; margin-bottom:4px; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
 .arc-hint{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute-d)}
 .quote{margin:clamp(56px, 8vw, 96px) 0 0; padding-left:26px; border-left:2px solid var(--accent); max-width:30ch; font-family:var(--serif); font-style:italic; font-size:clamp(26px, 3vw, 40px); line-height:1.25}
 .zone{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(28px, 5vw, 72px); align-items:start; margin-top:clamp(40px, 6vw, 70px)}
 .zone > *{min-width:0}
-.map img{width:100%; height:auto; border:1px solid var(--line); filter:grayscale(1)}
+.map img{width:100%; height:auto; border:1px solid var(--line);}
 .lm{margin-top:0}
 .lm div{grid-template-columns:1fr}
 .lm dt{font-family:var(--serif); font-size:20px; letter-spacing:0; text-transform:none; color:var(--ink)}
@@ -325,21 +340,22 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .card-t{font-family:var(--serif); font-size:24px; line-height:1.15}
 .card-p{margin-top:12px; font-size:14px; line-height:1.65; color:var(--body)}
 .res-hero{position:relative; margin-top:clamp(40px, 6vw, 70px); overflow:hidden}
-.res-hero img{width:100%; height:clamp(260px, 42vw, 560px); object-fit:cover; filter:grayscale(1); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.res-hero img{width:100%; height:clamp(260px, 42vw, 560px); object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
 .res-hero:hover img{filter:none; transform:scale(1.02)}
 .res-hero .res-cap{position:absolute; margin:0; left:18px; bottom:16px; padding:8px 12px; background:rgba(10,10,10,.72); color:var(--paper); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase}
 .types{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:14px}
 .type{background:var(--paper); padding:0 0 22px}
 .type-img{overflow:hidden; aspect-ratio:16/10}
-.type-img img{width:100%; height:100%; object-fit:cover; filter:grayscale(1); transition:filter .8s, transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.type-img img{width:100%; height:100%; object-fit:cover; transition:filter .8s, transform 1.2s cubic-bezier(.2,.6,.2,1)}
 .type:hover .type-img img{filter:none; transform:scale(1.04)}
 .type-k{margin:18px 22px 0; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
 .type-m{margin:8px 22px 0; font-family:var(--serif); font-size:clamp(28px, 2.6vw, 36px); line-height:1}
 .type-p{margin:10px 22px 0; font-size:13px; color:var(--body)}
+.type-p span[data-l]{font-weight:500}
 .credit{margin-top:22px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
 .trio{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:12px; margin-top:clamp(40px, 6vw, 70px)}
 .trio div{overflow:hidden; aspect-ratio:4/3}
-.trio img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(.9); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.trio img{width:100%; height:100%; object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
 .trio div:hover img{filter:none; transform:scale(1.04)}
 .sub{margin-top:clamp(72px, 10vw, 120px); max-width:640px}
 .sub .eyebrow{margin-bottom:18px}
@@ -347,7 +363,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .sub .txt{margin-top:16px}
 .dining{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; margin-top:clamp(36px, 5vw, 56px)}
 .dish-img{overflow:hidden; aspect-ratio:4/5}
-.dish-img img{width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(.85); transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.dish-img img{width:100%; height:100%; object-fit:cover; transition:filter .9s, transform 1.4s cubic-bezier(.2,.6,.2,1)}
 .dish:hover .dish-img img{filter:none; transform:scale(1.04)}
 .dish-k{margin-top:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
 .dish h3{margin-top:6px; font-family:var(--serif); font-weight:400; font-size:24px}
@@ -392,7 +408,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   <div class="top-r">
     <a class="back" href="index.html">&larr; <span data-l="es">BDA International</span><span data-l="en">BDA International</span></a>
     <span class="lang"><button type="button" data-lang="es" aria-pressed="true">ES</button>/<button type="button" data-lang="en" aria-pressed="false">EN</button></span>
-    <a class="top-cta" href="#consulta"><span data-l="es">Consultar</span><span data-l="en">Enquire</span></a>
+    <a class="top-cta" href="#consulta"><span data-l="es">Registrar inter&eacute;s</span><span data-l="en">Register interest</span></a>
   </div>
 </div></header>
 
@@ -401,26 +417,68 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   <div class="hero-media"><video class="land" src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="none" aria-hidden="true"></video><video class="port" src="assets/video/plaza-port.mp4" poster="assets/video/plaza-port-poster.jpg" muted playsinline loop preload="none" aria-hidden="true"></video></div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-in wrap">
-    <p class="eyebrow rise" style="color:#C9C9C9"><span class="dot" aria-hidden="true"></span><span data-l="es">Retiro, Buenos Aires</span><span data-l="en">Retiro, Buenos Aires</span></p>
-    <h1 data-split>Plaza Hotel &amp; Residences</h1>
-    <p class="tag rise d1"><span data-l="es">Un &iacute;cono que renace como branded hospitality.</span><span data-l="en">An icon, reborn as branded hospitality.</span></p>
-    <div class="ctas rise d2">
-      <a class="btn btn-p" href="#consulta"><span data-l="es">Solicitar informaci&oacute;n</span><span data-l="en">Request information</span> <span aria-hidden="true">&rarr;</span></a>
-      <a class="btn btn-o wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
+    <div>
+      <p class="eyebrow rise" style="color:#D6D6D6"><span class="dot" aria-hidden="true"></span><span data-l="es">Buenos Aires &middot; Plaza San Mart&iacute;n &middot; Est. 1909</span><span data-l="en">Buenos Aires &middot; San Mart&iacute;n Square &middot; Est. 1909</span></p>
+      <h1 data-split>Plaza Hotel &amp; Residences</h1>
+      <p class="tag rise d1"><span data-l="es">Una historia de 115 a&ntilde;os.<br>Un futuro de excepci&oacute;n.</span><span data-l="en">115 years of history.<br>An exceptional future.</span></p>
+      <ul class="points rise d1"><li><span data-l="es">55 residencias privadas, desde el tercer piso</span><span data-l="en">55 private residences, from the third floor up</span></li><li><span data-l="es">Servicios de hotel cinco estrellas a un paso de tu puerta</span><span data-l="en">Five-star hotel services a step from your door</span></li><li><span data-l="es">Frente a la Plaza San Mart&iacute;n &middot; apertura 2028</span><span data-l="en">Facing San Mart&iacute;n Square &middot; opening 2028</span></li></ul>
+      <p class="chip rise d2"><span data-l="es">Residencias desde USD 6.000 / m&sup2;</span><span data-l="en">Residences from USD 6,000 / sqm</span></p>
+      <div class="ctas rise d2">
+        <a class="btn btn-p" href="#residencias"><span data-l="es">Conocer las residencias</span><span data-l="en">Discover the residences</span> <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-o wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
+      </div>
+    </div>
+    <div class="rise d2">
+      <form class="enq-form quick" data-form="portada" novalidate>
+        <p class="qt"><span data-l="es">Registra tu inter&eacute;s</span><span data-l="en">Register your interest</span></p>
+        <p class="qs"><span data-l="es">Recibe disponibilidad, precios y planos de la mano de un socio de BDA.</span><span data-l="en">Receive availability, prices and plans from a BDA partner.</span></p>
+        <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
+        <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
+        <button class="send" type="submit"><span data-l="es">Quiero informaci&oacute;n</span><span data-l="en">Send me information</span> <span aria-hidden="true">&rarr;</span></button>
+        <p class="msg" role="status" aria-live="polite"></p>
+        <p class="info"><span data-l="es">Responsable: BDA International. Finalidad: atender tu consulta. Derechos en info@bda-realty.com. <a href="legal.html#privacidad" target="_blank" rel="noopener">M&aacute;s informaci&oacute;n</a>.</span><span data-l="en">Controller: BDA International. Purpose: to answer your enquiry. Rights at info@bda-realty.com. <a href="legal.html#privacidad" target="_blank" rel="noopener">More information</a>.</span></p>
+      </form>
+      <div class="ok quick" hidden tabindex="-1"><p class="ok-in"><span data-l="es">Gracias. Un socio de BDA te contactar&aacute; muy pronto.</span><span data-l="en">Thank you. A BDA partner will contact you very soon.</span></p></div>
     </div>
   </div>
 </section>
 
 <section class="figs">
   <div class="wrap figs-in n4">
-      <div class="fig reveal"><b>1909</b><span><span data-l="es">A&ntilde;o de fundaci&oacute;n del Plaza Hotel</span><span data-l="en">Year the Plaza Hotel was founded</span></span></div>
       <div class="fig reveal"><b>55</b><span><span data-l="es">Residencias privadas</span><span data-l="en">Private residences</span></span></div>
-      <div class="fig reveal"><b>180</b><span><span data-l="es">Habitaciones de hotel</span><span data-l="en">Hotel rooms</span></span></div>
-      <div class="fig reveal"><b>2028</b><span><span data-l="es">Reapertura prevista</span><span data-l="en">Planned reopening</span></span></div>
+      <div class="fig reveal"><b>180</b><span><span data-l="es">Habitaciones de hotel cinco estrellas</span><span data-l="en">Five-star hotel rooms</span></span></div>
+      <div class="fig reveal"><b>32.000</b><span><span data-l="es">m&sup2; totales del proyecto</span><span data-l="en">sqm in total</span></span></div>
+      <div class="fig reveal"><b>2028</b><span><span data-l="es">Apertura prevista</span><span data-l="en">Planned opening</span></span></div>
   </div>
 </section>
 
-<section class="band">
+<section class="band soft" id="residencias">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Residencias</span><span data-l="en">Residences</span></p>
+    <div class="story">
+      <h2 data-split><span data-l="es">Vivir dentro de la historia.</span><span data-l="en">Living inside history.</span></h2>
+      <p class="txt reveal"><span data-l="es">55 residencias a partir del tercer piso. La magia de un edificio centenario, con los servicios de un hotel cinco estrellas a un paso de tu puerta.</span><span data-l="en">55 residences from the third floor up. The magic of a century-old building, with five-star hotel services a step from your door.</span></p>
+    </div>
+    <div class="res-hero reveal"><img src="assets/plaza/residencias-hero.jpg" alt="" loading="lazy" decoding="async"><p class="res-cap"><span data-l="es">Residencia Patio Franc&eacute;s &middot; vista a Plaza San Mart&iacute;n</span><span data-l="en">French Courtyard Residence &middot; San Mart&iacute;n Square views</span></p></div>
+    <div class="types">
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-02.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 02</span><span data-l="en">Type 02</span></p><p class="type-m">60 &ndash; 80 m&sup2;</p><p class="type-p"><span data-l="es">Desde USD 6.000 / m&sup2;</span><span data-l="en">From USD 6,000 / sqm</span></p></article>
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-04.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 04</span><span data-l="en">Type 04</span></p><p class="type-m">100 &ndash; 140 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
+      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-patio-frances.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 06 &middot; Patio Franc&eacute;s</span><span data-l="en">Type 06 &middot; French Courtyard</span></p><p class="type-m">160 &ndash; 200 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><p class="card-t">Room service</p><p class="card-p"><span data-l="es">Los cuatro restaurantes del hotel, disponibles a domicilio.</span><span data-l="en">All four hotel restaurants, delivered to your door.</span></p></div>
+      <div class="card reveal"><p class="card-t">Concierge 24h</p><p class="card-p"><span data-l="es">Conserjer&iacute;a de nivel hotelero, las 24 horas.</span><span data-l="en">Hotel-standard concierge, 24 hours a day.</span></p></div>
+      <div class="card reveal"><p class="card-t">Spa &amp; Fitness</p><p class="card-p"><span data-l="es">Gimnasio y spa de nivel internacional, con acceso directo.</span><span data-l="en">World-class gym and spa, with direct access.</span></p></div>
+    </div>
+    <p class="credit"><span data-l="es">Renders: estudio Mart&iacute;n Zanotti Arquitecto. Im&aacute;genes ilustrativas.</span><span data-l="en">Renders: Mart&iacute;n Zanotti Architect. Illustrative images.</span></p>
+  </div>
+</section>
+
+
+<section class="band" id="proyecto">
   <div class="wrap">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">El proyecto</span><span data-l="en">The project</span></p>
     <div class="story">
@@ -504,28 +562,6 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   </div>
 </section>
 
-<section class="band soft" id="residencias">
-  <div class="wrap">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-l="es">Residencias</span><span data-l="en">Residences</span></p>
-    <div class="story">
-      <h2 data-split><span data-l="es">Vivir dentro de la historia.</span><span data-l="en">Living inside history.</span></h2>
-      <p class="txt reveal"><span data-l="es">55 residencias a partir del tercer piso. La magia de un edificio centenario, con los servicios de un hotel cinco estrellas a un paso de tu puerta.</span><span data-l="en">55 residences from the third floor up. The magic of a century-old building, with five-star hotel services a step from your door.</span></p>
-    </div>
-    <div class="res-hero reveal"><img src="assets/plaza/residencias-hero.jpg" alt="" loading="lazy" decoding="async"><p class="res-cap"><span data-l="es">Residencia Patio Franc&eacute;s &middot; vista a Plaza San Mart&iacute;n</span><span data-l="en">French Courtyard Residence &middot; San Mart&iacute;n Square views</span></p></div>
-    <div class="types">
-      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-02.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 02</span><span data-l="en">Type 02</span></p><p class="type-m">60 &ndash; 80 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
-      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-tipo-04.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 04</span><span data-l="en">Type 04</span></p><p class="type-m">100 &ndash; 140 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
-      <article class="type reveal"><div class="type-img"><img src="assets/plaza/residencia-patio-frances.jpg" alt="" loading="lazy" decoding="async"></div><p class="type-k"><span data-l="es">Tipolog&iacute;a 06 &middot; Patio Franc&eacute;s</span><span data-l="en">Type 06 &middot; French Courtyard</span></p><p class="type-m">160 &ndash; 200 m&sup2;</p><p class="type-p"><span data-l="es">Precio a consultar</span><span data-l="en">Price on request</span></p></article>
-    </div>
-    <div class="cards">
-      <div class="card reveal"><p class="card-t">Room service</p><p class="card-p"><span data-l="es">Los cuatro restaurantes del hotel, disponibles a domicilio.</span><span data-l="en">All four hotel restaurants, delivered to your door.</span></p></div>
-      <div class="card reveal"><p class="card-t">Concierge 24h</p><p class="card-p"><span data-l="es">Conserjer&iacute;a de nivel hotelero, las 24 horas.</span><span data-l="en">Hotel-standard concierge, 24 hours a day.</span></p></div>
-      <div class="card reveal"><p class="card-t">Spa &amp; Fitness</p><p class="card-p"><span data-l="es">Gimnasio y spa de nivel internacional, con acceso directo.</span><span data-l="en">World-class gym and spa, with direct access.</span></p></div>
-    </div>
-    <p class="credit"><span data-l="es">Renders: estudio Mart&iacute;n Zanotti Arquitecto. Im&aacute;genes ilustrativas.</span><span data-l="en">Renders: Mart&iacute;n Zanotti Architect. Illustrative images.</span></p>
-  </div>
-</section>
-
 <section class="band dark" id="hotel">
   <div class="wrap">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Hotel</p>
@@ -591,7 +627,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       <a class="btn btn-o wa alt" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span data-l="es">Prefiero WhatsApp</span><span data-l="en">I prefer WhatsApp</span></a>
     </div>
     <div>
-      <form id="enq" novalidate>
+      <form class="enq-form" data-form="consulta" novalidate>
         <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
         <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
@@ -601,11 +637,11 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
         </div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
-        <button class="send" type="submit" id="send"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
-        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        <button class="send" type="submit"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
+        <p class="msg" role="status" aria-live="polite"></p>
         <p class="info"><span data-l="es">Responsable: BDA International. Finalidad: atender tu consulta. Legitimaci&oacute;n: tu consentimiento. Destinatarios: proveedores tecnol&oacute;gicos (Vercel, FormSubmit). Derechos: acceso, rectificaci&oacute;n, supresi&oacute;n y dem&aacute;s, en info@bda-realty.com. M&aacute;s informaci&oacute;n en la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">Controller: BDA International. Purpose: to answer your enquiry. Legal basis: your consent. Recipients: technology providers (Vercel, FormSubmit). Rights: access, rectification, erasure and others, at info@bda-realty.com. More information in the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></p>
       </form>
-      <div class="ok" id="ok" hidden tabindex="-1">
+      <div class="ok" hidden tabindex="-1">
         <p><span data-l="es">Gracias. Hemos recibido tu consulta y te contactaremos pronto.</span><span data-l="en">Thank you. We have received your enquiry and will be in touch shortly.</span></p>
         <a class="btn btn-p wa" href="https://wa.me/5491144401551" target="_blank" rel="noopener" style="background:var(--ink); color:var(--paper)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span data-l="es">Escr&iacute;benos por WhatsApp</span><span data-l="en">Message us on WhatsApp</span></a>
       </div>
@@ -695,7 +731,6 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   function origin(){ var o = {}; TAGS.forEach(function(k){ var v = qp.get(k); if(v) o[k] = v.slice(0, 200); }); return o; }
 
   /* enquiry: email to info@bda-realty.com through FormSubmit, plus HubSpot when configured */
-  var form = document.getElementById('enq'), msg = document.getElementById('msg'), send = document.getElementById('send');
   var T = {
     es: {req:'Completa nombre, tel&eacute;fono y un email v&aacute;lido.', chk:'Acepta la Pol&iacute;tica de privacidad para enviar tu consulta.', wait:'Enviando&hellip;', err:'Hubo un problema con el env&iacute;o. Escr&iacute;benos a info@bda-realty.com o por WhatsApp.'},
     en: {req:'Please fill in name, phone and a valid email.', chk:'Please accept the Privacy policy to send your enquiry.', wait:'Sending&hellip;', err:'Something went wrong with the sending. Please write to info@bda-realty.com or on WhatsApp.'}
@@ -704,7 +739,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
     var o = d.origin, src = Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' &middot; ') : 'Directo / sin campaña';
     return fetch('https://formsubmit.co/ajax/info@bda-realty.com', {
       method:'POST', headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
+      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Formulario: d.form, Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
     }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('mail'); }); });
   }
   function toHubSpot(d){
@@ -723,18 +758,21 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
         legalConsentOptions: { consent: { consentToProcess: true, text: 'Acepta la Política de privacidad de BDA International.' } } })
     }).then(function(r){ if(!r.ok) throw new Error('hs'); });
   }
+  document.querySelectorAll('form.enq-form').forEach(function(form){
+  var msg = form.querySelector('.msg'), send = form.querySelector('.send'), ok = form.nextElementSibling;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), country: form.country.value, interest: form.interest.value, origin: origin() };
+    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), country: form.country ? form.country.value : '', interest: form.interest ? form.interest.value : '', form: form.getAttribute('data-form'), origin: origin() };
     if(!d.name || !d.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){ msg.innerHTML = T[lang].req; return; }
     if(!form.ok.checked){ msg.innerHTML = T[lang].chk; return; }
     if(form._honey.value) return;
     send.disabled = true; msg.innerHTML = T[lang].wait;
     var tries = [toEmail(d), toHubSpot(d)].map(function(p){ return p.then(function(){ return true; }, function(){ return false; }); });
     Promise.all(tries).then(function(r){
-      if(r[0] || (r[1] && CFG.hs.portalId)){ msg.textContent = ''; form.hidden = true; document.getElementById('ok').hidden = false; document.getElementById('ok').focus(); }
+      if(r[0] || (r[1] && CFG.hs.portalId)){ msg.textContent = ''; form.hidden = true; ok.hidden = false; ok.focus(); }
       else { send.disabled = false; msg.innerHTML = T[lang].err; }
     });
+  });
   });
 })();
 </script>
