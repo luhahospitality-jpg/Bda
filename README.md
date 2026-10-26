@@ -14,3 +14,6 @@ New Project → import this repository → Framework preset: **Other** → Deplo
 WhatsApp numbers and LinkedIn URLs per person are set in the team cards (`wa.me/...` and LinkedIn links). Missing ones render as a dimmed icon.
 
 Publicación: www.bda-realty.com (LatinCloud, rama main). Respaldo de la web anterior: rama web-vieja.
+
+
+Deploy automático LatinCloud activado (2026-10-26).
