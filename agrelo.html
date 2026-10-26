@@ -331,6 +331,33 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .zone{display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(28px, 5vw, 72px); align-items:start; margin-top:clamp(40px, 6vw, 70px)}
 .zone > *{min-width:0}
 .map img{width:100%; height:auto; border:1px solid var(--line);}
+.imap{position:relative; border:1px solid var(--line)}
+.imap img{display:block; border:0; filter:grayscale(1) contrast(1.06)}
+.imap-svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+.hs{cursor:pointer}
+.hs .area{fill:var(--accent); fill-opacity:0; stroke:var(--accent); stroke-width:3; stroke-opacity:0; mix-blend-mode:multiply; transition:fill-opacity .35s, stroke-opacity .35s}
+.hs .lab{fill:var(--accent); opacity:0; mix-blend-mode:multiply; transition:opacity .35s}
+.hs .pt{fill:var(--accent); stroke:var(--ink); stroke-width:3; opacity:0; transition:opacity .35s}
+.hs .edge{fill:var(--accent); stroke:var(--ink); stroke-width:3; opacity:0; transition:opacity .35s}
+.hs.on .area{fill-opacity:.5; stroke-opacity:1}
+.hs.on .lab, .hs.on .pt, .hs.on .edge{opacity:1}
+.hs.home{transform-box:view-box; transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.hs.home.on{transform:scale(1.6)}
+.hs .tag{fill:var(--accent)}
+.hs .pin{fill:var(--accent); stroke:var(--ink); stroke-width:3}
+.hs .ring{fill:var(--accent); fill-opacity:.18; stroke:var(--accent); stroke-width:3}
+.hs text{font-family:var(--sans); font-size:17px; letter-spacing:.02em; fill:var(--ink); pointer-events:none}
+.hs.zn .col{opacity:0; transition:opacity .45s}
+.hs.zn .area{stroke-width:4; mix-blend-mode:normal}
+.hs.zn.on .col{opacity:1}
+.hs.zn.on .area{fill-opacity:.16; stroke-opacity:1}
+[data-cur="all"] .hs.zn .area{stroke-opacity:.9}
+.lm div[data-k]{cursor:pointer; padding-left:18px; transition:background .3s}
+.lm div[data-k]::before{content:""; position:absolute; left:0; top:19px; width:8px; height:8px; background:var(--line); transition:background .3s, transform .3s}
+.lm div[data-k].home::before, .lm div[data-k].on::before{background:var(--accent)}
+.lm div[data-k].on::before{transform:scale(1.4)}
+.lm div[data-k].on dt{text-decoration:underline; text-decoration-color:var(--accent); text-decoration-thickness:3px; text-underline-offset:5px}
+.lm div[data-k]:focus-visible{outline-offset:-2px}
 .lm{margin-top:0}
 .lm div{grid-template-columns:1fr}
 .lm dt{font-family:var(--serif); font-size:20px; letter-spacing:0; text-transform:none; color:var(--ink)}
@@ -387,6 +414,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 @media (max-width:900px){
   .tls{grid-template-columns:1fr 1fr}
   .zone{grid-template-columns:1fr}
+  .zone[data-imap] .imap{position:sticky; top:calc(68px + env(safe-area-inset-top, 0px)); z-index:5; background:var(--paper); box-shadow:0 10px 24px -18px rgba(0,0,0,.35)}
   .cards,.types{grid-template-columns:1fr}
   .trio{grid-template-columns:1fr 1fr} .trio div:first-child{grid-column:1 / -1}
   .dining{grid-template-columns:1fr 1fr}
@@ -409,7 +437,8 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .mp-tab{padding:9px 13px; border:1px solid var(--line); font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--body); transition:background .25s, color .25s, border-color .25s}
 .mp-tab:hover{border-color:var(--ink)}
 .mp-tab.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
-.mp-img img{width:100%; height:auto; transition:opacity .2s}
+.mp-img img{width:100%; height:auto}
+.mp-img.imap{border:0}
 .mp-own{margin-top:clamp(48px, 7vw, 80px); font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute)}
 .feat2{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px, 3vw, 40px); margin-top:30px}
 .f2-img{overflow:hidden; aspect-ratio:1000/820}
@@ -486,9 +515,16 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       <p class="txt reveal"><span data-l="es">Un exclusivo desarrollo de chacras premium en un predio de 88 hect&aacute;reas, con lotes de entre 5.000 y 10.000 m&sup2; y vistas al Cord&oacute;n del Plata y al volc&aacute;n Tupungato.</span><span data-l="en">An exclusive development of premium country lots on an 88-hectare estate, with plots of 5,000 to 10,000 sqm and views of the Cord&oacute;n del Plata and the Tupungato volcano.</span></p>
     </div>
     <div class="res-hero reveal"><img src="assets/agrelo/lotes-aereo.webp" alt="" loading="lazy" decoding="async"><p class="res-cap"><span data-l="es">Chacras premium &middot; 5.000 a 10.000 m&sup2;</span><span data-l="en">Premium lots &middot; 5,000 to 10,000 sqm</span></p></div>
-    <div class="mp reveal">
-      <div class="mp-head"><p class="mp-t">Masterplan</p><div class="mp-tabs" role="group" aria-label="Masterplan"><button type="button" class="mp-tab on" data-src="assets/agrelo/mp-general.webp" aria-pressed="true"><span data-l="es">Vista general</span><span data-l="en">Overview</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-lotes.webp" aria-pressed="false"><span data-l="es">Lotes residenciales</span><span data-l="en">Residential lots</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-duhau.webp" aria-pressed="false"><span data-l="es">Casa Duhau</span><span data-l="en">Casa Duhau</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-bodega.webp" aria-pressed="false"><span data-l="es">Bodega Agrelia</span><span data-l="en">Bodega Agrelia</span></button><button type="button" class="mp-tab" data-src="assets/agrelo/mp-david.webp" aria-pressed="false"><span data-l="es">Casa David</span><span data-l="en">Casa David</span></button></div></div>
-      <div class="mp-img"><img src="assets/agrelo/mp-general.webp" alt="Masterplan Reserva Alto Agrelo" loading="lazy" decoding="async"></div>
+    <div class="mp reveal" data-imap data-default="all">
+      <div class="mp-head"><p class="mp-t">Masterplan</p><div class="mp-tabs" role="group" aria-label="Masterplan"><button type="button" class="mp-tab" data-k="all" aria-pressed="false"><span data-l="es">Vista general</span><span data-l="en">Overview</span></button><button type="button" class="mp-tab" data-k="lotes" aria-pressed="false"><span data-l="es">Lotes residenciales</span><span data-l="en">Residential lots</span></button><button type="button" class="mp-tab" data-k="duhau" aria-pressed="false"><span data-l="es">Casa Duhau</span><span data-l="en">Casa Duhau</span></button><button type="button" class="mp-tab" data-k="bodega" aria-pressed="false"><span data-l="es">Bodega Agrelia</span><span data-l="en">Bodega Agrelia</span></button><button type="button" class="mp-tab" data-k="david" aria-pressed="false"><span data-l="es">Casa David &middot; Club ecuestre</span><span data-l="en">Casa David &middot; Equestrian club</span></button></div></div>
+      <div class="mp-img imap"><img src="assets/agrelo/mp-general.webp" alt="Masterplan Reserva Alto Agrelo" loading="lazy" decoding="async">
+        <svg class="imap-svg" viewBox="0 0 1557 659" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="mpc-lotes"><polygon points="193,43 985,43 985,222 690,255 612,378 95,378"/></clipPath><clipPath id="mpc-duhau"><polygon points="1060,100 1453,100 1278,378 1048,378"/></clipPath><clipPath id="mpc-bodega"><polygon points="858,292 1020,292 1006,378 876,378"/></clipPath><clipPath id="mpc-david"><polygon points="100,378 1172,378 1286,344 1132,543 48,543"/></clipPath></defs>
+          <g class="hs zn" data-k="lotes"><image href="assets/agrelo/mp-general.webp" width="1557" height="659" clip-path="url(#mpc-lotes)" class="col"/><polygon class="area" points="193,43 985,43 985,222 690,255 612,378 95,378"/></g>
+          <g class="hs zn" data-k="duhau"><image href="assets/agrelo/mp-general.webp" width="1557" height="659" clip-path="url(#mpc-duhau)" class="col"/><polygon class="area" points="1060,100 1453,100 1278,378 1048,378"/></g>
+          <g class="hs zn" data-k="bodega"><image href="assets/agrelo/mp-general.webp" width="1557" height="659" clip-path="url(#mpc-bodega)" class="col"/><polygon class="area" points="858,292 1020,292 1006,378 876,378"/></g>
+          <g class="hs zn" data-k="david"><image href="assets/agrelo/mp-general.webp" width="1557" height="659" clip-path="url(#mpc-david)" class="col"/><polygon class="area" points="100,378 1172,378 1286,344 1132,543 48,543"/></g>
+        </svg>
+      </div>
     </div>
     <p class="mp-own"><span data-l="es">Ser propietario incluye</span><span data-l="en">Ownership includes</span></p>
     <div class="cards" style="margin-top:22px">
@@ -498,17 +534,6 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
     </div>
     <p class="credit"><span data-l="es">Im&aacute;genes ilustrativas. Fuente: Reserva Alto Agrelo.</span><span data-l="en">Illustrative images. Source: Reserva Alto Agrelo.</span></p>
   </div>
-  <script>
-  (function(){
-    var box = document.querySelector('.mp-img img');
-    document.querySelectorAll('.mp-tab').forEach(function(b){
-      b.addEventListener('click', function(){
-        document.querySelectorAll('.mp-tab').forEach(function(x){ x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        box.style.opacity = 0; setTimeout(function(){ box.src = b.getAttribute('data-src'); box.style.opacity = 1; }, 200);
-      });
-    });
-  })();
-  </script>
 </section>
 
 
@@ -599,14 +624,24 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       <h2 data-split><span data-l="es">A 35 km de Mendoza, frente a la cordillera.</span><span data-l="en">35 km from Mendoza, facing the Andes.</span></h2>
       <p class="txt reveal"><span data-l="es">A tan solo 35 kil&oacute;metros de la ciudad de Mendoza y a 45 minutos del Aeropuerto Internacional El Plumerillo, con vistas panor&aacute;micas al Cord&oacute;n del Plata y a la cumbre del volc&aacute;n Tupungato.</span><span data-l="en">Just 35 kilometres from the city of Mendoza and 45 minutes from El Plumerillo International Airport, with panoramic views of the Cord&oacute;n del Plata and the summit of the Tupungato volcano.</span></p>
     </div>
-    <div class="zone">
-      <div class="map reveal"><img src="assets/agrelo/mapa.webp" alt="Agrelo, Luj&aacute;n de Cuyo, Mendoza" loading="lazy" decoding="async"></div>
+    <div class="zone" data-imap>
+      <div class="map imap reveal"><img src="assets/agrelo/mapa.webp" alt="Agrelo, Luj&aacute;n de Cuyo, Mendoza" loading="lazy" decoding="async">
+        <svg class="imap-svg" viewBox="0 0 1600 853" preserveAspectRatio="none" aria-hidden="true">
+          <g class="hs" data-k="mendoza"><rect class="lab" x="872" y="90" width="108" height="30"/></g>
+          <g class="hs" data-k="lujan"><rect class="lab" x="779" y="354" width="118" height="27"/></g>
+          <g class="hs" data-k="aeropuerto"><polygon class="edge" points="920,92 960,28 1000,92"/></g>
+          <g class="hs" data-k="cordon"><polygon class="edge" points="100,130 36,170 100,210"/></g>
+          <g class="hs" data-k="tupungato"><polygon class="edge" points="36,818 44,742 112,808"/></g>
+          <g class="hs home" data-k="agrelo" style="transform-origin:658px 742px"><circle class="ring" cx="658" cy="742" r="62"/><rect class="tag" x="728" y="728" width="210" height="28"/><text x="833" y="748" text-anchor="middle">Reserva Alto Agrelo</text><rect class="pin" x="647" y="731" width="22" height="22"/></g>
+        </svg>
+      </div>
       <dl class="facts lm reveal">
-          <div><dt>Ciudad de Mendoza</dt><dd><span data-l="es">A 35 kil&oacute;metros.</span><span data-l="en">35 kilometres away.</span></dd></div>
-          <div><dt>Aeropuerto Internacional El Plumerillo</dt><dd><span data-l="es">A 45 minutos.</span><span data-l="en">45 minutes away.</span></dd></div>
-          <div><dt>Cord&oacute;n del Plata</dt><dd><span data-l="es">Vistas panor&aacute;micas desde cada chacra.</span><span data-l="en">Panoramic views from every lot.</span></dd></div>
-          <div><dt>Volc&aacute;n Tupungato</dt><dd><span data-l="es">Su cumbre, en el horizonte.</span><span data-l="en">Its summit, on the horizon.</span></dd></div>
-          <div><dt>Luj&aacute;n de Cuyo</dt><dd><span data-l="es">Una de las regiones vitivin&iacute;colas m&aacute;s reconocidas del mundo.</span><span data-l="en">One of the world's most renowned wine regions.</span></dd></div>
+          <div class="home" data-k="agrelo" tabindex="0" role="button"><dt>Reserva Alto Agrelo</dt><dd><span data-l="es">Luj&aacute;n de Cuyo, entre vi&ntilde;edos y frente a la cordillera.</span><span data-l="en">Luj&aacute;n de Cuyo, among the vineyards and facing the Andes.</span></dd></div>
+          <div class="" data-k="mendoza" tabindex="0" role="button"><dt>Ciudad de Mendoza</dt><dd><span data-l="es">A 35 kil&oacute;metros.</span><span data-l="en">35 kilometres away.</span></dd></div>
+          <div class="" data-k="aeropuerto" tabindex="0" role="button"><dt>Aeropuerto Internacional El Plumerillo</dt><dd><span data-l="es">A 45 minutos.</span><span data-l="en">45 minutes away.</span></dd></div>
+          <div class="" data-k="cordon" tabindex="0" role="button"><dt>Cord&oacute;n del Plata</dt><dd><span data-l="es">Vistas panor&aacute;micas desde cada chacra.</span><span data-l="en">Panoramic views from every lot.</span></dd></div>
+          <div class="" data-k="tupungato" tabindex="0" role="button"><dt>Volc&aacute;n Tupungato</dt><dd><span data-l="es">Su cumbre, en el horizonte.</span><span data-l="en">Its summit, on the horizon.</span></dd></div>
+          <div class="" data-k="lujan" tabindex="0" role="button"><dt>Luj&aacute;n de Cuyo</dt><dd><span data-l="es">Una de las regiones vitivin&iacute;colas m&aacute;s reconocidas del mundo.</span><span data-l="en">One of the world's most renowned wine regions.</span></dd></div>
       </dl>
     </div>
   </div>
@@ -714,6 +749,23 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   /* reveals */
   var io = 'IntersectionObserver' in window && !reduce ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:.08}) : null;
   document.querySelectorAll('.reveal, .shot').forEach(function(el, i){ if(!io) el.classList.add('in'); else { el.style.transitionDelay = (el.classList.contains('shot') ? (i % 3) * .1 : 0) + 's'; io.observe(el); } });
+
+  /* interactive maps: a row of the list and its spot on the map light up together; hover previews, a tap keeps it */
+  document.querySelectorAll('[data-imap]').forEach(function(root){
+    var els = [].slice.call(root.querySelectorAll('[data-k]')), base = root.getAttribute('data-default') || null, pick = base, hover = null;
+    function paint(){
+      var k = hover || pick; root.setAttribute('data-cur', k || '');
+      els.forEach(function(el){ var on = el.getAttribute('data-k') === k; el.classList.toggle('on', on); if(el.hasAttribute('aria-pressed')) el.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    }
+    els.forEach(function(el){
+      var k = el.getAttribute('data-k');
+      el.addEventListener('mouseenter', function(e){ if(e.pointerType !== 'touch'){ hover = k; paint(); } });
+      el.addEventListener('mouseleave', function(){ hover = null; paint(); });
+      el.addEventListener('click', function(){ pick = pick === k ? base : k; hover = null; paint(); });
+      el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); el.click(); } });
+    });
+    paint();
+  });
 
   /* lightbox */
   var shots = [].slice.call(document.querySelectorAll('.shot')), lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), li = 0, lbFrom = null;
