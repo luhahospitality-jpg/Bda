@@ -639,7 +639,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
         <button class="send" type="submit"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
         <p class="msg" role="status" aria-live="polite"></p>
-        <p class="info"><span data-l="es">Responsable: BDA International. Finalidad: atender tu consulta. Legitimaci&oacute;n: tu consentimiento. Destinatarios: proveedores tecnol&oacute;gicos (LatinCloud, FormSubmit). Derechos: acceso, rectificaci&oacute;n, supresi&oacute;n y dem&aacute;s, en info@bda-realty.com. M&aacute;s informaci&oacute;n en la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">Controller: BDA International. Purpose: to answer your enquiry. Legal basis: your consent. Recipients: technology providers (LatinCloud, FormSubmit). Rights: access, rectification, erasure and others, at info@bda-realty.com. More information in the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></p>
+        <p class="info"><span data-l="es">Responsable: BDA International. Finalidad: atender tu consulta. Legitimaci&oacute;n: tu consentimiento. Destinatarios: proveedores tecnol&oacute;gicos (LatinCloud, HubSpot, FormSubmit). Derechos: acceso, rectificaci&oacute;n, supresi&oacute;n y dem&aacute;s, en info@bda-realty.com. M&aacute;s informaci&oacute;n en la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">Controller: BDA International. Purpose: to answer your enquiry. Legal basis: your consent. Recipients: technology providers (LatinCloud, HubSpot, FormSubmit). Rights: access, rectification, erasure and others, at info@bda-realty.com. More information in the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></p>
       </form>
       <div class="ok" hidden tabindex="-1">
         <p><span data-l="es">Gracias. Hemos recibido tu consulta y te contactaremos pronto.</span><span data-l="en">Thank you. We have received your enquiry and will be in touch shortly.</span></p>
@@ -674,7 +674,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 (function(){
   var doc = document.documentElement; doc.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CFG = {"name": "Plaza Hotel & Residences", "plain": "Plaza Hotel & Residences", "hs": {"portalId": "", "formId": ""}};
+  var CFG = {"name": "Plaza Hotel & Residences", "plain": "Plaza Hotel & Residences", "hs": {"portalId": "149609961", "formId": "74b497d6-2170-4056-a4cf-08eae1e4a6f7"}};
   var lang = 'es';
   function setLang(l){
     lang = l; doc.lang = l;
@@ -744,15 +744,16 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   }
   function toHubSpot(d){
     if(!CFG.hs.portalId || !CFG.hs.formId) return Promise.resolve('off');
-    var parts = d.name.split(/\s+/), fields = [
+    var o = d.origin, parts = d.name.split(/\s+/), note = [
+      'Proyecto: ' + CFG.plain, 'Interés: ' + (d.interest || '-'), 'País: ' + (d.country || '-'), 'Idioma: ' + lang.toUpperCase(),
+      'Formulario: ' + d.form, 'Origen: ' + (Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' · ') : 'Directo / sin campaña'),
+      'Página: ' + location.origin + location.pathname
+    ], fields = [
       {name:'firstname', value: parts.shift()}, {name:'lastname', value: parts.join(' ')},
-      {name:'phone', value: d.phone}, {name:'email', value: d.email},
-      {name:'proyecto_de_interes', value: CFG.plain}, {name:'idioma_web', value: lang.toUpperCase()}
+      {name:'email', value: d.email}, {name:'phone', value: d.phone}, {name:'message', value: note.join('\n')}
     ];
     if(d.country) fields.push({name:'country', value: d.country});
-    if(d.interest) fields.push({name:'interes_principal', value: d.interest});
-    Object.keys(d.origin).forEach(function(k){ fields.push({name: k, value: d.origin[k]}); });
-    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + CFG.hs.portalId + '/' + CFG.hs.formId, {
+    return fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + CFG.hs.portalId + '/' + CFG.hs.formId, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title },
         legalConsentOptions: { consent: { consentToProcess: true, text: 'Acepta la Política de privacidad de BDA International.' } } })
