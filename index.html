@@ -22,7 +22,12 @@
 <meta name="twitter:description" content="Branded sales y sales experience para branded residences en LatAm, Espa&ntilde;a y Miami.">
 <meta name="twitter:image" content="https://www.bda-realty.com/assets/og/bda-1.jpg">
 <link rel="canonical" href="https://www.bda-realty.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Crect x='42' y='42' width='10' height='10' fill='%2393D6ED'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="assets/video/plaza-poster.webp" media="(orientation: landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/video/plaza-port-poster.webp" media="(orientation: portrait)" fetchpriority="high">
 <style>@font-face {
   font-family: 'IBM Plex Mono';
   font-style: normal;
@@ -632,9 +637,9 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
 
 <section class="hero" id="inicio" aria-label="BDA International">
   <div class="hero-media">
-      <figure class="slide on" data-i="0" data-dur="14000"><video class="land" src="assets/video/plaza.mp4" poster="assets/video/plaza-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video><video class="port" src="assets/video/plaza-port.mp4" poster="assets/video/plaza-port-poster.jpg" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires"></video></figure>
-      <figure class="slide" data-i="1" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/agrelo-port.jpg"><img src="assets/hero/agrelo-land.jpg" alt="Reserva Alto Agrelo, Mendoza, Argentina" style="object-position:55% 45%"></picture></figure>
-      <figure class="slide" data-i="2" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/alvear-port.jpg"><img src="assets/hero/alvear-land.jpg" alt="Alvear Tower, Puerto Madero, Buenos Aires" style="object-position:62% 45%"></picture></figure>
+      <figure class="slide on" data-i="0" data-dur="14000"><video class="land" src="assets/video/plaza-hero-1.mp4" poster="assets/video/plaza-poster.webp" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires" style="object-position:50% 50%"></video><video class="port" src="assets/video/plaza-port-2.mp4" poster="assets/video/plaza-port-poster.webp" muted playsinline loop preload="metadata" aria-label="Plaza Hotel &amp; Residences, Retiro, Buenos Aires"></video></figure>
+      <figure class="slide" data-i="1" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/agrelo-port.webp"><img src="assets/hero/agrelo-land.webp" fetchpriority="low" alt="Reserva Alto Agrelo, Mendoza, Argentina" style="object-position:55% 45%"></picture></figure>
+      <figure class="slide" data-i="2" data-dur="7000"><picture><source media="(orientation: portrait)" srcset="assets/hero/alvear-port.webp"><img src="assets/hero/alvear-land.webp" fetchpriority="low" alt="Alvear Tower, Puerto Madero, Buenos Aires" style="object-position:62% 45%"></picture></figure>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-in wrap">
@@ -657,7 +662,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
     <h2 class="h-lg" data-split data-i18n="proj_h">Direcci&oacute;n Estrat&eacute;gica Comercial y Experiencia de Ventas</h2>
     <div class="pfeat">
       <div class="pwrap big reveal"><button class="pcard big" type="button" data-project="2">
-          <span class="pimg"><img src="assets/projects/plaza-1.jpg" alt="Plaza Hotel &amp; Residences" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/plaza-1.webp" alt="Plaza Hotel &amp; Residences" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_plaza">Retiro, Buenos Aires</span>
             <span class="pname2">Plaza Hotel &amp; Residences</span>
@@ -667,7 +672,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
         <button class="enq-open" type="button" data-enq="2"><span data-i18n="enq_open">Consultar</span><span aria-hidden="true">&rarr;</span></button>
       </div>
       <div class="pwrap big reveal"><button class="pcard big" type="button" data-project="3">
-          <span class="pimg"><img src="assets/projects/agrelo-1.jpg" alt="Reserva Alto Agrelo" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/agrelo-1.webp" alt="Reserva Alto Agrelo" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_alto-agrelo">Mendoza, Argentina</span>
             <span class="pname2">Reserva Alto Agrelo</span>
@@ -679,7 +684,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
     </div>
     <div class="psmall">
       <div class="pwrap small reveal"><button class="pcard small" type="button" data-project="0">
-          <span class="pimg"><img src="assets/projects/alvear-tower-1.jpg" alt="Alvear Tower" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/alvear-tower-1.webp" alt="Alvear Tower" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_alvear-tower">Puerto Madero, Buenos Aires</span>
             <span class="pname2">Alvear Tower</span>
@@ -687,7 +692,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
           </span>
         </button></div>
       <div class="pwrap small reveal"><button class="pcard small" type="button" data-project="1">
-          <span class="pimg"><img src="assets/projects/alvear-icon-1.jpg" alt="Alvear Icon Hotel &amp; Residences" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/alvear-icon-1.webp" alt="Alvear Icon Hotel &amp; Residences" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_alvear-icon">Puerto Madero, Buenos Aires</span>
             <span class="pname2">Alvear Icon Hotel &amp; Residences</span>
@@ -695,7 +700,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
           </span>
         </button></div>
       <div class="pwrap small reveal"><button class="pcard small" type="button" data-project="4">
-          <span class="pimg"><img src="assets/projects/sls-puerto-madero-1.jpg" alt="SLS Puerto Madero" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/sls-puerto-madero-1.webp" alt="SLS Puerto Madero" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_sls-puerto-madero">Puerto Madero, Buenos Aires</span>
             <span class="pname2">SLS Puerto Madero</span>
@@ -703,7 +708,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
           </span>
         </button></div>
       <div class="pwrap small reveal"><button class="pcard small" type="button" data-project="5">
-          <span class="pimg"><img src="assets/projects/sls-madrid-1.jpg" alt="SLS Madrid Infantas Residences" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/sls-madrid-1.webp" alt="SLS Madrid Infantas Residences" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_sls-madrid">Justicia, Madrid</span>
             <span class="pname2">SLS Madrid Infantas Residences</span>
@@ -711,7 +716,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
           </span>
         </button></div>
       <div class="pwrap small reveal"><button class="pcard small" type="button" data-project="6">
-          <span class="pimg"><img src="assets/projects/banyan-tree-madrid-1.jpg" alt="Banyan Tree Madrid Residences" loading="lazy"></span>
+          <span class="pimg"><img src="assets/projects/banyan-tree-madrid-1.webp" alt="Banyan Tree Madrid Residences" loading="lazy"></span>
           <span class="pmeta">
             <span class="ploc" data-i18n="loc_banyan-tree-madrid">Salamanca, Madrid</span>
             <span class="pname2">Banyan Tree Madrid Residences</span>
@@ -746,28 +751,28 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
     <h2 class="h-lg" data-split data-i18n="team_h">D&eacute;cadas de experiencia complementaria &mdash; estrategia comercial, negociaci&oacute;n, an&aacute;lisis y hospitality.</h2>
     <div class="people">
       <article class="person reveal">
-        <div class="ph"><img class="bw" src="assets/team/ricardo-3-bw.jpg" alt="Ricardo Fern&aacute;ndez" loading="lazy"><img class="col" src="assets/team/ricardo-3.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+        <div class="ph"><img class="bw" src="assets/team/ricardo-3-bw.webp" alt="Ricardo Fern&aacute;ndez" loading="lazy"><img class="col" src="assets/team/ricardo-3.webp" alt="" aria-hidden="true" loading="lazy"></div>
         <h3 class="pname">Ricardo Fern&aacute;ndez</h3>
         <p class="prole" data-i18n="role_ricardo">Socio Fundador</p>
         <p class="pbio" data-i18n="bio_ricardo">M&aacute;s de 30 a&ntilde;os en estrategia residencial y comercial de lujo &mdash; lider&oacute; la Direcci&oacute;n Comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos premium.</p>
         <div class="contacts"><a class="clink" href="https://wa.me/5491132092671" target="_blank" rel="noopener" aria-label="WhatsApp &mdash; Ricardo Fern&aacute;ndez"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg></a><a class="clink" href="https://www.linkedin.com/in/richie-fernandez-873a01a1" target="_blank" rel="noopener" aria-label="LinkedIn &mdash; Ricardo Fern&aacute;ndez"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05a4.2 4.2 0 0 1 3.75-2c4 0 4.75 2.6 4.75 6v5.5h-4v-4.9c0-1.2 0-2.7-1.65-2.7s-1.9 1.3-1.9 2.6v5h-4v-11Z"/></svg></a></div>
       </article>
       <article class="person reveal">
-        <div class="ph"><img class="bw" src="assets/team/marcelo-5-bw.jpg" alt="Marcelo Cusmai" loading="lazy"><img class="col" src="assets/team/marcelo-5.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+        <div class="ph"><img class="bw" src="assets/team/marcelo-5-bw.webp" alt="Marcelo Cusmai" loading="lazy"><img class="col" src="assets/team/marcelo-5.webp" alt="" aria-hidden="true" loading="lazy"></div>
         <h3 class="pname">Marcelo Cusmai</h3>
         <p class="prole" data-i18n="role_marcelo">Socio Fundador</p>
         <p class="pbio" data-i18n="bio_marcelo">M&aacute;s de 30 a&ntilde;os en real estate y estructuraci&oacute;n de contratos &mdash; lider&oacute; los marcos de negociaci&oacute;n comercial de Alvear Tower, SLS Puerto Madero y m&aacute;s de 20 desarrollos internacionales.</p>
         <div class="contacts"><a class="clink" href="https://wa.me/5491144401551" target="_blank" rel="noopener" aria-label="WhatsApp &mdash; Marcelo Cusmai"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg></a><span class="clink pending" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05a4.2 4.2 0 0 1 3.75-2c4 0 4.75 2.6 4.75 6v5.5h-4v-4.9c0-1.2 0-2.7-1.65-2.7s-1.9 1.3-1.9 2.6v5h-4v-11Z"/></svg></span></div>
       </article>
       <article class="person reveal">
-        <div class="ph"><img class="bw" src="assets/team/emiliano-4-bw.jpg" alt="Emiliano Solar Arias" loading="lazy"><img class="col" src="assets/team/emiliano-4.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+        <div class="ph"><img class="bw" src="assets/team/emiliano-4-bw.webp" alt="Emiliano Solar Arias" loading="lazy"><img class="col" src="assets/team/emiliano-4.webp" alt="" aria-hidden="true" loading="lazy"></div>
         <h3 class="pname">Emiliano Solar Arias</h3>
         <p class="prole" data-i18n="role_emiliano">Socio Internacional</p>
         <p class="pbio" data-i18n="bio_emiliano">Trayectoria en estrategia comercial y anal&iacute;tica aplicada &mdash; ha liderado la venta de proyectos internacionales, con business plans, modelos de absorci&oacute;n y forecasting que convierten datos en decisiones.</p>
         <div class="contacts"><a class="clink" href="https://wa.me/34634059258" target="_blank" rel="noopener" aria-label="WhatsApp &mdash; Emiliano Solar Arias"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg></a><a class="clink" href="https://www.linkedin.com/in/emilianosolar" target="_blank" rel="noopener" aria-label="LinkedIn &mdash; Emiliano Solar Arias"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05a4.2 4.2 0 0 1 3.75-2c4 0 4.75 2.6 4.75 6v5.5h-4v-4.9c0-1.2 0-2.7-1.65-2.7s-1.9 1.3-1.9 2.6v5h-4v-11Z"/></svg></a></div>
       </article>
       <article class="person reveal">
-        <div class="ph"><img class="bw" src="assets/team/rafael-7-bw.jpg" alt="Rafael Fern&aacute;ndez Sande" loading="lazy"><img class="col" src="assets/team/rafael-7.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+        <div class="ph"><img class="bw" src="assets/team/rafael-7-bw.webp" alt="Rafael Fern&aacute;ndez Sande" loading="lazy"><img class="col" src="assets/team/rafael-7.webp" alt="" aria-hidden="true" loading="lazy"></div>
         <h3 class="pname">Rafael Fern&aacute;ndez Sande</h3>
         <p class="prole" data-i18n="role_rafael">Socio Internacional</p>
         <p class="pbio" data-i18n="bio_rafael">Especialista en branded residences, con formaci&oacute;n en hoteler&iacute;a, dise&ntilde;o y gastronom&iacute;a &mdash; ha liderado la venta de proyectos internacionales, dedicado a la sales experience y los customer journeys.</p>
@@ -909,7 +914,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
       <a class="olink" id="wa-contact" href="https://wa.me/5491144401551" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg><span data-i18n="cwa">Escr&iacute;benos por WhatsApp</span></a>
     </div>
     <a class="cp" href="https://www.celebrity.properties/?utm_source=bda&amp;utm_medium=referral&amp;utm_campaign=bda_website&amp;utm_content=footer_link" target="_blank" rel="noopener" referrerpolicy="origin">
-      <span class="cp-win" aria-hidden="true"><span class="cp-bar"><i></i><i></i><i></i><em>celebrity.properties</em></span><img src="assets/misc/celebrity-properties.jpg" alt="" loading="lazy"></span>
+      <span class="cp-win" aria-hidden="true"><span class="cp-bar"><i></i><i></i><i></i><em>celebrity.properties</em></span><img src="assets/misc/celebrity-properties.webp" alt="" loading="lazy"></span>
       <span class="cp-txt"><span data-i18n="cp1">Encuentra tambi&eacute;n nuestras propiedades internacionales en</span> <b>Celebrity Properties</b> <span class="cp-arr" aria-hidden="true">&#8599;</span></span>
     </a>
     <footer class="foot">
@@ -1125,7 +1130,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
   var $ = function(id){ return document.getElementById(id); };
   function pad(n){ return (n < 10 ? '0' : '') + n; }
   var items = [];
-  function src(p, i){ return 'assets/projects/' + p.img + '-' + (i + 1) + '.jpg'; }
+  function src(p, i){ return 'assets/projects/' + p.img + '-' + (i + 1) + '.webp'; }
   function show(i){
     mi = (i + items.length) % items.length;
     var it = items[mi], img = $('m-img'), vid = $('m-vid');
@@ -1149,7 +1154,7 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
   function openP(i){
     pj = PJ[i]; lastFocus = document.activeElement; fillModal(); resetEnq();
     items = [];
-    if(pj.video) items.push({video: pj.video, poster: 'assets/video/plaza-poster.jpg'});
+    if(pj.video) items.push({video: pj.video, poster: 'assets/video/plaza-poster.webp'});
     for(var k = 0; k < pj.n; k++) items.push({img: src(pj, k)});
     var th = $('m-thumbs'); th.innerHTML = '';
     items.forEach(function(it, k){ var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', (k + 1) + ''); b.innerHTML = '<img src="' + (it.video ? it.poster : it.img) + '" alt="">' + (it.video ? '<span class="play" aria-hidden="true"></span>' : ''); b.addEventListener('click', function(){ show(k); }); th.appendChild(b); });

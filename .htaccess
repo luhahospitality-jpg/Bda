@@ -1,5 +1,7 @@
 # Apache/LiteSpeed (LatinCloud): same behaviour as vercel.json
 Options -MultiViews
+AddType image/webp .webp
+AddType application/manifest+json .webmanifest
 RewriteEngine On
 
 # Never expose the git checkout or repo files
