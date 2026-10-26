@@ -12,6 +12,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Old site pages -> new sections
 RewriteRule ^bda-proyectos(\.html)?$ /#proyectos [R=301,NE,L]
+RewriteRule ^(alvear-icon-puerto-madero|alvear-tower|casa-anchorena|sls-hotel-suites|sls-lux-residences)-bda-realty(\.html)?$ /#proyectos [R=301,NE,L]
 RewriteRule ^bda(\.html)?$ /#equipo [R=301,NE,L]
 RewriteRule ^contact(\.html)?$ /#contacto [R=301,NE,L]
 RewriteRule ^news(\.html)?$ /newsletter [R=301,L]
