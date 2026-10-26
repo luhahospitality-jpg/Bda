@@ -8,6 +8,7 @@ RedirectMatch 404 /(README\.md|vercel\.json)$
 
 # Always HTTPS
 RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Old site pages -> new sections
