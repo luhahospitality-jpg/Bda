@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>BDA REALTY - LUXURY REAL ESTATE</title>
+		<meta name="description" content="BDA REALTY - LUXURY REAL ESTATE. M�s de 25 anos de experiencia con las mejores propiedades de Luxury Real Estate. By Marcelo Cusmai & Ricardo Fernande" />
+		<meta name="keywords" content="BDA REALTY. M�s de 25 anos de experiencia con las mejores propiedades de Luxury Real Estate. By Marcelo Cusmai & Ricardo Fernande" />
+		<meta name="author" content="Codrops" />
+		 <meta name="security" content="Public" />
+	<meta name="robots" content="index,follow" />
+	<meta name="revisit-after" content="3 days" /
+		<link rel="shortcut icon" href="https://www.bda-realty.com/galerias/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="galerias/ArticleIntroEffects/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="galerias/ArticleIntroEffects/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="galerias/ArticleIntroEffects/css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/style-resp.css"/>
+        
+        
+         <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style-galery.css">
+  <link rel="stylesheet" href="css/style-responsive.css">  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"></head>
+	<body class="demo-3">
+        <!-- it works the same with all jquery version from 1.3.1 to 2.0.3 -->
+    <script type="text/javascript" src="galerias/js/jquery-1.9.1.min.js"></script>
+    <!-- use jssor.slider.mini.js (39KB) or jssor.sliderc.mini.js (31KB, with caption, no slideshow) or jssor.sliders.mini.js (26KB, no caption, no slideshow) instead for release -->
+    <!-- jssor.slider.mini.js = jssor.sliderc.mini.js = jssor.sliders.mini.js = (jssor.core.js + jssor.utils.js + jssor.slider.js) -->
+    <script type="text/javascript" src="galerias/js/jssor.core.js"></script>
+    <script type="text/javascript" src="galerias/js/jssor.utils.js"></script>
+    <script type="text/javascript" src="galerias/js/jssor.slider.js"></script>
+    <script>
+
+        jQuery(document).ready(function ($) {
+
+            var _SlideshowTransitions = [
+ 
+
+            //Fade in LR Chess
+                , { $Duration: 1200, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $FlyDirection: 4, $ChessMode: { $Column: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $ScaleVertical: 0.3, $Opacity: 2 }
+            
+                ];
+
+            var options = {
+                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlayInterval: 1500,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 3,                                //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, default value is 3
+
+                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideDuration: 949,                                //Specifies default duration (swipe) for slide in milliseconds
+
+                $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+                    $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+                    $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+                    $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                    $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+                },
+
+                $DirectionNavigatorOptions: {                       //[Optional] Options to specify and enable direction navigator or not
+                    $Class: $JssorDirectionNavigator$,              //[Requried] Class to create direction navigator instance
+                    $ChanceToShow: 1                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                },
+
+                $ThumbnailNavigatorOptions: {                       //[Optional] Options to specify and enable thumbnail navigator or not
+                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+
+                    $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+                    $SpacingX: 6,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+                    $DisplayPieces: 10,                             //[Optional] Number of pieces to display, default value is 1
+                    $ParkingPosition: 360                          //[Optional] The offset position to park thumbnail
+                }
+            };
+
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                if (parentWidth)
+                    jssor_slider1.$SetScaleWidth(Math.max(Math.min(parentWidth, 949), 300));
+                else
+                    window.setTimeout(ScaleSlider, 30);
+            }
+
+            ScaleSlider();
+
+            if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+                $(window).bind('resize', ScaleSlider);
+            }
+            //responsive code end
+        });
+    </script>
+
+<!-- Top Navigation -->
+ <div class="opacity-nav">
+
+  <div class="menu-index" id="buttons" style="z-index:999999">
+        <i class="fa  fa-close"></i>
+  </div>
+<ul class="menu-fullscreen">
+      <li><a class="" href="index.html">HOME</a></li>
+      <li><a class="" href="bda-proyectos.html"><strong>PROYECTOS</strong></a></li>
+      <li><a class="" href="bda.html">BDA</a></li>
+    <li><a class="" href="news.html"><strong>NEWS</strong></a></li>
+      <li><a class="" href="contact.html">CONTACTO</a></li>
+	<br /><br />
+<li><div><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="80" align="center"><a href="https://www.facebook.com/BDARealtyLuxuryRealEstate/" target="_blank"><img src="img/ic-face.png" width="42" height="81" border="0" /></a></td>
+    <td width="63" align="center"><a href="https://www.instagram.com/bda.realty/" target="_blank"><img src="img/ic-inst.png" width="38" height="81" border="0" /></a></td>
+    <td width="57" align="center"><a href="https://www.linkedin.com/company/bda-realty" target="_blank"><img src="img/ic-link.png" width="39" height="81" border="0" /></a></td>
+  </tr>
+</table></td>
+  </tr>
+</table>
+</div></li>
+      
+  </ul>
+
+</div>
+
+
+  <!--Header-->
+<header id="fullscreen">
+    
+   <div class="logo" id="full"><a class="" href="index.html" target="_blank"><img src="img/bda-realty-arg.png"  /></a><a class="" href="https://www.facebook.com/BDARealtyLuxuryRealEstate/" target="_blank"><img src="img/ic-face.png" /></a><a class="" href="https://www.instagram.com/bda.realty/" target="_blank"><img src="img/ic-inst.png"  /></a>
+   <a class="" href="https://www.linkedin.com/company/bda-realty" target="_blank"><img src="img/ic-link.png" /></a>
+</div>    
+      
+<div class="menu-index" id="button">
+        <i class="fa fa-bars"></i>
+  </div>
+  </header>
+
+  <div class="clear"></div>           
+
+<!-- finTop Navigation -->
+		<div id="container" class="container intro-effect-sliced">
+			<!-- Top Navigation -->
+            
+            
+            	<!-- finTop Navigation -->
+			
+			<header class="header2">
+		    <div class="bg-img"><img src="img/fondos-bda.jpg" alt="Background Image" /></div>
+				<div class="title">
+					<h1>
+Mas de 25 a&ntilde;os Asociados y comprometidos con los desarrollos mas importantes del Premium Real Estate.<br>
+
+<img src="img/alt-line.png" width="250" height="53" /><br>
+<br>
+<br><br>
+
+</h1>
+
+                    
+			  </div>
+				<div class="bg-img"><img src="img/fondos-bda.jpg" alt="Background Image" /></div>
+			</header>
+		  <button class="trigger" data-info="M�s info. Scroll Down"><span>Trigger</span></button>
+		  <article class="content">
+			<div>
+			  <p><div class="alto-tex"><br>
+<br>
+</div></p>
+					
+</div>
+
+
+<div class="page-alter">
+            
+<div id="wrapper">
+			<section>
+				<article1 id="column1"><p></p>
+					<p><span class="profile-name-t-bda4">
+1991</span><br><br>
+<span class="profile-name-t-bda">
+Fundadores y Directores  Palermo Chico Real Estate:</span><br>
+desde 1991 hasta 2000, siendo nuestra especialidad la comercializaci&oacute;n y asesoramiento Integral de unidades premium. <br>
+                      <br>
+                      <span class="profile-name-t-bda4">
+2000</span><br><br>
+<span class="profile-name-t-bda">Creadores de Inmobisite:</span><br>
+                      Primer Inmobiliaria con plataforma virtual, desde 2000-2006 Realizando una Alianza Inmobisite/Dypsa con Atrea BBVA (Europa ) 2004-2010 <br>
+                      <br>
+                      <span class="profile-name-t-bda4">
+2006</span><br><br>
+                      <span class="profile-name-t-bda">
+Fundadores de BDA-Realty Bussines Development Associate.</span><br>
+                      <strong>Alianza Comercial con DYPSA Desarrollos y Proyectos: 2006 - 2010</strong> Creando Dypsa International Realty, Comercializaci&oacute;n exclusiva, Nacional e Internacional , marketing y prensa de todos sus productos : Renoir torre I y Renoir torre II en Puerto Madero - Torre Mayor en Olivos - Young's Stone en San Telmo entre otros...
+                      <br></p></article1>
+                      
+                      
+                      
+                      
+				<article1 id="column2"><p></p>
+               
+<span class="profile-name-t-bda">
+PARTICPACIONES INTERNACIONALES</span><br>
+					<p> BDA Realty tuvo destacadas participaciones  consecutivas en <strong>Salones Inmobiliarios Internacionales en Argentina, Madrid, Barcelona, Valencia, Par&iacute;s , Dubai y otros</strong>. presentando al mercado internacional nuevas alternativas y formatos de inversi&oacute;n en Real Estate, logrando alianzas Internacionales y varios premios alrededor del mundo. <br><br>
+
+                      <span class="profile-name-t-bda">
+Alianza estrat&eacute;gica con Axis Realty Trust By Douglas Elliman</span><br>
+
+                      BDA International Realty cuenta con una <strong>Alianza estrat&eacute;gica con Axis Realty Trust By Douglas Elliman</strong>, l&iacute;der en Real Estate en Miami y el sur de la Florida, para  capitalizaci&oacute;n de inversiones residenciales, hoteleras y comerciales. <br>
+                      <br>
+                      <span class="profile-name-t-bda4">2009</span><br><br><span class="profile-name-t-bda">
+ALIANZA GRUPO ALVEAR</span><br>
+Se conform&oacute; una <strong>alianza comercial con Grupo Alvear</strong> - 2009 - 2016 generando un v&iacute;nculo en servicios de Marketing  y Comercializaci&oacute;n Exclusiva de Alvear Icon Hotel & Residences, vendiendo la totalidad de la Residencias que componen el mix, y la emblem&aacute;tica Alvear Tower en plena construcci&oacute;n, siendo este el edificio Residencial mas alto de Sudam&eacute;rica, logrando ventas por casi el 80 % de las unidades, consolidando valores r&eacute;cords en la historia del Real Estate Argentino. 
+
+                      <br><br>
+</p></article1>
+				
+                
+                
+                <article1 id="column3"><p></p>
+                 
+					<p>
+                      
+ <span class="profile-name-t-bda4">2016</span><br><br>
+                      <span class="profile-name-t-bda">
+ASOCIACI&Oacute;N COMERCIAL CON RELATED GROUP</span><br>
+
+                      En el 2016 logramos una <strong>Asociaci&oacute;n comercial con Related Group,</strong> comercializando en su desembarco en Argentina su emprendimiento insignia SLS LUX Puerto Madero, y las SLSLUX HOTEL DESIGNER SUITES . Con un extraordinario &eacute;xito de ventas, logro conseguido casi simult&aacute;neamente con su lanzamiento. <br></p></article1>
+			</section><br>
+		</div>
+<p>.</p>
+
+              </p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+</div>
+
+
+
+<div class="page-alter2">
+					<br>
+<br>
+<br>
+
+					<p><span class="profile-name-t-bda"><br>
+<br>
+NUESTROS SERVICIOS<br><br>
+</span>
+                      <span class="profile-name-t-bda3">BDA Realty, brinda,  intermediaci&oacute;n, marketing , asesoramiento comercial y desarrollos de proyectos por cuenta propia, de terceros o asociados a terceros.</span><br>
+<br><img src="img/portfolio/line.png" width="114" height="11" />
+<br>
+
+BDA Realty ofrece al mercado de desarrolladores un asesoramiento integral que les permite emprender junto a nosotros la comercializaci&oacute;n de sus emprendimientos, tanto como equipo propio del emprendimiento, como la asociaci&oacute;n comercial con una empresa externa especializada y galardonada,  esto ha sido uno de los fundamentos por los que los desarrolladores y emprendedores encuentran en BDA una soluci&oacute;n que optimiza, potencia y les augura, el &eacute;xito comercial en sus creaciones.<br>
+                      <br>
+                      <br>
+                      <img src="img/iconos.png" width="" height="" class="img-log3"><br>                      
+                      <span class="profile-name-t-bda">A continuaci&oacute;n detallamos los servicios que viene llevando adelante BDA Realty :  </span><br><br>
+
+- An&aacute;lisis y factibilidad de nuevos negocios, estudio y b&uacute;squeda de tierra para desarrollos <br>
+- Dise&ntilde;o de Precios y formas de pago <br>
+- An&aacute;lisis y evaluaci&oacute;n comercial para la definici&oacute;n de la arquitectura de los proyectos, tipolog&iacute;as y dise&ntilde;o adecuado a cada mercado.<br>
+- Asesoramiento Notarial, Fiscal y Contable<br>
+- Marketing Integral <br>
+- Dise&ntilde;o y posicionamiento de Marca
+- Asesoramiento en la creaci&oacute;n de canales de comunicaci&oacute;n, desarrollos webs, Brochures, Flyers y piezas de comunicaci&oacute;n.<br>
+- Inclusi&oacute;n en Redes Sociales<br>
+- Armado de equipos comerciales, exclusivos y alineados con cada proyecto.<br>
+- Generaci&oacute;n y aporte de bases de datos para cada desarrollo <br>
+- Atenci&oacute;n y seguimiento de clientes <br>
+- Apertura de nuevos canales comerciales. <br>
+- Creaci&oacute;n, direcci&oacute;n, seguimiento, e integraci&oacute;n de Brokers asociados independientes e inmobiliarias tradicionales . <br>
+                      <br>
+                      
+                      <br><img src="img/portfolio/line.png" width="114" height="11" /><br>
+<br>
+
+
+<br>
+<br>
+<br>
+
+      </p>
+
+              </p>
+</div>
+
+
+
+
+			<div>
+            
+              
+
+	
+            
+        </div>
+		  </article>
+			
+          
+  <!--Footer-->
+
+    
+</footer><br>
+<br>
+<br>
+<br>
+
+<footer id="ajax-footer">
+    <div class="footer-margin">
+      <div class="social-footer"> <br />
+      </div>
+      <div class="copyright">Copyright 2016 BDA REALTY. BUSINESS DEVELOPMENT ASSOCIATE. All Rights Reserved.<br />
+        <a href="index.html"><img src="img/BDA-R.png" alt="BDA REALTY" width="100" height="42" border="0" /></a><br />
+        <a href="http://tres70.com/" target="_blank"><img src="img/370.png" alt="370 studio" width="52" height="23" /></a></div>
+    </div>
+</footer>
+</div>
+
+<!-- /container -->
+		<script src="galerias/ArticleIntroEffects/js/classie.js"></script>
+		<script>
+			(function() {
+
+				// detect if IE : from http://stackoverflow.com/a/16657946		
+				var ie = (function(){
+					var undef,rv = -1; // Return value assumes failure.
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf('MSIE ');
+					var trident = ua.indexOf('Trident/');
+
+					if (msie > 0) {
+						// IE 10 or older => return version number
+						rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+					} else if (trident > 0) {
+						// IE 11 (or newer) => return version number
+						var rvNum = ua.indexOf('rv:');
+						rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
+					}
+
+					return ((rv > -1) ? rv : undef);
+				}());
+
+
+				// disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179					
+				// left: 37, up: 38, right: 39, down: 40,
+				// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+				var keys = [32, 37, 38, 39, 40], wheelIter = 0;
+
+				function preventDefault(e) {
+					e = e || window.event;
+					if (e.preventDefault)
+					e.preventDefault();
+					e.returnValue = false;  
+				}
+
+				function keydown(e) {
+					for (var i = keys.length; i--;) {
+						if (e.keyCode === keys[i]) {
+							preventDefault(e);
+							return;
+						}
+					}
+				}
+
+				function touchmove(e) {
+					preventDefault(e);
+				}
+
+				function wheel(e) {
+					// for IE 
+					//if( ie ) {
+						//preventDefault(e);
+					//}
+				}
+
+				function disable_scroll() {
+					window.onmousewheel = document.onmousewheel = wheel;
+					document.onkeydown = keydown;
+					document.body.ontouchmove = touchmove;
+				}
+
+				function enable_scroll() {
+					window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;  
+				}
+
+				var docElem = window.document.documentElement,
+					scrollVal,
+					isRevealed, 
+					noscroll, 
+					isAnimating,
+					container = document.getElementById( 'container' ),
+					trigger = container.querySelector( 'button.trigger' );
+
+				function scrollY() {
+					return window.pageYOffset || docElem.scrollTop;
+				}
+				
+				function scrollPage() {
+					scrollVal = scrollY();
+					
+					if( noscroll && !ie ) {
+						if( scrollVal < 0 ) return false;
+						// keep it that way
+						window.scrollTo( 0, 0 );
+					}
+
+					if( classie.has( container, 'notrans' ) ) {
+						classie.remove( container, 'notrans' );
+						return false;
+					}
+
+					if( isAnimating ) {
+						return false;
+					}
+					
+					if( scrollVal <= 0 && isRevealed ) {
+						toggle(0);
+					}
+					else if( scrollVal > 0 && !isRevealed ){
+						toggle(1);
+					}
+				}
+
+				function toggle( reveal ) {
+					isAnimating = true;
+					
+					if( reveal ) {
+						classie.add( container, 'modify' );
+					}
+					else {
+						noscroll = true;
+						disable_scroll();
+						classie.remove( container, 'modify' );
+					}
+
+					// simulating the end of the transition:
+					setTimeout( function() {
+						isRevealed = !isRevealed;
+						isAnimating = false;
+						if( reveal ) {
+							noscroll = false;
+							enable_scroll();
+						}
+					}, 600 );
+				}
+
+				// refreshing the page...
+				var pageScroll = scrollY();
+				noscroll = pageScroll === 0;
+				
+				disable_scroll();
+				
+				if( pageScroll ) {
+					isRevealed = true;
+					classie.add( container, 'notrans' );
+					classie.add( container, 'modify' );
+				}
+				
+				window.addEventListener( 'scroll', scrollPage );
+				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
+			})();
+		</script>
+        <!--Scripts menu-->
+
+<script src="js/jquery.min.js"></script>
+
+
+<script src="js/jquery.waitforimages.js" type="text/javascript"></script>
+
+
+<script src="js/imagesloaded.pkgd.min.js" type="text/javascript"></script>    
+<script src="js/jquery.jkit.1.2.16.min.js"></script>
+ 
+<script src="js/script.js" type="text/javascript"></script>
+  
+<script>
+    $('#button, #buttons').on('click', function() {
+      $( ".opacity-nav" ).fadeToggle( "slow", "linear" );
+    // Animation complete.
+    });
+  </script>
+
+</body>
+</html>
