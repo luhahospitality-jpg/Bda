@@ -2,28 +2,8 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/bda-proyectos(.html)?",
-      "destination": "/#proyectos",
-      "permanent": true
-    },
-    {
-      "source": "/(alvear-icon-puerto-madero|alvear-tower|casa-anchorena|sls-hotel-suites|sls-lux-residences)-bda-realty(.html)?",
-      "destination": "/#proyectos",
-      "permanent": true
-    },
-    {
-      "source": "/bda(.html)?",
-      "destination": "/#equipo",
-      "permanent": true
-    },
-    {
-      "source": "/contact(.html)?",
-      "destination": "/#contacto",
-      "permanent": true
-    },
-    {
-      "source": "/news(.html)?",
-      "destination": "/newsletter",
+      "source": "/(.*)",
+      "destination": "https://www.bda-realty.com/$1",
       "permanent": true
     }
   ],

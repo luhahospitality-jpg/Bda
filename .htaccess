@@ -6,6 +6,10 @@ RewriteEngine On
 RedirectMatch 404 /\.git
 RedirectMatch 404 /(README\.md|vercel\.json)$
 
+# bda-realty.com (sin www) -> www.bda-realty.com
+RewriteCond %{HTTP_HOST} ^bda-realty\.com$ [NC]
+RewriteRule ^ https://www.bda-realty.com%{REQUEST_URI} [R=301,L]
+
 # Always HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -17,6 +21,10 @@ RewriteRule ^(alvear-icon-puerto-madero|alvear-tower|casa-anchorena|sls-hotel-su
 RewriteRule ^bda(\.html)?$ /#equipo [R=301,NE,L]
 RewriteRule ^contact(\.html)?$ /#contacto [R=301,NE,L]
 RewriteRule ^news(\.html)?$ /newsletter [R=301,L]
+
+# Old site PDFs that are gone -> projects section
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule \.pdf$ /#proyectos [R=302,NE,L]
 
 # Clean URLs: /plaza.html -> /plaza, and serve /plaza from plaza.html
 RewriteCond %{THE_REQUEST} \s/+(.*?/)?index\.html[\s?]
