@@ -744,6 +744,8 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Formulario: d.form, Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
     }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('mail'); }); });
   }
+  function within(p, ms){ return Promise.race([p, new Promise(function(_, no){ setTimeout(function(){ no(new Error('timeout')); }, ms); })]); }
+  function anyOk(ps){ return new Promise(function(done){ var left = ps.length; ps.forEach(function(p){ p.then(function(){ done(true); }, function(){ if(--left === 0) done(false); }); }); }); }
   function toHubSpot(d){
     if(!CFG.hs.portalId || !CFG.hs.formId) return Promise.resolve('off');
     var o = d.origin, parts = d.name.split(/\s+/), note = [
@@ -770,9 +772,10 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
     if(!form.ok.checked){ msg.innerHTML = T[lang].chk; return; }
     if(form._honey.value) return;
     send.disabled = true; msg.innerHTML = T[lang].wait;
-    var tries = [toEmail(d), toHubSpot(d)].map(function(p){ return p.then(function(){ return true; }, function(){ return false; }); });
-    Promise.all(tries).then(function(r){
-      if(r[0] || (r[1] && CFG.hs.portalId)){ msg.textContent = ''; form.hidden = true; ok.hidden = false; ok.focus(); }
+    /* done as soon as one channel accepts it; FormSubmit gets 20 s before it counts as failed */
+    var hs = toHubSpot(d).then(function(v){ if(v === 'off') throw new Error('off'); });
+    anyOk([within(toEmail(d), 20000), hs]).then(function(sent){
+      if(sent){ msg.textContent = ''; form.hidden = true; ok.hidden = false; ok.focus(); }
       else { send.disabled = false; msg.innerHTML = T[lang].err; }
     });
   });
