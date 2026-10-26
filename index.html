@@ -1142,16 +1142,21 @@ body:has(.modal:not([hidden])) .wa-float, body:has(.pop:not([hidden])) .wa-float
       vid.muted = false; var pr = vid.play(); if(pr && pr.catch) pr.catch(function(){ vid.muted = true; vid.play().catch(function(){}); });
     } else {
       vid.pause(); vid.hidden = true; img.hidden = false;
-      img.src = it.img; img.alt = pj.name.replace(/&amp;/g, '&');
-      img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+      img.alt = pj.name.replace(/&amp;/g, '&'); swapImg(img, it.img, true);
     }
     $('m-count').textContent = pad(mi + 1) + ' / ' + pad(items.length);
     [].forEach.call($('m-thumbs').children, function(b, k){ b.classList.toggle('on', k === mi); });
   }
+  /* swap an image without ever showing the previous one: hidden until the new file has loaded */
+  function swapImg(el, url, anim){
+    el.style.visibility = 'hidden';
+    el.onload = function(){ if(el.getAttribute('src') !== url) return; el.style.visibility = ''; if(anim){ el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; } };
+    el.removeAttribute('src'); el.src = url;
+  }
   function fillModal(){
     $('m-name').innerHTML = pj.name; $('m-loc').innerHTML = pj.loc[lang]; $('m-loc2').innerHTML = pj.loc[lang];
     $('m-tag').innerHTML = pj.tag[lang]; $('m-text').innerHTML = pj.text[lang]; $('m-partner').innerHTML = pj.partner;
-    var lg = $('m-logo'); if(pj.logo){ lg.src = 'assets/logos/' + pj.logo + '.png'; lg.alt = pj.partner; lg.hidden = false; } else lg.hidden = true;
+    var lg = $('m-logo'); lg.alt = pj.partner; lg.hidden = !pj.logo; if(pj.logo) swapImg(lg, 'assets/logos/' + pj.logo + '.png'); else lg.removeAttribute('src');
   }
   function openP(i){
     pj = PJ[i]; lastFocus = document.activeElement; fillModal(); resetEnq();
