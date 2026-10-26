@@ -6,6 +6,13 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var BDA = window.BDA = {lenis: null};
 
+  /* photos and videos: no "save image" menu and no dragging them out of the page */
+  var MEDIA = 'img, video, picture, .ph, .pimg, .shot, .hero-media, .slide, .m-stage, .lb';
+  document.addEventListener('contextmenu', function(e){ if(e.target.closest && e.target.closest(MEDIA)) e.preventDefault(); });
+  document.addEventListener('dragstart', function(e){ if(e.target.closest && e.target.closest('img, video')) e.preventDefault(); });
+  function lockMedia(root){ (root || document).querySelectorAll('img').forEach(function(i){ i.setAttribute('draggable', 'false'); }); (root || document).querySelectorAll('video').forEach(function(v){ v.setAttribute('controlslist', 'nodownload noplaybackrate'); v.disablePictureInPicture = true; }); }
+  lockMedia(); new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if(n.nodeType === 1){ if(n.matches('img, video')) lockMedia(n.parentNode); else lockMedia(n); } }); }); }).observe(document.documentElement, {childList: true, subtree: true});
+
   /* smooth scroll */
   if(!reduce && window.Lenis){
     BDA.lenis = new Lenis({lerp: .085, wheelMultiplier: .95, autoRaf: true, anchors: {duration: 1.6}, allowNestedScroll: true, stopInertiaOnNavigate: true});

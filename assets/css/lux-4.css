@@ -33,3 +33,6 @@ html.lenis, html.lenis body{height:auto}
   .pt, .cur-dot{display:none !important}
   [data-split] .wi{transform:none}
 }
+
+/* photos and videos: no drag-to-desktop, no long-press save menu, no text-style selection */
+img, video, picture{-webkit-user-drag:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none}
