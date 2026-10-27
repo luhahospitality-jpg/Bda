@@ -225,6 +225,7 @@ th{font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1
     <thead><tr><th>Nombre</th><th>Tipo</th><th>Titular</th><th>Finalidad</th><th>Duraci&oacute;n</th></tr></thead>
     <tbody>
       <tr><td>bda-lang</td><td>Almacenamiento local (localStorage)</td><td>BDA (propia)</td><td>Recordar el idioma que eliges con el bot&oacute;n ES / EN (se guarda solo al pulsarlo)</td><td>Hasta que la borres desde tu navegador</td></tr>
+      <tr><td>bda_utm</td><td>Almacenamiento de sesi&oacute;n (sessionStorage)</td><td>BDA (propia)</td><td>Si llegas desde un enlace de campa&ntilde;a, recordar ese origen durante la visita para adjuntarlo a la consulta que nos env&iacute;es</td><td>Hasta que cierras la pesta&ntilde;a</td></tr>
     </tbody>
   </table></div>
   <p>Las tipograf&iacute;as, im&aacute;genes y v&iacute;deos se sirven desde el propio servidor del sitio. Los servicios de terceros (Instagram, LinkedIn, WhatsApp, Celebrity Properties) se cargan solo cuando haces clic en sus enlaces, y a partir de ese momento se aplican sus propias pol&iacute;ticas.</p>
@@ -286,6 +287,7 @@ th{font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1
     <thead><tr><th>Name</th><th>Type</th><th>Owner</th><th>Purpose</th><th>Duration</th></tr></thead>
     <tbody>
       <tr><td>bda-lang</td><td>Local storage (localStorage)</td><td>BDA (first party)</td><td>Remember the language you choose with the ES / EN button (saved only when you press it)</td><td>Until you clear it in your browser</td></tr>
+      <tr><td>bda_utm</td><td>Session storage (sessionStorage)</td><td>BDA (first party)</td><td>If you arrive from a campaign link, remember that origin during the visit to attach it to any enquiry you send us</td><td>Until you close the tab</td></tr>
     </tbody>
   </table></div>
   <p>Fonts, images and videos are served from the website's own server. Third-party services (Instagram, LinkedIn, WhatsApp, Celebrity Properties) load only when you click their links, and their own policies apply from then on.</p>
@@ -297,6 +299,7 @@ th{font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.1
 </main>
 <script src="assets/js/lenis-1.3.26.min.js"></script>
 <script src="assets/js/lux-4.js"></script>
+<script src="assets/js/forms-1.js"></script>
 <script>
 (function(){
   var N = {es:{aviso:'Aviso legal', priv:'Privacidad'}, en:{aviso:'Legal notice', priv:'Privacy'}};

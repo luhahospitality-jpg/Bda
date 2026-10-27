@@ -251,6 +251,11 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 .msg{font-size:13px; line-height:1.55; color:var(--body); min-height:1px}
 .info{font-size:11px; line-height:1.55; color:var(--mute)}
 .hp{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+.tel{display:grid; gap:7px}
+.tel .iti{width:100%; --iti-border-color:#CFCFCF; --iti-dialcode-color:var(--mute); --iti-hover-color:var(--paper-2)}
+.tel .iti__selected-dial-code{font:15px/1.3 var(--sans); color:var(--ink)}
+.iti__country-list, .iti__search-input{font:14px/1.4 var(--sans); color:var(--ink)}
+.iti__search-input{padding:10px 12px}
 .quick.enq-form{gap:12px; padding:26px}
 .ok{display:grid; gap:18px; background:var(--paper); color:var(--ink); padding:clamp(26px, 3.4vw, 40px); border-top:3px solid var(--accent)}
 .ok p{font-family:var(--serif); font-style:italic; font-size:24px; line-height:1.4}
@@ -430,6 +435,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 }
 </style>
 <link rel="stylesheet" href="assets/css/lux-4.css">
+<link rel="stylesheet" href="assets/vendor/iti-29.5.3/css/intlTelInput.min.css">
 <script>(function(){try{var n=(performance.getEntriesByType('navigation')[0]||{}).type,r=document.referrer;if(n==='navigate'&&r&&r.indexOf(location.origin+'/')===0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pt-in')}catch(e){}})();</script>
 </head>
 <body>
@@ -463,9 +469,12 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       <form class="enq-form quick" data-form="portada" novalidate>
         <p class="qt"><span data-l="es">Registra tu inter&eacute;s</span><span data-l="en">Register your interest</span></p>
         <p class="qs"><span data-l="es">Recibe disponibilidad, precios y planos de la mano de un socio de BDA.</span><span data-l="en">Receive availability, prices and plans from a BDA partner.</span></p>
-        <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
-        <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
+        <div class="two">
+          <label><span data-l="es">Nombre</span><span data-l="en">First name</span><input type="text" name="firstname" autocomplete="given-name" required></label>
+          <label><span data-l="es">Apellido</span><span data-l="en">Last name</span><input type="text" name="lastname" autocomplete="family-name" required></label>
+        </div>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <div class="tel"><label for="tel-top"><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span></label><input id="tel-top" type="tel" name="phone" autocomplete="tel" required></div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">Acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
         <button class="send" type="submit"><span data-l="es">Quiero informaci&oacute;n</span><span data-l="en">Send me information</span> <span aria-hidden="true">&rarr;</span></button>
@@ -655,7 +664,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
       <p class="tour-h"><span data-l="es">Conoce el Plaza antes que nadie.</span><span data-l="en">Discover the Plaza before anyone else.</span></p>
       <p class="tour-p"><span data-l="es">Un recorrido inmersivo por residencias, salones y espacios emblem&aacute;ticos, en una experiencia privada junto a nuestro equipo.</span><span data-l="en">An immersive tour of residences, salons and iconic spaces, in a private experience with our team.</span></p>
     </div>
-    <a class="btn btn-p" href="#consulta" data-interest="tour"><span data-l="es">Quiero mi recorrido privado</span><span data-l="en">I want my private tour</span> <span aria-hidden="true">&rarr;</span></a>
+    <a class="btn btn-p" href="#consulta"><span data-l="es">Quiero mi recorrido privado</span><span data-l="en">I want my private tour</span> <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -669,13 +678,12 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
     </div>
     <div>
       <form class="enq-form" data-form="consulta" novalidate>
-        <label><span data-l="es">Nombre</span><span data-l="en">Name</span><input type="text" name="name" autocomplete="name" required></label>
-        <label><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
-        <label>Email<input type="email" name="email" autocomplete="email" required></label>
         <div class="two">
-          <label><span data-l="es">Pa&iacute;s de residencia</span><span data-l="en">Country of residence</span><select name="country"><option value="">&mdash;</option><option value="Argentina" data-es="Argentina" data-en="Argentina">Argentina</option><option value="Uruguay" data-es="Uruguay" data-en="Uruguay">Uruguay</option><option value="Brasil" data-es="Brasil" data-en="Brazil">Brasil</option><option value="Chile" data-es="Chile" data-en="Chile">Chile</option><option value="M&eacute;xico" data-es="M&eacute;xico" data-en="Mexico">M&eacute;xico</option><option value="Estados Unidos" data-es="Estados Unidos" data-en="United States">Estados Unidos</option><option value="Espa&ntilde;a" data-es="Espa&ntilde;a" data-en="Spain">Espa&ntilde;a</option><option value="Otro país" data-es="Otro pa&iacute;s" data-en="Other country">Otro pa&iacute;s</option></select></label>
-          <label><span data-l="es">Me interesa</span><span data-l="en">I am interested in</span><select name="interest"><option value="">&mdash;</option><option value="Residencias privadas" data-es="Residencias privadas" data-en="Private residences">Residencias privadas</option><option value="Inversi&oacute;n" data-es="Inversi&oacute;n" data-en="Investment">Inversi&oacute;n</option><option value="Eventos y salones" data-es="Eventos y salones" data-en="Events &amp; ballrooms">Eventos y salones</option><option value="Recorrido privado (Apple Vision Pro)" data-es="Recorrido privado (Apple Vision Pro)" data-en="Private tour (Apple Vision Pro)">Recorrido privado (Apple Vision Pro)</option></select></label>
+          <label><span data-l="es">Nombre</span><span data-l="en">First name</span><input type="text" name="firstname" autocomplete="given-name" required></label>
+          <label><span data-l="es">Apellido</span><span data-l="en">Last name</span><input type="text" name="lastname" autocomplete="family-name" required></label>
         </div>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <div class="tel"><label for="tel-end"><span data-l="es">Tel&eacute;fono</span><span data-l="en">Phone</span></label><input id="tel-end" type="tel" name="phone" autocomplete="tel" required></div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" name="ok"><span><span data-l="es">He le&iacute;do y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">Pol&iacute;tica de privacidad</a>.</span><span data-l="en">I have read and accept the <a href="legal.html#privacidad" target="_blank" rel="noopener">Privacy policy</a>.</span></span></label>
         <button class="send" type="submit"><span data-l="es">Enviar consulta</span><span data-l="en">Send enquiry</span> <span aria-hidden="true">&rarr;</span></button>
@@ -711,11 +719,13 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 </div>
 <script src="assets/js/lenis-1.3.26.min.js"></script>
 <script src="assets/js/lux-4.js"></script>
+<script src="assets/vendor/iti-29.5.3/js/intlTelInput.min.js"></script>
+<script src="assets/js/forms-1.js"></script>
 <script>
 (function(){
   var doc = document.documentElement; doc.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CFG = {"name": "Plaza Hotel & Residences", "plain": "Plaza Hotel & Residences", "hs": {"portalId": "149609961", "formId": "74b497d6-2170-4056-a4cf-08eae1e4a6f7"}};
+  var CFG = {"name": "Plaza Hotel & Residences", "plain": "Plaza Hotel & Residences", "project": "plaza"};
   var lang = 'es';
   function setLang(l){
     lang = l; doc.lang = l;
@@ -782,59 +792,32 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   var sx = null; lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
   lb.addEventListener('touchend', function(e){ if(sx === null) return; var dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 40) lbShow(li + (dx < 0 ? 1 : -1)); sx = null; });
 
-  document.querySelectorAll('[data-interest="tour"]').forEach(function(a){ a.addEventListener('click', function(){ var sel = document.querySelector('select[name=interest]'); if(sel) sel.selectedIndex = sel.options.length - 1; }); });
 
-  /* campaign origin: read from this page's own URL (nothing is stored in the browser) */
-  var TAGS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
-  function origin(){ var o = {}; TAGS.forEach(function(k){ var v = qp.get(k); if(v) o[k] = v.slice(0, 200); }); return o; }
-
-  /* enquiry: email to info@bda-realty.com through FormSubmit, plus HubSpot when configured */
+  /* enquiry: HubSpot form per project and language, copy to info@ (assets/js/forms-1.js) */
   var T = {
-    es: {req:'Completa nombre, tel&eacute;fono y un email v&aacute;lido.', chk:'Acepta la Pol&iacute;tica de privacidad para enviar tu consulta.', wait:'Enviando&hellip;', err:'Hubo un problema con el env&iacute;o. Escr&iacute;benos a info@bda-realty.com o por WhatsApp.'},
-    en: {req:'Please fill in name, phone and a valid email.', chk:'Please accept the Privacy policy to send your enquiry.', wait:'Sending&hellip;', err:'Something went wrong with the sending. Please write to info@bda-realty.com or on WhatsApp.'}
+    es: {req:'Completa nombre, apellido, email y tel&eacute;fono.', mail:'Revisa el email.', tel:'Revisa el tel&eacute;fono y su prefijo de pa&iacute;s.', chk:'Acepta la Pol&iacute;tica de privacidad para enviar tu consulta.', wait:'Enviando&hellip;', err:'Hubo un problema con el env&iacute;o. Escr&iacute;benos a info@bda-realty.com o por WhatsApp.'},
+    en: {req:'Please fill in first name, last name, email and phone.', mail:'Please check the email.', tel:'Please check the phone number and its country code.', chk:'Please accept the Privacy policy to send your enquiry.', wait:'Sending&hellip;', err:'Something went wrong with the sending. Please write to info@bda-realty.com or on WhatsApp.'}
   };
-  function toEmail(d){
-    var o = d.origin, src = Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' &middot; ') : 'Directo / sin campaña';
-    return fetch('https://formsubmit.co/ajax/info@bda-realty.com', {
-      method:'POST', headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body: JSON.stringify({ Proyecto: CFG.plain, Nombre: d.name, Telefono: d.phone, Email: d.email, Pais: d.country || '-', Interes: d.interest || '-', Idioma: lang.toUpperCase(), Formulario: d.form, Origen: src.replace(/&middot;/g, '·'), Pagina: location.origin + location.pathname, Consentimiento: 'Acepta la Política de privacidad (' + new Date().toISOString().slice(0, 10) + ')', _subject: 'Consulta web — ' + CFG.plain + (o.utm_source ? ' — ' + o.utm_source : ''), _replyto: d.email, _template: 'table', _captcha: 'false' })
-    }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || j.success === false || j.success === 'false') throw new Error('mail'); }); });
-  }
-  function within(p, ms){ return Promise.race([p, new Promise(function(_, no){ setTimeout(function(){ no(new Error('timeout')); }, ms); })]); }
-  function anyOk(ps){ return new Promise(function(done){ var left = ps.length; ps.forEach(function(p){ p.then(function(){ done(true); }, function(){ if(--left === 0) done(false); }); }); }); }
-  function toHubSpot(d){
-    if(!CFG.hs.portalId || !CFG.hs.formId) return Promise.resolve('off');
-    var o = d.origin, parts = d.name.split(/\s+/), note = [
-      'Proyecto: ' + CFG.plain, 'Interés: ' + (d.interest || '-'), 'País: ' + (d.country || '-'), 'Idioma: ' + lang.toUpperCase(),
-      'Formulario: ' + d.form, 'Origen: ' + (Object.keys(o).length ? Object.keys(o).map(function(k){ return k + '=' + o[k]; }).join(' · ') : 'Directo / sin campaña'),
-      'Página: ' + location.origin + location.pathname
-    ], fields = [
-      {name:'firstname', value: parts.shift()}, {name:'lastname', value: parts.join(' ')},
-      {name:'email', value: d.email}, {name:'phone', value: d.phone}, {name:'message', value: note.join('\n')}
-    ];
-    if(d.country) fields.push({name:'country', value: d.country});
-    return fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + CFG.hs.portalId + '/' + CFG.hs.formId, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title },
-        legalConsentOptions: { consent: { consentToProcess: true, text: 'Acepta la Política de privacidad de BDA International.' } } })
-    }).then(function(r){ if(!r.ok) throw new Error('hs'); });
-  }
   document.querySelectorAll('form.enq-form').forEach(function(form){
-  var msg = form.querySelector('.msg'), send = form.querySelector('.send'), ok = form.nextElementSibling;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var d = { name: form.name.value.trim(), phone: form.phone.value.trim(), email: form.email.value.trim(), country: form.country ? form.country.value : '', interest: form.interest ? form.interest.value : '', form: form.getAttribute('data-form'), origin: origin() };
-    if(!d.name || !d.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){ msg.innerHTML = T[lang].req; return; }
-    if(!form.ok.checked){ msg.innerHTML = T[lang].chk; return; }
-    if(form._honey.value) return;
-    send.disabled = true; msg.innerHTML = T[lang].wait;
-    /* done as soon as one channel accepts it; FormSubmit gets 20 s before it counts as failed */
-    var hs = toHubSpot(d).then(function(v){ if(v === 'off') throw new Error('off'); });
-    anyOk([within(toEmail(d), 20000), hs]).then(function(sent){
-      if(sent){ msg.textContent = ''; form.hidden = true; ok.hidden = false; ok.focus(); }
-      else { send.disabled = false; msg.innerHTML = T[lang].err; }
+    var f = form.elements, msg = form.querySelector('.msg'), send = form.querySelector('.send'), ok = form.nextElementSibling, F = window.BDAForms;
+    if(F) F.phone(f.phone, lang);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var first = f.firstname.value.trim(), last = f.lastname.value.trim(), email = f.email.value.trim();
+      if(!first || !last || !email || !f.phone.value.trim()){ msg.innerHTML = T[lang].req; return; }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ msg.innerHTML = T[lang].mail; return; }
+      if(!F){ msg.innerHTML = T[lang].err; return; }
+      var tel = F.number(f.phone);
+      if(!tel.valid){ msg.innerHTML = T[lang].tel; return; }
+      if(!f.ok.checked){ msg.innerHTML = T[lang].chk; return; }
+      if(f._honey.value) return;
+      send.disabled = true; msg.innerHTML = T[lang].wait;
+      F.send({ project: CFG.project, lang: lang, origin: form.getAttribute('data-form') === 'portada' ? 'proyecto_arriba' : 'proyecto_final',
+        first: first, last: last, email: email, phone: tel.number }).then(function(sent){
+        if(sent){ msg.textContent = ''; form.hidden = true; ok.hidden = false; ok.focus(); }
+        else { send.disabled = false; msg.innerHTML = T[lang].err; }
+      });
     });
-  });
   });
 })();
 </script>
