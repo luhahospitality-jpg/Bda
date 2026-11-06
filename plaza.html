@@ -720,7 +720,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
 <script src="assets/js/lenis-1.3.26.min.js"></script>
 <script src="assets/js/lux-4.js"></script>
 <script src="assets/vendor/iti-29.5.3/js/intlTelInput.min.js"></script>
-<script src="assets/js/forms-1.js"></script>
+<script src="assets/js/forms-2.js"></script>
 <script>
 (function(){
   var doc = document.documentElement; doc.classList.add('js');
@@ -793,7 +793,7 @@ form input:focus,form select:focus{outline:none; border-color:var(--ink); box-sh
   lb.addEventListener('touchend', function(e){ if(sx === null) return; var dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 40) lbShow(li + (dx < 0 ? 1 : -1)); sx = null; });
 
 
-  /* enquiry: HubSpot form per project and language, copy to info@ (assets/js/forms-1.js) */
+  /* enquiry: HubSpot form per project and language, copy to info@ (assets/js/forms-2.js) */
   var T = {
     es: {req:'Completa nombre, apellido, email y tel&eacute;fono.', mail:'Revisa el email.', tel:'Revisa el tel&eacute;fono y su prefijo de pa&iacute;s.', chk:'Acepta la Pol&iacute;tica de privacidad para enviar tu consulta.', wait:'Enviando&hellip;', err:'Hubo un problema con el env&iacute;o. Escr&iacute;benos a info@bda-realty.com o por WhatsApp.'},
     en: {req:'Please fill in first name, last name, email and phone.', mail:'Please check the email.', tel:'Please check the phone number and its country code.', chk:'Please accept the Privacy policy to send your enquiry.', wait:'Sending&hellip;', err:'Something went wrong with the sending. Please write to info@bda-realty.com or on WhatsApp.'}

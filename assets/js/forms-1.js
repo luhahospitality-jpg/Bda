@@ -13,8 +13,8 @@
     plaza: { id: 'plaza', name: 'Plaza Hotel & Residences' },
     'alto-agrelo': { id: 'alto_agrelo', name: 'Reserva Alto Agrelo' }
   };
-  /* HubSpot tracking code: on; the HubSpot cookie banner (prior consent for EU visitors) decides when its cookies are set */
-  var HS_TRACKING = true;
+  /* HubSpot tracking code: stays off until the HubSpot cookie banner is set to ask for consent first */
+  var HS_TRACKING = false;
   var ITI = '/assets/vendor/iti-29.5.3/';
   var TAGS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
 
